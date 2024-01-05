@@ -13,4 +13,6 @@
   system.stateVersion = 4;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  users.users.jasonnoonan.home = "/Users/jasonnoonan";
 }

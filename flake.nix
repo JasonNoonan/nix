@@ -11,10 +11,18 @@
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs }:
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#Jasons-MacBook-Pro-2
     darwinConfigurations."Jasons-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
-      modules = [ ./configuration.nix ];
+      modules = 
+      [ 
+        ./configuration.nix 
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jasonnoonan = import ./home/home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
       specialArgs = { inherit inputs self; };
     };
 
