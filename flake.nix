@@ -7,6 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    astronvim = {
+      url = "github:AstroNvim/AstroNvim/v3.40.3";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs }:
