@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  rally = import ./rally.nix {inherit pkgs;}
+  rally = import ./rally.nix {inherit pkgs;};
 in
 {
   home.packages = [
@@ -27,8 +27,10 @@ in
           set -g @fuzzback-popup 1
           set -g @fuzzback-popup-size '90%'
           set -g @fuzzback-fzf-colors bg+:-1,fg:-1,fg+:-1,prompt:6,header:5,pointer:2,hl:2,hl+:2,spinner:05,info:15,border:15;
+          set -g @fuzzback-bind =
         '';
       }
+      # Invoke the shell for this again for the status line to actually not cry
       {
         plugin = cpu;
         extraConfig = ''
@@ -61,13 +63,15 @@ in
     bind \\ split-window -v -l 33%
     bind ? new-window btop
     bind ! kill-server
-    bind s display-popup -E -w 80% -h 70% ${rally}/bin/rally
+    bind s display-popup -E -w 80% -h 70% rally
     bind S display-popup -E 'tmux switch-client -t "fzf list-sessions -F "#{session_name}"| fzf)"'
     bind > display-popup -E -w 50% -h 50%
     bind H resize-pane -L 10
     bind J resize-pane -D 10
     bind K resize-pane -U 10
     bind L resize-pane -R 10
+    bind -n S-Left previous-window
+    bind -n S-Right next-window
 
     set -g status-interval 3
     set-option -g status-position bottom
@@ -94,6 +98,7 @@ in
 
     set -g window-status-format "#[fg=#2D2B40]#[fg=brightwhite,bg=#2D2B40] #{?window_zoomed_flag,󰆞 ,}#W #[bg=black,fg=#2D2B40]"
     set -g window-status-current-format "#[fg=green]#[bg=green,fg=black] #W #{?window_zoomed_flag,󰆞 ,}#[fg=green,bg=black]"
+    run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
     '';
   }; 
 
@@ -102,4 +107,6 @@ in
     recursive = true;
     force = true;
   };
+
+        
 }
