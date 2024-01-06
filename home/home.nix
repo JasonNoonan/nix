@@ -3,6 +3,7 @@
   imports = [
     ./git.nix
     ./neovim
+    ./shell.nix
   ];
 
   # This value determines the home Manager release that your

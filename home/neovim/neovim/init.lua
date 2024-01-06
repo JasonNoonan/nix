@@ -58,7 +58,7 @@ return {
 		config = {
 			lexical = function()
 				return {
-					cmd = { "/Users/jasonnoonan/workspace/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
+					cmd = { "start_lexical.sh" },
 					filetypes = {
 						"elixir",
 						"eelixir",

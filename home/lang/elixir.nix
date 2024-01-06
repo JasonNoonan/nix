@@ -19,4 +19,15 @@
     erlang_26
     inputs.lexical-lsp.packages.${system}.lexical
   ];
+
+  programs.zsh.shellAliases = {
+    ips = "iex -S mix phx.server";
+    mco = "mix coveralls";
+    mcoh = "mix coveralls.html";
+    mdl = "mix dialyzer";
+    mcr = "mix credo --strict";
+    mdc = "mix deps.compile";
+    mdg = "mix deps.get";
+    mes = "mix ecto.setup";
+  };
 }
