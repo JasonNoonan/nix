@@ -11,9 +11,10 @@
       url = "github:AstroNvim/AstroNvim/v3.40.3";
       flake = false;
     };
+    lexical-lsp.url = "github:lexical-lsp/lexical";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, ... }:
   {
     darwinConfigurations."Jasons-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
       modules = 
