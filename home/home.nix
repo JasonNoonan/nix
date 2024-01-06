@@ -3,6 +3,8 @@
   imports = [
     ./git.nix
     ./kitty.nix
+    ./lang/elixir.nix
+    ./lang/yaml.nix
     ./neovim
     ./shell.nix
     ./tmux
