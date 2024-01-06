@@ -4,6 +4,7 @@
     ./git.nix
     ./neovim
     ./shell.nix
+    ./tmux
   ];
 
   # This value determines the home Manager release that your
