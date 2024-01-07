@@ -15,23 +15,23 @@
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, ... }:
-  {
-    darwinConfigurations."Jasons-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
-      modules = 
-      [ 
-        ./configuration.nix 
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jasonnoonan = import ./home/home.nix;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-        }
-      ];
-      specialArgs = { inherit inputs self; };
-    };
+    {
+      darwinConfigurations."Jasons-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
+        modules =
+          [
+            ./configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jasonnoonan = import ./home/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+          ];
+        specialArgs = { inherit inputs self; };
+      };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Jasons-MacBook-Pro-2".pkgs;
-  };
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."Jasons-MacBook-Pro-2".pkgs;
+    };
 }

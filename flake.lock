@@ -62,11 +62,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1704302067,
-        "narHash": "sha256-HzZ2hvs+IL5p76azUNb5YtQOmFQcggbQGf1M18AEqgI=",
+        "lastModified": 1704818305,
+        "narHash": "sha256-vyOXWO4bUXzfTshSKmBQY7Q3CTvz3Jprajuk9b3ZR/M=",
         "owner": "lexical-lsp",
         "repo": "lexical",
-        "rev": "0fa712414d7de6288337ec1ef09eca5970b075c2",
+        "rev": "68641ca145987fdd320e72ddf82569c0389b4326",
         "type": "github"
       },
       "original": {

@@ -6,18 +6,19 @@
   };
 
   home.file.".iex.exs".text = ''
-  IEx.configure(
-          default_prompt:
-            "#{IO.ANSI.magenta} #{IO.ANSI.reset}(%counter) |",
-          continuation_prompt:
-            "#{IO.ANSI.magenta} #{IO.ANSI.reset}(.) |"
-        )
+    IEx.configure(
+            default_prompt:
+              "#{IO.ANSI.magenta} #{IO.ANSI.reset}(%counter) |",
+            continuation_prompt:
+              "#{IO.ANSI.magenta} #{IO.ANSI.reset}(.) |"
+          )
   '';
 
   home.packages = with pkgs; [
     elixir_1_15
     erlang_26
-    inputs.lexical-lsp.packages.${system}.lexical
+    elixir-ls
+    (inputs.lexical-lsp.lib.mkLexical { erlang = beam.packages.erlang; })
   ];
 
   programs.zsh.shellAliases = {

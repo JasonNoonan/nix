@@ -126,6 +126,7 @@
        rm = "${pkgs.trash-cli}/bin/trash-put -v";
        cp = "cp -iv";
        mv = "mv -iv";
+       handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
     };
 
     initExtra = with pkgs; ''

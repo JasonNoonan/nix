@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }:
 {
+  home.packages = [ pkgs.nodePackages.nodejs pkgs.cargo pkgs.nixpkgs-fmt ];
   programs.lazygit.enable = true;
 
   programs.neovim = {

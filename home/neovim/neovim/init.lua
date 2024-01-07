@@ -53,22 +53,22 @@ return {
 	},
 	lsp = {
 		servers = {
-			"lexical",
+			"elixirls",
 		},
-		config = {
-			lexical = function()
-				return {
-					cmd = { "start_lexical.sh" },
-					filetypes = {
-						"elixir",
-						"eelixir",
-					},
-					name = "local_lexical",
-					root_dir = function(fname)
-						return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
-					end,
-				}
-			end,
-		},
+		-- 	config = {
+		-- 		lexical = function()
+		-- 			return {
+		-- 				cmd = { "start_lexical.sh" },
+		-- 				filetypes = {
+		-- 					"elixir",
+		-- 					"eelixir",
+		-- 				},
+		-- 				name = "local_lexical",
+		-- 				root_dir = function(fname)
+		-- 					return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+		-- 				end,
+		-- 			}
+		-- 		end,
+		-- },
 	},
 }
