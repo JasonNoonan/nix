@@ -88,27 +88,37 @@
     enableZshIntegration = true;
     settings = {
       format = "$character$jobs$directory$git_branch$git_status ";
+
       character = {
         format = "$symbol";
         error_symbol = "[ I ](bold fg:red bg:#19172C)";
         success_symbol = "[ I ](bold fg:green bg:#19172C)";
         vimcmd_symbol = "[ N ](bold fg:yellow bg:#19172C)";
       };
+
       directory = {
         format = "[   $path ](bg:#2D2B40 fg:bright-white)[](fg:#2D2B40)";
       };
+
       git_branch = {
         format = "[  $branch ](fg:bright-white)";
       };
+
+      git_status = {
+        style = "bold purple";
+      };
+
       jobs = {
         symbol = " 󰠜 ";
         style = "bright-white";
       };
+
       status = {
         format = "[ $symbol$status ](fg:bright-white bg:#2D2B40)";
         disabled = false;
         symbol = " ";
       };
+
       hostname = {
         ssh_only = false;
         format = "[ $hostname ](italic fg:bright-white bg:#19172C)";
