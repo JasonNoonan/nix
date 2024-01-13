@@ -9,7 +9,7 @@
     ];
 
     extraSubstituters = [
-      "https://nix-ommunity.cachix.org"
+      "https://nix-community.cachix.org"
     ];
 
     extra-trusted-public-keys = [
