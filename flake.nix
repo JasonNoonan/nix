@@ -33,7 +33,7 @@
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, ... }:
     {
       darwinConfigurations = {
-        "Jasons-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        "cyan" = nix-darwin.lib.darwinSystem {
           modules =
             [
               ./hosts/cyan
@@ -48,7 +48,7 @@
           specialArgs = { inherit inputs self; };
         };
 
-        "Jasons-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
+        "locke" = nix-darwin.lib.darwinSystem {
           modules =
             [
               ./hosts/locke

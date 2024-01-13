@@ -16,9 +16,7 @@
     pkgs.docker
     pkgs.inkscape
     pkgs.obsidian
-    # pkgs.postman
     pkgs.slack
-    # pkgs.steam
     pkgs.zoom-us
   ];
 

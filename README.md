@@ -24,9 +24,12 @@ In order to have the `darwin-rebuild switch` command work without passing a flak
 
 The following applications were either not supported on MacOs from the Nix packages, or there were no Nix packages provided.
 
-* MS Edge
-* Postman
-* Notion
-* Amethyst
-* Keeper
-* OBS Studio
+- MS Edge
+- Postman
+- Notion
+- Amethyst
+- Keeper
+- OBS Studio
+- Steam
+
+Consider installing these through Homebrew

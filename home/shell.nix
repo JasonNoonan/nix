@@ -172,6 +172,7 @@
     envExtra = ''
       export MANPAGER="nvim +Man!"
       export PAGER=bat
+      export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
     '';
   };
 }
