@@ -19,7 +19,7 @@
     font = {
       package = pkgs.cascadia-code;
       name = "Cascadia Code";
-      size = 10;
+      size = 14;
     };
 
     keybindings = {

@@ -1,13 +1,24 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./git.nix
-    ./kitty.nix
-    ./lang/elixir.nix
-    ./lang/yaml.nix
-    ./neovim
-    ./shell.nix
-    ./tmux
+    ../git.nix
+    ../kitty.nix
+    ../lang/elixir.nix
+    ../lang/yaml.nix
+    ../neovim
+    ../shell.nix
+    ../tmux
+  ];
+
+  home.packages = [
+    pkgs._1password-gui
+    pkgs.discord
+    pkgs.docker
+    pkgs.inkscape
+    pkgs.obsidian
+    pkgs.slack
+    pkgs.steam
+    pkgs.zoom-us
   ];
 
   # This value determines the home Manager release that your
@@ -22,4 +33,9 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # k9s
+  programs.k9s.enable = true;
+
+  programs.vscode.enable = true;
 }

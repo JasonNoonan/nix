@@ -26,4 +26,7 @@ return {
 		diagnostics_enabled = true, -- enable diagnostics at start
 		status_diagnostics_enabled = true, -- enable diagnostics in statusline
 	},
+	o = {
+		grepprg = "rg --vimgrep --hidden -g !.git",
+	},
 }

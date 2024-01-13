@@ -1,11 +1,14 @@
 { pkgs, lib, ... }:
 
 {
+  home.packages = [
+    pkgs.lazydocker
+    pkgs.powershell
+  ];
+
   programs.bat = {
     enable = true;
-    config = {
-      theme = "catppuccin-mocha";
-    };
+    config = { theme = "catppuccin-mocha"; };
     themes = {
       catppuccin-mocha = {
         src = pkgs.fetchFromGitHub {
@@ -28,12 +31,13 @@
     };
   };
 
-  xdg.configFile."btop/themes/embark.theme".source = pkgs.fetchFromGitHub {
-    owner = "embark-theme";
-    repo = "bashtop";
-    rev = "e8dc8e6";
-    sha256 = "sha256-HHoCVdCH4jCIK0JzoYagURcU722sBARtFkNeGPXuCNM=";
-  } + "/embark.theme";
+  xdg.configFile."btop/themes/embark.theme".source = pkgs.fetchFromGitHub
+    {
+      owner = "embark-theme";
+      repo = "bashtop";
+      rev = "e8dc8e6";
+      sha256 = "sha256-HHoCVdCH4jCIK0JzoYagURcU722sBARtFkNeGPXuCNM=";
+    } + "/embark.theme";
 
   programs.direnv = {
     enable = true;
@@ -67,6 +71,8 @@
     defaultCommand = "${pkgs.ripgrep}/bin/rg --files --hidden -g !.git";
     defaultOptions = [ "--reverse" "--ansi" ];
   };
+
+  programs.ripgrep.enable = true;
 
   programs.starship = {
     enable = true;
@@ -108,7 +114,7 @@
     dotDir = ".config/zsh";
 
     autocd = true;
-    cdpath = ["." "$HOME/.config" "$HOME/workspace"];
+    cdpath = [ "." "$HOME/.config" "$HOME/workspace" ];
     defaultKeymap = "viins";
 
     plugins = [
@@ -116,17 +122,17 @@
     ];
 
     shellAliases = {
-       gap = "git commit -a --amend --no-edit && git push --force-with-lease";
-       clean = "rm package-lock.json && rm -rf ./node_modules && npm i";
-       cloudsql = "cloud_sql_proxy -instances=staging-e49c5d9c:us-central1:portal=tcp:5433";
-       tunnel = "~/workspace/k8s-tunnel.sh";
-       cat = "${pkgs.bat}/bin/bat";
-       clearNvimCache = "rm -rf ~/.local/share/nvim";
-       zso = "source $HOME/.zshrc && source $HOME/.zshenv";
-       rm = "${pkgs.trash-cli}/bin/trash-put -v";
-       cp = "cp -iv";
-       mv = "mv -iv";
-       handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+      gap = "git commit -a --amend --no-edit && git push --force-with-lease";
+      clean = "rm package-lock.json && rm -rf ./node_modules && npm i";
+      cloudsql = "cloud_sql_proxy -instances=staging-e49c5d9c:us-central1:portal=tcp:5433";
+      tunnel = "~/workspace/k8s-tunnel.sh";
+      cat = "${pkgs.bat}/bin/bat";
+      clearNvimCache = "rm -rf ~/.local/share/nvim";
+      zso = "source $HOME/.zshrc && source $HOME/.zshenv";
+      rm = "${pkgs.trash-cli}/bin/trash-put -v";
+      cp = "cp -iv";
+      mv = "mv -iv";
+      handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
     };
 
     initExtra = with pkgs; ''
