@@ -33,6 +33,8 @@
       confirm_os_window_close = "0";
     };
 
+    shellIntegration.enableZshIntegration = true;
+
     extraConfig = ''
       # Seti
       symbol_map U+E5FA-U+E6B1 RobotoMono Nerd Font

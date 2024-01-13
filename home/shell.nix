@@ -8,7 +8,7 @@
 
   programs.bat = {
     enable = true;
-    config = { theme = "catppuccin-mocha"; };
+    config = { theme = "embark"; };
     themes = {
       catppuccin-mocha = {
         src = pkgs.fetchFromGitHub {
@@ -19,6 +19,15 @@
           sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
         };
         file = "Catppuccin-mocha.tmTheme";
+      };
+      embark = {
+        src = pkgs.fetchFromGitHub {
+          owner = "embark-theme";
+          repo = "bat";
+          rev = "fae7e23";
+          sha256 = "sha256-7xKdf5IRwRQo7nVc9hXb+ziULBtwhAn3pbOy4FiRbiQ=";
+        };
+        file = "Embark.tmTheme";
       };
     };
   };
@@ -78,7 +87,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      format = "$character$jobs$directory$git_branch ";
+      format = "$character$jobs$directory$git_branch$git_status ";
       character = {
         format = "$symbol";
         error_symbol = "[ I ](bold fg:red bg:#19172C)";
@@ -172,7 +181,6 @@
     envExtra = ''
       export MANPAGER="nvim +Man!"
       export PAGER=bat
-      export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
     '';
   };
 }
