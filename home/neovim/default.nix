@@ -1,12 +1,18 @@
 { pkgs, inputs, ... }:
 {
-  home.packages = [ pkgs.nodePackages.nodejs pkgs.cargo pkgs.nixpkgs-fmt ];
+  home.packages = [
+    pkgs.cargo
+    pkgs.nixpkgs-fmt
+    pkgs.nodePackages.nodejs
+    pkgs.postgresql_14
+  ];
+
   programs.lazygit.enable = true;
 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    plugins = [];
+    plugins = [ ];
   };
 
   xdg.configFile = {
@@ -15,7 +21,7 @@
       force = true;
       recursive = true;
     };
-    
+
     "astronvim/lua/user" = {
       source = ./neovim;
       force = true;
