@@ -60,7 +60,7 @@
       dock.showhidden = true;
 
       trackpad.Clicking = true;
-      trackpad.TrackpadThreeFingerDrag = true;
+      trackpad.TrackpadThreeFingerDrag = false;
       finder.ShowPathbar = true;
       finder.ShowStatusBar = true;
       loginwindow.GuestEnabled = false;

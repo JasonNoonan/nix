@@ -49,6 +49,10 @@
       "postman"
       "steam"
     ];
+
+    masApps = [
+      "goodnotes"
+    ];
   };
 
   networking.hostName = "locke";
