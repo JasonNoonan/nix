@@ -51,6 +51,7 @@
       "notion"
       "obs"
       "postman"
+      "spotify"
     ];
   };
 
