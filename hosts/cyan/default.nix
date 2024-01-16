@@ -42,7 +42,10 @@
     ];
 
     casks = [
+      "1password"
       "amethyst"
+      "docker"
+      "inkscape"
       "keeper-password-manager"
       "microsoft-edge"
       "notion"

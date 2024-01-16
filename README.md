@@ -16,6 +16,18 @@ curl -L https://nixos.org/nix/install | sh
 export NIX_CONFIG="experimental-features = nix-command flakes"
 ```
 
+Install nix-darwin
+
+```sh
+nix run nix-darwin -- switch --flake ~/.config/nix-darwin
+```
+
+## Install Homebrew
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## NIX_PATH
 
 In order to have the `darwin-rebuild switch` command work without passing a flake path, clone this repo to `~/.nixpkgs`

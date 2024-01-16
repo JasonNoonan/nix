@@ -11,12 +11,8 @@
   ];
 
   home.packages = [
-    pkgs._1password-gui
-    pkgs.docker
     pkgs.discord
     pkgs.google-cloud-sdk
-    pkgs.inkscape
-    pkgs.obsidian
     pkgs.slack
     pkgs.zoom-us
   ];
