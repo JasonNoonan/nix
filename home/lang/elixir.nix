@@ -18,7 +18,7 @@
     beam.packages.erlangR26.elixir_1_15
     beam.packages.erlangR26.erlang
     elixir-ls
-    # (inputs.lexical-lsp.lib.mkLexical { erlang = beam.packages.erlang; })
+    (inputs.lexical-lsp.lib.mkLexical { erlang = beam.packages.erlang; })
   ];
 
   programs.zsh.shellAliases = {
