@@ -12,12 +12,13 @@
 return {
 	opt = {
 		-- set to true or false etc.
-		relativenumber = false, -- sets vim.opt.relativenumber
-		number = true, -- sets vim.opt.number
-		spell = true, -- sets vim.opt.spell
-		signcolumn = "yes", -- sets vim.opt.signcolumn to auto
-		wrap = false, -- sets vim.opt.wrap
 		expandtab = true,
+		number = true, -- sets vim.opt.number
+		relativenumber = false, -- sets vim.opt.relativenumber
+		signcolumn = "yes", -- sets vim.opt.signcolumn to auto
+		spell = true, -- sets vim.opt.spell
+		swapfile = false, -- sets vim.opt.swapfile off
+		wrap = false, -- sets vim.opt.wrap
 	},
 	g = {
 		mapleader = " ", -- sets vim.g.mapleader
