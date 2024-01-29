@@ -49,10 +49,6 @@
       "postman"
       "steam"
     ];
-
-    masApps = [
-      "goodnotes"
-    ];
   };
 
   networking.hostName = "locke";
@@ -64,7 +60,8 @@
       dock.showhidden = true;
 
       trackpad.Clicking = true;
-      trackpad.TrackpadThreeFingerDrag = true;
+      # sorry stevey, my app switcher demands it
+      trackpad.TrackpadThreeFingerDrag = false;
       finder.ShowPathbar = true;
       finder.ShowStatusBar = true;
       loginwindow.GuestEnabled = false;
