@@ -2,6 +2,8 @@
 
 {
   home.packages = [
+    pkgs.entr
+    pkgs.fd
     pkgs.lazydocker
     pkgs.powershell
   ];

@@ -39,10 +39,6 @@
     ];
 
     brews = [
-      "exa"
-      "eza"
-      "fd"
-      "fzf"
     ];
 
     casks = [
