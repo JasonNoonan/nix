@@ -3,6 +3,7 @@
   imports = [
     ../git.nix
     ../kitty.nix
+    ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim

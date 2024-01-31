@@ -41,7 +41,7 @@ return {
 
 					dap.adapters.coreclr = {
 						type = "executable",
-						command = "/usr/local/netcoredbg",
+						command = "netcoredbg",
 						args = { "--interpreter=vscode", "--engineLogging=dap_log.txt" },
 					}
 

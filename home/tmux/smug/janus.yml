@@ -1,0 +1,19 @@
+session: JANUS
+root: ~/workspace/janus
+
+before_start:
+  - docker-compose up -d
+
+stop:
+  - docker-compose stop
+
+windows:
+  - name: " "
+    commands:
+      - nvim
+  - name: " "
+    commands:
+      - clear
+  - name: " "
+    commands:
+      - nvim +DBUI
