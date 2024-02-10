@@ -11,11 +11,11 @@
     ../tmux
   ];
 
-  home.packages = [
-    pkgs.discord
-    pkgs.google-cloud-sdk
-    pkgs.slack
-    pkgs.zoom-us
+  home.packages = with pkgs; [
+    discord
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
+    slack
+    zoom-us
   ];
 
   # This value determines the home Manager release that your

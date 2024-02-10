@@ -232,6 +232,7 @@ return {
 			vim.g.db_ui_save_location = "./json_queries"
 			vim.g.db_ui_disable_mappings = false
 			vim.g.db_url = os.getenv("DBUI_URL")
+			vim.g.db_ui_use_nvim_notify = true
 		end,
 		cmd = {
 			"DBUI",
