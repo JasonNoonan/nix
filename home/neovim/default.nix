@@ -12,7 +12,9 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    plugins = [ ];
+    plugins = with pkgs.vimPlugins; [
+      telescope-fzf-native-nvim
+    ];
   };
 
   xdg.configFile = {

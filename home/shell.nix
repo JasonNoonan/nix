@@ -139,7 +139,7 @@
     defaultKeymap = "viins";
 
     plugins = [
-      { name = "fzf-tab"; src = "${pkgs.zsh-fzf-tab}/share/fzf-tab"; }
+      # { name = "fzf-tab"; src = "${pkgs.zsh-fzf-tab}/share/fzf-tab"; }
     ];
 
     shellAliases = {
