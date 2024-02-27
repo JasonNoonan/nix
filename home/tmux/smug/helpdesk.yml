@@ -1,0 +1,19 @@
+session: HELPDESK
+root: ~/workspace/portal
+
+windows:
+  - name: " "
+    commands:
+      - nvim
+  - name: " "
+    commands:
+      - nvim scratchpad.ex
+    layout: main-horizontal
+    panes:
+      - type: horizontal
+        commands:
+          - ips
+
+  - name: " "
+    commands:
+      - nvim +DBUI
