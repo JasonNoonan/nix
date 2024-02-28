@@ -5,6 +5,7 @@
     pkgs.nixpkgs-fmt
     pkgs.nodePackages.nodejs
     pkgs.postgresql_14
+    pkgs.gnumake
   ];
 
   programs.lazygit.enable = true;
@@ -12,9 +13,6 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      telescope-fzf-native-nvim
-    ];
   };
 
   xdg.configFile = {

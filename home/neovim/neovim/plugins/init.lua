@@ -2,33 +2,6 @@ return {
 	-- You can disable default plugins as follows:
 	-- ["goolord/alpha-nvim"] = { disable = true },
 	{
-		"catppuccin/nvim", -- Soothing pastel theme for Neovim
-		name = "catppuccin",
-		opts = {
-			dim_inactive = { enabled = true, percentage = 0.25 },
-			integrations = {
-				nvimtree = false,
-				aerial = true,
-				dap = { enabled = true, enable_ui = true },
-				mason = true,
-				neotree = true,
-				noice = true,
-				notify = true,
-				sandwich = true,
-				semantic_tokens = true,
-				symbols_outline = true,
-				telescope = { enabled = true },
-				which_key = true,
-			},
-		},
-		config = function(_, opts)
-			vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-			require("catppuccin").setup(opts)
-		end,
-		lazy = false,
-		priority = 1000,
-	},
-	{
 		"embark-theme/vim",
 		name = "embark",
 		-- branch = "vim-notify",
