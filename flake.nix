@@ -27,7 +27,7 @@
       url = "github:AstroNvim/AstroNvim/v3.40.3";
       flake = false;
     };
-    lexical-lsp.url = "github:lexical-lsp/lexical/08987aa";
+    # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, ... }:

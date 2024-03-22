@@ -1,12 +1,6 @@
 session: POINT_QUEST
 root: ~/workspace/point_quest
 
-before_start:
-  - docker-compose up -d
-
-stop:
-  - docker-compose stop
-
 windows:
   - name: " "
     commands:

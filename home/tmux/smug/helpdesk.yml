@@ -1,5 +1,5 @@
 session: HELPDESK
-root: ~/workspace/portal
+root: ~/workspace/helpdesk
 
 windows:
   - name: " "

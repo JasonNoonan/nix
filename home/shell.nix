@@ -146,7 +146,7 @@
       gap = "git commit -a --amend --no-edit && git push --force-with-lease";
       clean = "rm package-lock.json && rm -rf ./node_modules && npm i";
       cloudsql = "cloud_sql_proxy -instances=staging-e49c5d9c:us-central1:portal=tcp:5433";
-      tunnel = "~/workspace/k8s-tunnel.sh";
+      tunnel = "~/workspace/devops/scripts/k8s-tunnel.sh";
       cat = "${pkgs.bat}/bin/bat";
       clearNvimCache = "rm -rf ~/.local/share/nvim";
       zso = "source $HOME/.zshrc && source $HOME/.zshenv";
@@ -154,6 +154,7 @@
       cp = "cp -iv";
       mv = "mv -iv";
       handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+      dev_env = "~/workspace/devops/scripts/dev-secrets/create-file.sh";
     };
 
     initExtra = with pkgs; ''
@@ -163,6 +164,7 @@
       bindkey -M vicmd '^i' edit-command-line
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
+      ssh-add --apple-load-keychain 2> /dev/null
 
       function fgo() {
         target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")

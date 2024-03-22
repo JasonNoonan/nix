@@ -69,6 +69,7 @@ in
       bind J resize-pane -D 10
       bind K resize-pane -U 10
       bind L resize-pane -R 10
+      bind BSpace switch-client -l
       bind -n S-Left previous-window
       bind -n S-Right next-window
 

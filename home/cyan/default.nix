@@ -36,4 +36,21 @@
 
   programs.vscode.enable = true;
 
+  programs.ssh = {
+    enable = true;
+
+    matchBlocks = {
+      locke = {
+        hostname = "locke.lan";
+        forwardAgent = true;
+        localForwards = [
+          {
+            bind.port = 4000;
+            host.address = "localhost";
+            host.port = 4000;
+          }
+        ];
+      };
+    };
+  };
 }
