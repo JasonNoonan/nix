@@ -174,15 +174,16 @@ return {
 		config = function()
 			vim.g.projectionist_heuristics = {
 				["*"] = {
-					["*.ex"] = {
+					["lib/*.ex"] = {
 						alternate = {
 							"{}_test.exs",
+							"test/{}_test.exs",
 						},
 						type = "source",
 					},
-					["*_test.exs"] = {
+					["test/*_test.exs"] = {
 						alternate = {
-							"{}.ex",
+							"lib/{}.ex",
 						},
 					},
 				},
