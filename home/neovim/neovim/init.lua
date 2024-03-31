@@ -10,6 +10,8 @@ vim.keymap.set({ "n", "v" }, "<C-c><C-c>", function()
 	vim.cmd("call VimuxRunCommand(@v)")
 end)
 
+vim.opt.conceallevel = 2
+
 return {
 	-- colorscheme = "catppuccin",
 	colorscheme = "embark",

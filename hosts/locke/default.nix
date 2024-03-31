@@ -42,6 +42,7 @@
     ];
 
     casks = [
+      "amethyst"
       "keeper-password-manager"
       "microsoft-edge"
       "notion"

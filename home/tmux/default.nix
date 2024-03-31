@@ -54,9 +54,7 @@ in
       set -g renumber-windows
 
       bind g switch-client -Ttable1
-      bind -Ttable1 x split-window -h -l 100 \; send-keys 'gh pr checks' C-m
-      bind -Ttable1 ? split-window -h -l 100 \; send-keys 'gh' C-m
-      bind -Ttable1 ! split-window -h -l 100 '$gh pr view --web'
+      bind @ new-window \; send-keys 'gh dash' C-m
 
       bind | split-window -h -l 33%
       bind \\ split-window -v -l 33%
