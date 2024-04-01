@@ -18,18 +18,24 @@
     signing.signByDefault = true;
 
     aliases = {
-	    amend = "commit --amend --no-edit";
-	    branches = "!git --no-pager branch --format '%(refname:short)' --sort=-committerdate | ${pkgs.fzf}/bin/fzf --preview 'git log --color=always --decorate {}'" ;
-	    co = "checkout";
-	    cob = "checkout -b";
-	    drop = "!git branch -d $(git branches)";
-	    force = "push --force-with-lease";
-	    gap = "commit -a --amend --no-edit && git push --force-with-lease";
-	    s = "status";
-	    to = "!git checkout $(git branches)";
+      amend = "commit --amend --no-edit";
+      branches = "!git --no-pager branch --format '%(refname:short)' --sort=-committerdate | ${pkgs.fzf}/bin/fzf --preview 'git log --color=always --decorate {}'";
+      co = "checkout";
+      cob = "checkout -b";
+      drop = "!git branch -d $(git branches)";
+      force = "push --force-with-lease";
+      gap = "commit -a --amend --no-edit && git push --force-with-lease";
+      s = "status";
+      to = "!git checkout $(git branches)";
     };
 
-    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".direnv" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json"];
+    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".direnv" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ];
+
+    diff-so-fancy = {
+      enable = true;
+      stripLeadingSymbols = true;
+      changeHunkIndicators = true;
+    };
 
     extraConfig = {
       init = { defaultBranch = "main"; };
@@ -43,6 +49,9 @@
       };
       gpg = {
         format = "ssh";
+      };
+      diff = {
+        tool = "${pkgs.diff-so-fancy}";
       };
     };
   };

@@ -2,6 +2,7 @@
 
 {
   home.packages = [
+    pkgs.diff-so-fancy
     pkgs.entr
     pkgs.fd
     pkgs.hurl
