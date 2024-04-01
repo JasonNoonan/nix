@@ -4,6 +4,7 @@
   home.packages = [
     pkgs.entr
     pkgs.fd
+    pkgs.hurl
     pkgs.lazydocker
     pkgs.powershell
   ];

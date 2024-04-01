@@ -12,6 +12,10 @@ end)
 
 vim.opt.conceallevel = 2
 
+vim.filetype.add({
+	extension = { hurl = "hurl" },
+})
+
 return {
 	-- colorscheme = "catppuccin",
 	colorscheme = "embark",
