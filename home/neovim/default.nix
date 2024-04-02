@@ -8,7 +8,20 @@
     pkgs.gnumake
   ];
 
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.paging = {
+        colorArg = "always";
+        pager = "diff-so-fancy";
+      };
+
+      git.commit = {
+        autoWrapCommitMessage = true;
+        autoWrapWidth = 72;
+      };
+    };
+  };
 
   programs.neovim = {
     enable = true;
