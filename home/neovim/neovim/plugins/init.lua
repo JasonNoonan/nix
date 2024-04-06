@@ -113,10 +113,17 @@ return {
 			}
 			vim.g["preserve_screen"] = true
 			vim.g["test#csharp#runner"] = "dotnettest"
-			vim.g.VimuxOrientation = "v"
-			vim.g.VimuxHeight = "30"
 			vim.g["test#custom_strategies"] = {
 				vimux_watch = function(args)
+					vim.g.VimuxOrientation = "v"
+					vim.g.VimuxHeight = "30"
+					vim.cmd("call VimuxClearTerminalScreen()")
+					vim.cmd("call VimuxClearRunnerHistory()")
+					vim.cmd(string.format("call VimuxRunCommand('fd . | entr -c %s')", args))
+				end,
+				vimux_watch_side_split = function(args)
+					vim.g.VimuxOrientation = "h"
+					vim.g.VimuxWidth = "30"
 					vim.cmd("call VimuxClearTerminalScreen()")
 					vim.cmd("call VimuxClearRunnerHistory()")
 					vim.cmd(string.format("call VimuxRunCommand('fd . | entr -c %s')", args))
@@ -132,12 +139,25 @@ return {
 			{ "<leader>r!", "<CMD>VimuxInterruptRunner<CR>", { desc = "interrupt the runner (bang'er)" } },
 			{ "<leader>rz", "<CMD>VimuxZoomRunner<CR>", { desc = "zoom the runner" } },
 			{ "<leader>tt", "<cmd>TestFile<cr>", { desc = "run test watcher" } },
-			{ "<leader>tT", "<cmd>TestFile -strategy=vimux<cr>", { desc = "run test for whole file" } },
+			{
+				"<leader>tT",
+				"<cmd>TestNearest -strategy=vimux_watch_side_split<cr><cr>",
+				{ desc = "run test for whole file" },
+			},
 			{ "<leader>tn", "<cmd>TestNearest<cr>", { desc = "run nearest test to cursor" } },
-			{ "<leader>tN", "<cmd>TestNearest -strategy=vimux<cr><cr>", { desc = "run nearest test to cursor" } },
+			{
+				"<leader>tN",
+				"<cmd>TestNearest -strategy=vimux_watch_side_split<cr><cr>",
+				{ desc = "run nearest test to cursor" },
+			},
 			{ "<leader>ts", "<cmd>TestSuite<cr>", { desc = "run test suite" } },
-			{ "<leader>tS", "<cmd>TestSuite -strategy=vimux<cr><cr>", { desc = "run test suite" } },
+			{ "<leader>tS", "<cmd>TestSuite -strategy=vimux_watch_side_split<cr><cr>", { desc = "run test suite" } },
 			{ "<leader>t.", "<cmd>TestLast<cr>", { desc = "re-run the last test run" } },
+			{
+				"<leader>t>",
+				"<cmd>TestLast -strategy=vimux_watch_side_split<cr><cr>",
+				{ desc = "re-run the last test run" },
+			},
 			{ "<leader>tv", "<cmd>TestVisit<cr>", { desc = "visit the last run test" } },
 		},
 	},
