@@ -181,6 +181,7 @@ return {
 			}
 			vim.g.user_emmet_mode = "inv"
 		end,
+		event = "VeryLazy",
 	},
 	{
 		"kylechui/nvim-surround",
@@ -196,7 +197,7 @@ return {
 				["*"] = {
 					["lib/*.ex"] = {
 						alternate = {
-							"{}_test.exs",
+							"lib/{}_test.exs",
 							"test/{}_test.exs",
 						},
 						type = "source",
@@ -294,6 +295,26 @@ return {
 		init = function()
 			vim.g.tmux_navigator_disable_when_zoomed = true
 		end,
+	},
+	{
+		"tris203/precognition.nvim",
+		config = {
+			startVisible = true,
+			hints = {
+				["^"] = { text = "^", prio = 1 },
+				["$"] = { text = "$", prio = 1 },
+				["w"] = { text = "w", prio = 10 },
+				["b"] = { text = "b", prio = 10 },
+				["e"] = { text = "e", prio = 10 },
+			},
+			gutterHints = {
+				--prio is not currentlt used for gutter hints
+				["G"] = { text = "G", prio = 1 },
+				["gg"] = { text = "gg", prio = 1 },
+				["{"] = { text = "{", prio = 1 },
+				["}"] = { text = "}", prio = 1 },
+			},
+		},
 	},
 	-- no config needed plugins
 	{ "chaoren/vim-wordmotion" }, -- More useful word motions for Vim

@@ -19,6 +19,7 @@ return {
 		spell = true, -- sets vim.opt.spell
 		swapfile = false, -- sets vim.opt.swapfile off
 		wrap = false, -- sets vim.opt.wrap
+		formatexpr = "",
 	},
 	g = {
 		mapleader = " ", -- sets vim.g.mapleader

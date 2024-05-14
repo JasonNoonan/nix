@@ -57,5 +57,9 @@
       )
     '';
 
+    # "nvim/after/ftplugin/elixir.lua".text = ''
+    #   vim.opt_local.formatexpr = ""
+    # '';
+
   };
 }
