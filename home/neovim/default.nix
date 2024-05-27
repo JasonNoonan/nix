@@ -20,6 +20,17 @@
         autoWrapCommitMessage = true;
         autoWrapWidth = 72;
       };
+
+      gui.theme = {
+        activeBorderColor = [
+          "#63f2f1"
+          "bold"
+        ];
+        searchingActiveBorderColor = [ "yellow" "bold" ];
+        inactiveBorderColor = [ "#8A889D" ];
+        selectedLineBgColor = [ "#585273" ];
+        optionsTextColor = [ "magenta" ];
+      };
     };
   };
 

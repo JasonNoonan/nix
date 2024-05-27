@@ -3,7 +3,7 @@ root: ~/workspace/portal
 
 before_start:
   - docker-compose up -d
-  - docker-compose --project-directory ../devops/scripts/local-dev up -d
+  - docker-compose --profile portal --project-directory ../devops/local-dev up -d
 
 stop:
   - docker-compose stop
