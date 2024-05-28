@@ -15,8 +15,9 @@ return {
 		expandtab = true,
 		number = true, -- sets vim.opt.number
 		relativenumber = false, -- sets vim.opt.relativenumber
+		showtabline = 0,
 		signcolumn = "yes", -- sets vim.opt.signcolumn to auto
-		spell = true, -- sets vim.opt.spell
+		spell = false, -- sets vim.opt.spell
 		swapfile = false, -- sets vim.opt.swapfile off
 		wrap = false, -- sets vim.opt.wrap
 		formatexpr = "",
