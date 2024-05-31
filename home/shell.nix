@@ -6,6 +6,7 @@
     pkgs.entr
     pkgs.fd
     pkgs.hurl
+    pkgs.jq
     pkgs.lazydocker
     pkgs.powershell
   ];
