@@ -43,6 +43,7 @@
 
     casks = [
       "amethyst"
+      "geekbench"
       "keeper-password-manager"
       "microsoft-edge"
       "notion"

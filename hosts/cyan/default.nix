@@ -45,6 +45,7 @@
       "1password"
       "amethyst"
       "docker"
+      "geekbench"
       "inkscape"
       "keeper-password-manager"
       "microsoft-edge"
