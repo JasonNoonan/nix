@@ -1,3 +1,5 @@
+local lspkind = require("lspkind")
+
 return {
 	"hrsh7th/nvim-cmp",
 	opts = {
@@ -11,9 +13,9 @@ return {
 		},
 		sources = {
 			{ name = "nvim_lsp", priority = 1000 },
-			{ name = "luasnip", priority = 700 },
-			{ name = "path", priority = 650 },
-			{ name = "buffer", priority = 400 },
+			{ name = "luasnip",  priority = 700 },
+			{ name = "path",     priority = 650 },
+			{ name = "buffer",   priority = 400 },
 		},
 	},
 }

@@ -1,12 +1,12 @@
 return {
-	{ -- Neovim motions on speed!
+	{              -- Neovim motions on speed!
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended,
 		config = function()
 			require("hop").setup()
 		end,
 		keys = {
-			{ "<leader><leader>w", "<cmd>HopWord<cr>", desc = "Hop to a word" },
+			{ "<leader><leader>w", "<cmd>HopWord<cr>",    desc = "Hop to a word" },
 			{ "<leader><leader>p", "<cmd>HopPattern<cr>", desc = "Hop to a pattern" },
 		},
 		module = "hop",
@@ -46,11 +46,14 @@ return {
 			}
 		end,
 	},
-	{ "rcarriga/nvim-notify", opts = {
-		background_colour = "#000",
-		top_down = false,
-		timeout = 2000,
-	} },
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			background_colour = "#000",
+			top_down = false,
+			timeout = 2000,
+		},
+	},
 	{
 		"nvim-treesitter/playground",
 		config = function()
@@ -58,7 +61,7 @@ return {
 				playground = {
 					enable = true,
 					disable = {},
-					updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+					updatetime = 25,    -- Debounced time for highlighting nodes in the playground from source code
 					persist_queries = false, -- Whether the query persists across vim sessions
 					keybindings = {
 						toggle_query_editor = "o",
@@ -138,6 +141,6 @@ return {
 			},
 		},
 	},
-	{ "chaoren/vim-wordmotion" }, -- More useful word motions for Vim
-	{ "andymass/vim-matchup" }, -- vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen
+	{ "chaoren/vim-wordmotion", event = "BufRead" }, -- More useful word motions for Vim
+	{ "andymass/vim-matchup",   event = "BufRead" }, -- vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen
 }
