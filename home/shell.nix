@@ -2,12 +2,15 @@
 
 {
   home.packages = [
+    pkgs.cascadia-code
     pkgs.diff-so-fancy
     pkgs.entr
     pkgs.fd
+    pkgs.gcc
     pkgs.hurl
     pkgs.jq
     pkgs.lazydocker
+    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
     pkgs.powershell
   ];
 
@@ -60,7 +63,7 @@
 
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableZshIntegration = true;
     icons = true;
     extraOptions = [ "--group-directories-first" "--header" ];
     git = true;
@@ -156,7 +159,6 @@
       rm = "${pkgs.trash-cli}/bin/trash-put -v";
       cp = "cp -iv";
       mv = "mv -iv";
-      handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
       dev_env = "~/workspace/devops/scripts/dev-secrets/create-file.sh";
     };
 

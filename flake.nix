@@ -19,6 +19,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    NixOS-WSL = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -26,7 +30,7 @@
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, ... }:
     {
       darwinConfigurations = {
         "cyan" = nix-darwin.lib.darwinSystem {
@@ -62,5 +66,24 @@
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."Jasons-MacBook-Pro-2".pkgs;
+
+      nixosConfigurations = {
+	shadow = nixpkgs.lib.nixosSystem {
+ 	  system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+
+	  modules = [
+	    ./hosts/shadow
+            NixOS-WSL.nixosModules.wsl
+	    home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.jasonnoonan = import ./home/shadow;
+            }
+	  ];
+	};
+      };
     };
 }

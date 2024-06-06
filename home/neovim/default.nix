@@ -37,6 +37,10 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      telescope-fzf-native-nvim
+    ];
   };
 
   xdg.configFile = {

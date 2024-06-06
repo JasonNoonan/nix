@@ -38,4 +38,6 @@
   programs.k9s.enable = true;
 
   programs.vscode.enable = true;
+
+  programs.zsh.shellAliases.handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
 }

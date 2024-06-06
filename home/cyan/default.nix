@@ -53,4 +53,6 @@
       };
     };
   };
+
+  programs.zsh.shellAliases.handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
 }

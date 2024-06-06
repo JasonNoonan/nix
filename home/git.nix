@@ -14,7 +14,7 @@
     userEmail = "jason.noonan@pdq.com";
     userName = "Jason Noonan";
 
-    signing.key = "~/.SSH/id_ed25519.pub";
+    signing.key = "~/.ssh/id_ed25519.pub";
     signing.signByDefault = true;
 
     aliases = {
