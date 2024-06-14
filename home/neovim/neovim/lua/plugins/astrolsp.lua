@@ -18,7 +18,7 @@ return {
       -- this must be a function to get access to the `lspconfig` module
       lexical = {
         cmd = {
-          "/Users/jasonnoonan/workspace/lexical/_build/dev/package/lexical/bin/start_lexical.sh",
+          "lexical",
         },
         filetypes = {
           "elixir",
