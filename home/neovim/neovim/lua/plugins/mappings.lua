@@ -1,3 +1,6 @@
+vim.keymap.set({ "n", "v" }, "<C-c><C-c>", function()
+	-- yank text into v register
+end)
 return {
 	{
 		"AstroNvim/astrocore",
@@ -6,6 +9,19 @@ return {
 			mappings = {
 				-- first key is the mode
 				n = {
+					-- scratchpad runner
+					["<C-c><C-c>"] = {
+						function()
+							if vim.api.nvim_get_mode()["mode"] == "n" then
+								vim.cmd('normal vip"vy')
+							else
+								vim.cmd('normal "vy')
+							end
+							-- construct command with v register as command to send
+							-- vim.cmd(string.format('call VimuxRunCommand("%s")', vim.trim(vim.fn.getreg('v'))))
+							vim.cmd("call VimuxRunCommand(@v)")
+						end,
+					},
 					-- second key is the lefthand side of the map
 					-- hop.nvim
 					["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
@@ -100,6 +116,21 @@ return {
 				t = {
 					["<c-q>"] = { "<c-\\><c-n>", desc = "Terminal normal mode" },
 					["<esc><esc>"] = { "<c-\\><c-n>:q<cr>", desc = "Terminal quit" },
+				},
+				v = {
+					-- scratchpad runner
+					["<C-c><C-c>"] = {
+						function()
+							if vim.api.nvim_get_mode()["mode"] == "n" then
+								vim.cmd('normal vip"vy')
+							else
+								vim.cmd('normal "vy')
+							end
+							-- construct command with v register as command to send
+							-- vim.cmd(string.format('call VimuxRunCommand("%s")', vim.trim(vim.fn.getreg('v'))))
+							vim.cmd("call VimuxRunCommand(@v)")
+						end,
+					},
 				},
 			},
 		},
