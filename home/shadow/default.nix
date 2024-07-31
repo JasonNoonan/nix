@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
-{
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+  ]);
+in {
   imports = [
     ../git.nix
     ../lang/dotnet.nix
@@ -14,6 +18,12 @@
     username = "jasonnoonan";
     homeDirectory = "/home/jasonnoonan";
     stateVersion = "23.11";
+    packages = [
+      gdk
+      pkgs.docker
+      pkgs.docker-compose
+      pkgs.python3
+    ];
   };
 
   # Let home Manager install and manage itself.
@@ -21,6 +31,11 @@
 
   # k9s
   programs.k9s.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+  };
 
   programs.vscode.enable = true;
 
