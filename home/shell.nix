@@ -89,6 +89,11 @@
     defaultOptions = [ "--reverse" "--ansi" ];
   };
 
+  programs.keychain = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.ripgrep.enable = true;
 
   programs.starship = {
@@ -170,6 +175,7 @@
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
       ssh-add --apple-load-keychain 2> /dev/null
+      if command -v keychain > /dev/null 2>&1; then eval $(keychain --eval --nogui ~/.ssh/id_ed25519 --quiet); fi
 
       function fgo() {
         target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")

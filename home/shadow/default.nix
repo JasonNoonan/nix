@@ -22,6 +22,7 @@ in {
       gdk
       pkgs.docker
       pkgs.docker-compose
+      pkgs.netcoredbg
       pkgs.python3
     ];
   };

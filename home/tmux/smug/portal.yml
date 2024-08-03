@@ -20,7 +20,10 @@ windows:
       - type: horizontal
         commands:
           - ips
-
   - name: " "
     commands:
       - nvim +DBUI
+  - name: ""
+    commands:
+      - lazygit
+

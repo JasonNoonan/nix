@@ -8,3 +8,6 @@ windows:
   - name: " "
     commands:
       - clear
+  - name: ""
+    commands:
+      - lazygit

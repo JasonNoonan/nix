@@ -13,3 +13,7 @@ windows:
       - type: horizontal
         commands:
           - iex -S mix
+  - name: ""
+    commands:
+      - lazygit
+

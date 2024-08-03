@@ -60,6 +60,7 @@ in
       bind \\ split-window -v -l 33%
       bind ? new-window btop
       bind ! kill-server
+      bind g display-popup -E -w 80% -h 80% lazygit
       bind s display-popup -E -w 80% -h 70% rally
       bind S display-popup -E 'tmux switch-client -t "fzf list-sessions -F "#{session_name}"| fzf)"'
       bind > display-popup -E -w 50% -h 50%
