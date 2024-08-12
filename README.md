@@ -45,3 +45,9 @@ The following applications were either not supported on MacOs from the Nix packa
 - Steam
 
 Consider installing these through Homebrew
+
+## Building custom iso
+
+```bash
+nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
+```

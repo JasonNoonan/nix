@@ -13,7 +13,6 @@ return {
     opts.servers = opts.servers or {}
     table.insert(opts.servers, "lexical")
 
-    -- extend our configuration table to have our new prolog server
     opts.config = require("astrocore").extend_tbl(opts.config or {}, {
       -- this must be a function to get access to the `lspconfig` module
       lexical = {

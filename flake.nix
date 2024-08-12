@@ -68,22 +68,53 @@
       darwinPackages = self.darwinConfigurations."Jasons-MacBook-Pro-2".pkgs;
 
       nixosConfigurations = {
-	shadow = nixpkgs.lib.nixosSystem {
- 	  system = "x86_64-linux";
+        shadow = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
 
-	  modules = [
-	    ./hosts/shadow
+          modules = [
+            ./hosts/shadow
             NixOS-WSL.nixosModules.wsl
-	    home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.jasonnoonan = import ./home/shadow;
             }
-	  ];
-	};
+          ];
+        };
+
+        terra = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+
+          modules = [
+            ./hosts/terra
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.jasonnoonan = import ./home/terra;
+            }
+          ];
+        };
+
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-plasma5-new-kernel.nix"
+            ({ pkgs, ... }: {
+              environment.systemPackages = with pkgs; [ neovim git networkmanager ];
+
+              systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+              users.users.root.openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINd2/EJEh7VrpMXZwcpF4Hel1OxNbv/qfqt5JbmEe+8k jason.t.noonan@gmail.com"
+              ];
+            })
+          ];
+        };
       };
     };
 }
