@@ -42,5 +42,5 @@ in
 
   programs.vscode.enable = true;
 
-  programs.zsh.shellAliases.handshake = "${pkgs.nh}/bin/nh os switch /etc/nixos";
+  programs.zsh.shellAliases.handshake = "${pkgs.nh}/bin/nh os switch ~/nixos";
 }
