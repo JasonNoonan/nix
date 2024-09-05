@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
   ]);
-in {
+in
+{
   imports = [
     ../git.nix
     ../lang/dotnet.nix
@@ -22,7 +23,9 @@ in {
       gdk
       pkgs.docker
       pkgs.docker-compose
+      pkgs.microsoft-edge
       pkgs.python3
+      pkgs.xdg-utils
     ];
   };
 
