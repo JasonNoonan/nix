@@ -131,6 +131,12 @@ return {
 							vim.cmd("call VimuxRunCommand(@v)")
 						end,
 					},
+					["<"] = {"<gv", desc = "maintain visual selection while unindenting"},
+					[">"] = {">gv", desc = "maintain visual selection while indenting"},
+					["p"] = {'"_dp', desc = "move overwritten text to the blackhole register"}, 
+					-- Noice errors (we think) when using the below 
+					-- ["J"] = {":m '>+1<cr>gv=gv'", desc = "complicated movement of whole block down relative to other lines"},
+					-- ["K"] = {":m '<-2<cr>gv=gv'", desc = "complicated movement of whole block up relative to other lines"},
 				},
 			},
 		},
