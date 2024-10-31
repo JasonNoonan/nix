@@ -21,8 +21,10 @@ in
     stateVersion = "23.11";
     packages = [
       gdk
+      pkgs.browsh
       pkgs.docker
       pkgs.docker-compose
+      pkgs.firefox
       pkgs.microsoft-edge
       pkgs.python3
       pkgs.xdg-utils

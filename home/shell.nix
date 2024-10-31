@@ -2,12 +2,10 @@
 
 {
   home.packages = [
-    pkgs.browsh
     pkgs.cascadia-code
     pkgs.diff-so-fancy
     pkgs.entr
     pkgs.fd
-    pkgs.firefox
     pkgs.gcc
     pkgs.hurl
     pkgs.jq
