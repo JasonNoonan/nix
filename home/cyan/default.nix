@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    docker-compose
     discord
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     slack
