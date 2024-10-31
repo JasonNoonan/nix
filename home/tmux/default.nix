@@ -7,6 +7,7 @@ in
   home.packages = [
     rally
     pkgs.smug
+    (pkgs.callPackage ./tmux-file-paths.nix { })
   ];
 
   programs.tmux = {
