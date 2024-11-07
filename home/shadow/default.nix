@@ -26,6 +26,7 @@ in
       pkgs.docker-compose
       pkgs.firefox
       pkgs.go-task
+      pkgs.kubernetes
       pkgs.microsoft-edge
       pkgs.python3
       pkgs.xdg-utils
