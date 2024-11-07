@@ -7,6 +7,7 @@ before_start:
 
 stop:
   - docker-compose stop
+  - docker-compose --profile portal --project-directory ../devops/local-dev stop
 
 windows:
   - name: " "
