@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    asdf
     docker-compose
     discord
     go-task

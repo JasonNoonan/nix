@@ -21,6 +21,7 @@ in
     stateVersion = "23.11";
     packages = [
       gdk
+      pkgs.asdf
       pkgs.browsh
       pkgs.docker
       pkgs.docker-compose
