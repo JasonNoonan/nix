@@ -112,6 +112,17 @@ return {
 							"lib/{}.ex",
 						},
 					},
+					["2024/elixir/lib/advent_of_code/*.ex"] = {
+						alternate = {
+							"2024/elixir/test/advent_of_code/{}_test.exs",
+						},
+						type = "source",
+					},
+					["2024/elixir/test/advent_of_code/*_test.exs"] = {
+						alternate = {
+							"2024/elixir/lib/advent_of_code/{}.ex"
+						},
+					},
 				},
 			}
 		end,
