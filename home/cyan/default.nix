@@ -12,7 +12,8 @@
   ];
 
   home.packages = with pkgs; [
-    asdf
+    argocd
+    asdf-vm
     docker-compose
     discord
     go-task

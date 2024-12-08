@@ -1,5 +1,5 @@
 session: AOC
-root: ~/workspace/aoc/2023/elixir
+root: ~/workspace/aoc/2024/elixir
 
 windows:
   - name: " "
