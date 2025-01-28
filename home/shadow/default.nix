@@ -43,6 +43,27 @@ in
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
+    matchBlocks = {
+      "pdq" = {
+        hostname = "192.168.86.34";
+        user = "jasonnoonan";
+
+        localForwards = [
+          {
+            bind.port = 4001;
+            host.address = "localhost";
+            host.port = 4001;
+          }
+          {
+            bind.port = 4002;
+            host.address = "localhost";
+            host.port = 4001;
+          }
+        ];
+
+        forwardAgent = true;
+      };
+    };
   };
 
   programs.vscode.enable = true;
