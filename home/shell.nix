@@ -3,6 +3,7 @@
 {
   home.packages = [
     pkgs.cascadia-code
+    pkgs.browsh
     pkgs.diff-so-fancy
     pkgs.entr
     pkgs.fd
