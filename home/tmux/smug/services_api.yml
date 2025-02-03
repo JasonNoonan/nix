@@ -1,0 +1,22 @@
+session: SERVICES_API
+root: ~/workspace/services_api
+
+windows:
+  - name: " "
+    commands:
+      - nvim
+  - name: " "
+    commands:
+      - nvim scratchpad.ex
+    layout: main-horizontal
+    panes:
+      - type: horizontal
+        commands:
+          - ips
+  - name: " "
+    commands:
+      - nvim +DBUI
+  - name: ""
+    commands:
+      - lazygit
+
