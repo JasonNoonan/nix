@@ -44,25 +44,30 @@ in
     enable = true;
     addKeysToAgent = "yes";
     matchBlocks = {
-      "pdq" = {
-        hostname = "192.168.86.34";
-        user = "jasonnoonan";
+      "pdq" =
+        {
+          hostname = "192.168.86.34";
+          user = "jasonnoonan";
+          dynamicForwards = [{ port = 8080; }];
 
-        localForwards = [
-          {
-            bind.port = 4001;
-            host.address = "localhost";
-            host.port = 4001;
-          }
-          {
-            bind.port = 4002;
-            host.address = "localhost";
-            host.port = 4001;
-          }
-        ];
+          localForwards = [
+            # default elixir port
+            {
+              bind.port = 4000;
+              host.address = "localhost";
+              host.port = 4000;
+            }
 
-        forwardAgent = true;
-      };
+            # postgres for ash testing
+            {
+              bind.port = 5434;
+              host.address = "localhost";
+              host.port = 5434;
+            }
+          ];
+
+          forwardAgent = true;
+        };
     };
   };
 

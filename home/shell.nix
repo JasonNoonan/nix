@@ -166,6 +166,7 @@
       cp = "cp -iv";
       mv = "mv -iv";
       dev_env = "~/workspace/devops/scripts/dev-secrets/create-file.sh";
+      ffproxy = "ssh -D 8080 -q -C -N pdq";
     };
 
     initExtra = with pkgs; ''
