@@ -11,6 +11,8 @@ return {
 				"yamlls",
 				"html",
 			})
+
+			return opts
 		end,
 	},
 	{
@@ -22,14 +24,16 @@ return {
 				{ "prettierd", "eslint_d", "stylua", "eslint-lsp", "rustfmt" }
 			)
 
-			opts.handlers = require("astrocore").list_insert_unique(opts.handlers, {
-				prettierd = function()
+			opts.handlers = require("astrocore").extend_tbl(opts.handlers or {}, {
+				pretterd = function()
 					local null_ls = require("null-ls")
-					null_ls.register(null_ls.builtins.formatting.prettierd.with({
-						extra_filetypes = { "markdown", "rmd", "qmd" },
-					}))
+					null_ls.register(
+						null_ls.builtins.formatting.prettierd.with({ extra_filetypes = { "markdown", "rmd", "qmd" } })
+					)
 				end,
 			})
+
+			return opts
 		end,
 	},
 }
