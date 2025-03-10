@@ -193,6 +193,29 @@
       function ew() {
         ${fd}/bin/fd "\.exs?$" | ${entr}/bin/entr -c "$@"
       }
+
+      function weznot() {
+        title=$1
+        printf "\0333]1337;SetUserVar=%s=%s\007" wez_not $(echo -n "$title" | base64 -w 0)
+      }
+
+      function wezcopy() {
+        clip_stuff=$(cat)
+        printf"\0333]1337;SetUserVar=%s=%s\007" wez_copy $(echo -n "$clip_stuff" | base64 -w 0)
+      }
+
+      function wezmon() {
+        command=$*
+
+        eval $command
+
+        last_exit_code=$?
+        if [ $last_exit_code -eq 0 ]; then
+          weznot "✅ '$command' completed successfully"
+        else
+          weznot "❌ '$command' failed"
+        fi
+      }
     '';
 
     initExtraBeforeCompInit = ''
