@@ -16,6 +16,7 @@
     asdf-vm
     docker-compose
     discord
+    go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     slack

@@ -26,6 +26,7 @@ in
       pkgs.docker
       pkgs.docker-compose
       pkgs.firefox
+      pkgs.go
       pkgs.go-task
       pkgs.kubernetes
       pkgs.microsoft-edge
