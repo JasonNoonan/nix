@@ -28,10 +28,10 @@ in
       pkgs.exercism
       pkgs.firefox
       pkgs.go
-      pkgs.go-task
       pkgs.kubernetes
       pkgs.microsoft-edge
       pkgs.python3
+      pkgs.taskwarrior3
       pkgs.xdg-utils
     ];
   };
