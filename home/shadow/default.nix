@@ -25,6 +25,7 @@ in
       pkgs.browsh
       pkgs.docker
       pkgs.docker-compose
+      pkgs.exercism
       pkgs.firefox
       pkgs.go
       pkgs.go-task
