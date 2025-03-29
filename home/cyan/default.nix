@@ -50,8 +50,8 @@
     '';
   };
 
-  programs.git.extraConfig."gpg \"ssh\"" = {
-    program = lib.mkOverride 10 "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+  programs.git.extraConfig = {
+    "gpg \"ssh\"".program = lib.mkOverride 10 "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
   };
 
   programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && darwin-rebuild switch --flake ~/.config/nix-darwin --impure";

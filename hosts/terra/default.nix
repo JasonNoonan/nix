@@ -96,7 +96,5 @@
   programs.steam.gamescopeSession.enable = true;
   programs.steam.remotePlay.openFirewall = true;
 
-  programs.dconf.enable = true;
-
   programs.zsh.enable = true;
 }

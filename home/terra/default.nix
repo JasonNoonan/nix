@@ -43,6 +43,7 @@ in {
     wofi-emoji
     wowup-cf
     zenity
+    zoom-us
   ];
 
   # This value determines the home Manager release that your
@@ -97,6 +98,7 @@ in {
         };
     };
   };
+  programs.vscode.enable = true;
 
   programs.zsh.shellAliases.handshake = "${pkgs.nh}/bin/nh os switch /etc/nixos";
   programs.zsh.shellAliases.helpshake = "${pkgs.nh}/bin/nh os switch --help";
