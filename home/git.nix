@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.gh = {
     enable = true;
@@ -46,12 +46,20 @@
       pull = { reabse = false; };
       commit = {
         verbose = true;
+        gpgsign = true;
       };
       gpg = {
         format = "ssh";
       };
+
+      "gpg \"ssh\"" = {
+        program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+      };
       diff = {
         tool = "${pkgs.diff-so-fancy}";
+      };
+      user = {
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDLucPLtqI2jSFkglo3ldfdPPnYWxoh5r9qum9UV078o";
       };
     };
   };

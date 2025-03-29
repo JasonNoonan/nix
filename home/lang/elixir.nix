@@ -15,8 +15,8 @@
   '';
 
   home.packages = with pkgs; [
-    elixir_1_15
-    erlang_26
+    elixir
+    erlang
     elixir-ls
     # (inputs.lexical-lsp.lib.mkLexical { erlang = beam.packages.erlangR26; })
   ];

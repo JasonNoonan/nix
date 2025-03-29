@@ -15,47 +15,35 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
+    { device = "/dev/disk/by-partlabel/SYSTEM";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd" "noatime" "space_cache=v2" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
+    { device = "/dev/disk/by-partlabel/SYSTEM";
       fsType = "btrfs";
       options = [ "subvol=@nix" "compress=zstd" "noatime" "space_cache=v2"];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
+    { device = "/dev/disk/by-partlabel/SYSTEM";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=zstd" "noatime" "space_cache=v2"];
     };
 
-  fileSystems."/etc/nixos" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
-      fsType = "btrfs";
-      options = [ "subvol=@etc/nixos" "compress=zstd" "noatime" "space_cache=v2" ];
-    };
-
   fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
+    { device = "/dev/disk/by-partlabel/SYSTEM";
       fsType = "btrfs";
       options = [ "subvol=@var/log" "compress=zstd" "noatime" "space_cache=v2" ];
     };
 
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/ff23799c-2bb5-40f1-8d7d-7c5152bae03c";
-      fsType = "btrfs";
-      options = [ "subvol=@swap" "compress=zstd" "noatime" "space_cache=v2" ];
-    };
-
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIX-EFI";
+    device = "/dev/disk/by-partlabel/EFI";
     fsType = "vfat";
   };
 
-  swapDevices = [ {device = "/swap/swapfile"; } ];
+  swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -11,7 +11,6 @@
     pkgs.hurl
     pkgs.jq
     pkgs.lazydocker
-    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
     pkgs.powershell
   ];
 
@@ -65,7 +64,7 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
-    icons = true;
+    icons = "auto";
     extraOptions = [ "--group-directories-first" "--header" ];
     git = true;
   };

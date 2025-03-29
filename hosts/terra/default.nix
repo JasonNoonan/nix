@@ -24,17 +24,25 @@
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
-    desktopManager.plasma5.enable = true;
   };
 
   hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-    nvidiaSettings = true;
+	    modesetting.enable = true;
+	    open = false;
+	    # package = config.boot.kernelPackages.nvidiaPackages.latest;
+	    nvidiaSettings = true;
+	  };
+
+  programs.hyprland.enable = true;
+
+  # 1Password
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
   };
 
-  # Enable the Plasma 5 Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -51,12 +59,19 @@
     ];
     shell = pkgs.zsh;
     initialPassword = "temp";
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINd2/EJEh7VrpMXZwcpF4Hel1OxNbv/qfqt5JbmEe+8k jason.t.noonan@gmail.com"];
+    openssh.authorizedKeys.keys = [
+	"256 SHA256:w3jvfYquwBoQNSO0egPpNMEvYVCwkafDuJwfmll05kc jason.t.noonan@gmail.com (ED25519)"
+	"256 SHA256:b+o5Ym/56EQ92OZq/nNGQSx62yaliN+ijXSUh/mjiUI jason.t.noonan@gmail.com (ED25519)"
+    ];
   };
 
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Get some boot disk loaders going
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
@@ -69,12 +84,6 @@
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -85,6 +94,9 @@
   programs.gamemode.enable = true;
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
+
+  programs.dconf.enable = true;
 
   programs.zsh.enable = true;
 }

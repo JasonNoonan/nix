@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
+    pkgs.nerd-fonts.roboto-mono
   ];
 
   xdg.configFile."kitty/themes/embark-theme.conf".source = pkgs.fetchFromGitHub
