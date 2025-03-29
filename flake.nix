@@ -32,6 +32,8 @@
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, ... }:
     {
+      nixpkgs.config.allowUnfree = true;
+
       darwinConfigurations = {
         "cyan" = nix-darwin.lib.darwinSystem {
           modules =
