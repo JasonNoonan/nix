@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }:
+{ self, pkgs, lib, ... }:
+
 {
   programs.gh = {
     enable = true;
@@ -13,9 +14,6 @@
     enable = true;
     userEmail = "jason.noonan@pdq.com";
     userName = "Jason Noonan";
-
-    signing.key = "~/.ssh/id_ed25519.pub";
-    signing.signByDefault = true;
 
     aliases = {
       amend = "commit --amend --no-edit";
@@ -43,21 +41,18 @@
       status = { showUntrackedFiles = "all"; };
       blame = { date = "relative"; };
       merge = { conflictStyle = "diff3"; };
-      pull = { reabse = false; };
+      pull = { rebase = false; };
+      diff = { tool = "${pkgs.diff-so-fancy}"; };
+      gpg = { format = "ssh"; };
       commit = {
         verbose = true;
         gpgsign = true;
-      };
-      gpg = {
-        format = "ssh";
       };
 
       "gpg \"ssh\"" = {
         program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
       };
-      diff = {
-        tool = "${pkgs.diff-so-fancy}";
-      };
+
       user = {
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDLucPLtqI2jSFkglo3ldfdPPnYWxoh5r9qum9UV078o";
       };

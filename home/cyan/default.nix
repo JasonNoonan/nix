@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ../git.nix
@@ -32,7 +32,7 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -44,21 +44,15 @@
 
   programs.ssh = {
     enable = true;
-
-    matchBlocks = {
-      locke = {
-        hostname = "locke.lan";
-        forwardAgent = true;
-        localForwards = [
-          {
-            bind.port = 4000;
-            host.address = "localhost";
-            host.port = 4000;
-          }
-        ];
-      };
-    };
+    addKeysToAgent = "yes";
+    extraConfig = ''Host *
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    '';
   };
 
-  programs.zsh.shellAliases.handshake = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+  programs.git.extraConfig."gpg \"ssh\"" = {
+    program = lib.mkOverride 10 "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+  };
+
+  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && darwin-rebuild switch --flake ~/.config/nix-darwin --impure";
 }

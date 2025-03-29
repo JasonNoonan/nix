@@ -7,7 +7,7 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -21,6 +21,12 @@
     };
 
     hostPlatform = "aarch64-darwin";
+  };
+
+  # 1Password
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
   };
 
   users.users.jasonnoonan.home = "/Users/jasonnoonan";

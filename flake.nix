@@ -32,7 +32,11 @@
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, ... }:
     {
+      nixpkgs.config.allowBroken = true;
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.permittedInsecurePackages = [
+                "dotnet-sdk-6.0.428"
+              ];
 
       darwinConfigurations = {
         "cyan" = nix-darwin.lib.darwinSystem {

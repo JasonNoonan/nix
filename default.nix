@@ -7,7 +7,7 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';

@@ -175,8 +175,6 @@
       bindkey -M vicmd '^i' edit-command-line
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
-      ssh-add --apple-load-keychain 2> /dev/null
-      if command -v keychain > /dev/null 2>&1; then eval $(keychain --eval --nogui ~/.ssh/login_ed25519 --quiet); fi
 
       function fgo() {
         target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")
@@ -191,29 +189,6 @@
 
       function ew() {
         ${fd}/bin/fd "\.exs?$" | ${entr}/bin/entr -c "$@"
-      }
-
-      function weznot() {
-        title=$1
-        printf "\0333]1337;SetUserVar=%s=%s\007" wez_not $(echo -n "$title" | base64 -w 0)
-      }
-
-      function wezcopy() {
-        clip_stuff=$(cat)
-        printf"\0333]1337;SetUserVar=%s=%s\007" wez_copy $(echo -n "$clip_stuff" | base64 -w 0)
-      }
-
-      function wezmon() {
-        command=$*
-
-        eval $command
-
-        last_exit_code=$?
-        if [ $last_exit_code -eq 0 ]; then
-          weznot "✅ '$command' completed successfully"
-        else
-          weznot "❌ '$command' failed"
-        fi
       }
     '';
 
