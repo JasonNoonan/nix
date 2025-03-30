@@ -204,6 +204,8 @@ in {
 		  "workspace 1,class:firefox"
 		  "workspace 1,class:Microsoft-edge"
 		  "workspace 5,class:Slack"
+		  "workspace 6,class:battle.net.exe"
+		  "workspace 6,class:wow.exe"
 		  "workspace special:idleon,title:(Legends Of Idleon)"
 		  "workspace special:1password,class:1Password"
 		];
