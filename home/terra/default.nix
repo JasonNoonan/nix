@@ -74,7 +74,7 @@ in {
         {
           hostname = "192.168.86.34";
           user = "jasonnoonan";
-          dynamicForwards = [{ port = 8080; }];
+          dynamicForwards = [{ port = 8081; }];
 
           localForwards = [
             # default elixir port
@@ -198,22 +198,56 @@ in {
 		  ];
 		};
 
+		workspace = [
+      "special:1password, on-created-empty:1password"
+      "special:gamelaunchers, on-created-empty:steam & env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1"
+      "special:idleon, on-created-empty:steam steam://rungameid/1476970"
+      "special:notes, on-created-empty:kitty --title='kitty-float'"
+      "special:pdqssh, on-created-empty:kitty --title='kitty-ssh' ssh pdq"
+		];
+
 		windowrulev2 = [
 		  "workspace 2,class:kitty"
 		  "workspace 1,title:^(Mozilla Firefox)(.*)$"
 		  "workspace 1,class:firefox"
 		  "workspace 1,class:Microsoft-edge"
-		  "workspace 5,class:Slack"
-		  "workspace 6,class:battle.net.exe"
-		  "workspace 6,class:wow.exe"
-		  "workspace special:idleon,title:(Legends Of Idleon)"
+		  "workspace 1,class:Slack"
+
+		  "monitor HDMI-A-1, title:OBS.*"
+		  "workspace 4, title:OBS.*"
+
+		  "monitor DP-1, class:wow\.exe"
+		  "fullscreen, class:wow\.exe"
+		  "workspace 5, class:wow\.exe"
+
+      "float, title:Battle\.net"
+		  "workspace special:gamelaunchers,title:Battle\.net"
+
+		  "float, class:steam"
+		  "size 1500 1000, class:steam"
+		  "workspace special:gamelaunchers,class:steam"
+
+		  "float, class:steam_app_1476970"
+		  "monitor DP-1, class:steam_app_1476970"
+		  "workspace special:idleon,class:steam_app_1476970"
+
+		  "float, class:1Password"
+		  "center, class:1Password"
 		  "workspace special:1password,class:1Password"
+
+		  "float, title:kitty-float"
+		  "center, title:kitty-float"
+		  "size 1000 750, title:kitty-float"
+		  "workspace special:notes,title:kitty-float"
+
+		  "monitor DP-1, title:kitty-ssh"
+		  "fullscreen, title:kitty-ssh"
+		  "workspace special:pdqssh,title:kitty-ssh"
 		];
 
 		"$mainMod" = "SUPER";
 
 		bind = [
-      "$mainMod, r, togglespecialworkspace, idleon"
 		  "$mainMod, Return, exec, kitty"
 		  "$mainMod, w, killactive,"
 		  "$mainMod SHIFT, q, exit,"
@@ -221,24 +255,15 @@ in {
 		  "$mainMod, f, fullscreen, 0"
 		  "$mainMod, m, fullscreen, 1"
 		  "$mainMod SHIFT, t, togglefloating,"
+		  "$mainMod SHIFT, c, centerwindow,"
 		  "$mainMod, Space, submap, leader"
 
-		  # "$mainMod, r, exec, kitty --title='kitty-float' --override initial_window_width=100c --override initial_window_height=1c --hold"
-		  "$mainMod CTRL, r, exec, kitty --title='kitty-float' --override initial_window_width=100c --override initial_window_height=40c --hold"
-		  "$mainMod, o, exec, kitty --title='kitty-float' --override initial_window_width=150c --override initial_window_height=42c zsh -ic 'zk edit --interactive'"
-		  "$mainMod, e, exec, kitty --title='kitty-float' --override initial_window_width=80c --override initial_window_height=20c qke"
+		  "$mainMod SHIFT, g, movetoworkspace, special:gamelaunchers"
+		  "$mainMod SHIFT, i, movetoworkspace, special:idleon"
 
 		  "$mainMod, n, exec, nautilus"
 		  "$mainMod, P, pseudo, # dwindle"
-		  "$mainMod, s, togglespecialworkspace, notes"
-		  "$mainMod SHIFT, S, movetoworkspace, special:notes"
 		  "$mainMod CTRL, t, togglespecialworkspace, term"
-		  "$mainMod, g, togglegroup"
-		  "$mainMod, TAB, changegroupactive, f"
-		  "$mainMod SHIFT, TAB, changegroupactive, b"
-		  "$mainMod, z, focuswindow, title:kitty-journal"
-		  "$mainMod, period, exec, zsh -c 'wl-paste >> $JOURNALS/$(date +%Y-%m-%d).md && notify-send \"pasted into $(date +%Y-%m-%d).md!\"'"
-		  "$mainMod, v, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
 		  "$mainMod, h, movefocus, l"
 		  "$mainMod, l, movefocus, r"
@@ -307,13 +332,54 @@ in {
 	extraConfig = ''
     submap = leader
 
-    bind = , d, exec, wofi --show drun -I
-		bind = , e, exec, wofi-emoji
 		bind = , 1, togglespecialworkspace, 1password
+		bind = , 1, submap, reset
+
+		bind = , b, exec, env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
+		bind = , b, submap, reset
+
+    bind = , d, exec, wofi --show drun -I
+    bind = , d, submap, reset
+
+		bind = , e, exec, wofi-emoji
+		bind = , e, submap, reset
+
+		bind = , f, exec, firefox
+		bind = , f, submap, reset
+
+		bind = , g, togglespecialworkspace, gamelaunchers
+		bind = , g, submap, reset
+
+		bind = , i, togglespecialworkspace, idleon
+		bind = , i, submap, reset
+
+		bind = , l, exec, appimage-run ~/Downloads/warcraftlogs-v8.16.30.AppImage
+		bind = , l, submap, reset
+
+		bind = , n, togglespecialworkspace, notes
+		bind = , n, submap, reset
+
+		bind = , p, togglespecialworkspace, pdqssh
+		bind = , p, submap, reset
+
+		bind = , s, exec, steam
+		bind = , s, submap, reset
+
+		bind = , q, exec, appimage-run ~/Downloads/Logseq-linux-x64-0.10.9.AppImage
+		bind = , q, submap, reset
+
+		bind = , w, exec, env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2
+		bind = , w, submap, reset
 
     bind = , escape, submap, reset
     bind = , catchall, submap, reset
-    submap = reset
+		submap = reset
 	'';
   };
 }
+		#
+		# bind = , t, submap, toggle
+		# submap = toggle
+		#
+		# bind = , i, exec, steam steam://rungameid/1476970
+		# bind = , i, submap, reset
