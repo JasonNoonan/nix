@@ -35,13 +35,14 @@ in {
     udisks
     usbutils
     unzip
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
     wget
     wl-clipboard
     wofi
     wofi-emoji
     wowup-cf
     zenity
-    zoom-us
   ];
 
   # This value determines the home Manager release that your
@@ -98,6 +99,7 @@ in {
   };
 
   programs.zsh.shellAliases.handshake = "${pkgs.nh}/bin/nh os switch /etc/nixos";
+  programs.zsh.shellAliases.helpshake = "${pkgs.nh}/bin/nh os switch --help";
 
   wayland.windowManager.hyprland = {
 	enable = true;
@@ -199,11 +201,13 @@ in {
 		};
 
 		workspace = [
+      "5, on-created-empty:steam & env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1"
       "special:1password, on-created-empty:1password"
-      "special:gamelaunchers, on-created-empty:steam & env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1"
       "special:idleon, on-created-empty:steam steam://rungameid/1476970"
+      "special:logseq, on-created-empty:appimage-run ~/Downloads/Logseq-linux-x64-0.10.9.AppImage"
       "special:notes, on-created-empty:kitty --title='kitty-float'"
       "special:pdqssh, on-created-empty:kitty --title='kitty-ssh' ssh pdq"
+      "special:zoom, on-created-empty:microsoft-edge https://app.zoom.us/wc/home --new-window"
 		];
 
 		windowrulev2 = [
@@ -216,16 +220,24 @@ in {
 		  "monitor HDMI-A-1, title:OBS.*"
 		  "workspace 4, title:OBS.*"
 
+      "tag +zoom, title:Zoom.*Microsoft Edge"
+		  "monitor DP-1, title:Zoom.*Microsoft Edge"
+		  "workspace special:zoom, title:Zoom.*Microsoft Edge"
+
 		  "monitor DP-1, class:wow\.exe"
 		  "fullscreen, class:wow\.exe"
 		  "workspace 5, class:wow\.exe"
 
       "float, title:Battle\.net"
-		  "workspace special:gamelaunchers,title:Battle\.net"
+		  "workspace 5,title:Battle\.net"
 
 		  "float, class:steam"
 		  "size 1500 1000, class:steam"
-		  "workspace special:gamelaunchers,class:steam"
+		  "workspace 5,class:steam"
+
+		  "monitor DP-1, title:kitty-ssh"
+		  "fullscreen, title:kitty-ssh"
+		  "workspace special:pdqssh,title:kitty-ssh"
 
 		  "float, class:steam_app_1476970"
 		  "monitor DP-1, class:steam_app_1476970"
@@ -240,9 +252,10 @@ in {
 		  "size 1000 750, title:kitty-float"
 		  "workspace special:notes,title:kitty-float"
 
-		  "monitor DP-1, title:kitty-ssh"
-		  "fullscreen, title:kitty-ssh"
-		  "workspace special:pdqssh,title:kitty-ssh"
+		  "float, class:Logseq"
+		  "center, class:Logseq"
+		  "size 1500 1400, class:Logseq"
+		  "workspace special:logseq,class:Logseq"
 		];
 
 		"$mainMod" = "SUPER";
@@ -258,8 +271,8 @@ in {
 		  "$mainMod SHIFT, c, centerwindow,"
 		  "$mainMod, Space, submap, leader"
 
-		  "$mainMod SHIFT, g, movetoworkspace, special:gamelaunchers"
 		  "$mainMod SHIFT, i, movetoworkspace, special:idleon"
+		  "$mainMod SHIFT, z, movetoworkspace, special:zoom"
 
 		  "$mainMod, n, exec, nautilus"
 		  "$mainMod, P, pseudo, # dwindle"
@@ -347,14 +360,8 @@ in {
 		bind = , f, exec, firefox
 		bind = , f, submap, reset
 
-		bind = , g, togglespecialworkspace, gamelaunchers
-		bind = , g, submap, reset
-
 		bind = , i, togglespecialworkspace, idleon
 		bind = , i, submap, reset
-
-		bind = , l, exec, appimage-run ~/Downloads/warcraftlogs-v8.16.30.AppImage
-		bind = , l, submap, reset
 
 		bind = , n, togglespecialworkspace, notes
 		bind = , n, submap, reset
@@ -365,11 +372,27 @@ in {
 		bind = , s, exec, steam
 		bind = , s, submap, reset
 
-		bind = , q, exec, appimage-run ~/Downloads/Logseq-linux-x64-0.10.9.AppImage
+		bind = , q, togglespecialworkspace, logseq
 		bind = , q, submap, reset
 
-		bind = , w, exec, env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2
-		bind = , w, submap, reset
+		bind = , z, togglespecialworkspace, zoom
+		bind = , z, submap, reset
+
+		bind = , w, submap, warcraft
+		  submap = warcraft
+
+		  bind = , a, exec, wowup-cf
+		  bind = , a, submap, reset
+
+		  bind = , l, exec, appimage-run ~/Downloads/warcraftlogs-v8.16.30.AppImage
+		  bind = , l, submap, reset
+
+		  bind = , w, exec, appimage-run ~/Downloads/WagoApp_2.6.1.AppImage
+		  bind = , w, submap, reset
+
+      bind = , escape, submap, reset
+      bind = , catchall, submap, reset
+		  submap = leader
 
     bind = , escape, submap, reset
     bind = , catchall, submap, reset
@@ -377,9 +400,3 @@ in {
 	'';
   };
 }
-		#
-		# bind = , t, submap, toggle
-		# submap = toggle
-		#
-		# bind = , i, exec, steam steam://rungameid/1476970
-		# bind = , i, submap, reset
