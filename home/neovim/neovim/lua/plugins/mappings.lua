@@ -1,6 +1,8 @@
 vim.keymap.set({ "n", "v" }, "<C-c><C-c>", function()
 	-- yank text into v register
 end)
+
+local Snacks = require("snacks")
 return {
 	{
 		"AstroNvim/astrocore",
@@ -8,6 +10,9 @@ return {
 		opts = {
 			mappings = {
 				-- first key is the mode
+				x = {
+					["<leader>sw"] = { function() Snacks.picker.grep_word() end, desc = "Visual selection or word"},
+				},
 				n = {
 					-- scratchpad runner
 					["<C-c><C-c>"] = {
@@ -23,12 +28,18 @@ return {
 						end,
 					},
 					-- second key is the lefthand side of the map
-					-- hop.nvim
 					["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 					["<leader>gd"] = { "<cmd>DiffviewOpen<cr>", desc = "View git diff in Diffview" },
 					["<leader>gdc"] = { "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
-					["<leader>ff"] = { "<cmd>Telescope git_files<cr>", desc = "Search all files in git" },
-					["<leader>fs"] = { "<cmd>Telescope git_status<cr>", desc = "Search all changes in git" },
+
+					-- snacks.pickers
+					["<leader>ff"] = { function() Snacks.picker.git_files() end, desc = "Search all files in git" },
+					["<leader>fs"] = { function() Snacks.picker.git_status() end, desc = "Search all changes in git" },
+					["<leader>fq"] = { function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+					["<leader>sb"] = { function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+					["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Grep" },
+					["<leader>sw"] = { function() Snacks.picker.grep_word() end, desc = "Visual selection or word"},
+
 					["<leader>lg"] = { "<cmd>Neogen<cr>", desc = "Generate annotation for the current node" },
 					-- tmux bullshit
 					["<leader><leader>t1"] = {

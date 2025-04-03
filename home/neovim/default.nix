@@ -40,7 +40,6 @@
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
-      telescope-fzf-native-nvim
     ];
   };
 
@@ -66,10 +65,5 @@
         (#set! conceal "󰄱")
       )
     '';
-
-    # "nvim/after/ftplugin/elixir.lua".text = ''
-    #   vim.opt_local.formatexpr = ""
-    # '';
-
   };
 }
