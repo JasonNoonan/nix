@@ -273,8 +273,9 @@ in {
 		  "$mainMod SHIFT, c, centerwindow,"
 		  "$mainMod, Space, submap, leader"
 
-		  "$mainMod SHIFT, i, movetoworkspace, special:idleon"
-		  "$mainMod SHIFT, z, movetoworkspace, special:zoom"
+		  "$mainMod ALT, g, movetoworkspace, special:gaming"
+		  "$mainMod ALT, i, movetoworkspace, special:idleon"
+		  "$mainMod ALT, z, movetoworkspace, special:zoom"
 
 		  "$mainMod, n, exec, nautilus"
 		  "$mainMod, P, pseudo, # dwindle"
@@ -361,6 +362,9 @@ in {
 
 		bind = , f, exec, firefox
 		bind = , f, submap, reset
+
+		bind = , g, togglespecialworkspace, gaming
+		bind = , g, submap, reset
 
 		bind = , i, togglespecialworkspace, idleon
 		bind = , i, submap, reset
