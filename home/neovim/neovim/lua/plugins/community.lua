@@ -1,6 +1,6 @@
 return {
 	"AstroNvim/astrocommunity",
-	{ import = "astrocommunity.pack.elixir" },
+	{ import = "astrocommunity.pack.elixir-phoenix" },
 	{ import = "astrocommunity.pack.json" },
 	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.pack.rust" },
