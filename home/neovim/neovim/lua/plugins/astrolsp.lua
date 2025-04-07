@@ -31,29 +31,27 @@ return {
         -- "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
-			filter = function(client)
-				-- only enable null-ls for some filetypes
-				local null_ls_only = {
-					"javascript", -- use prettierd
-					"typescript", -- use prettierd
-					"javascriptreact", -- use prettierd
-					"typescriptreact", -- use prettierd
-					"elixir", -- use mix
-					"rust", -- use rustfmt
-					"lua", -- use stylua
-				}
-				if vim.tbl_contains(null_ls_only, vim.bo.filetype) then
-					return client.name == "null-ls"
-				end
+      filter = function(client)
+        -- only enable null-ls for some filetypes
+        local null_ls_only = {
+          "javascript", -- use prettierd
+          "typescript", -- use prettierd
+          "javascriptreact", -- use prettierd
+          "typescriptreact", -- use prettierd
+          "elixir", -- use mix
+          "rust", -- use rustfmt
+          "lua", -- use stylua
+        }
+        if vim.tbl_contains(null_ls_only, vim.bo.filetype) then return client.name == "null-ls" end
 
-				-- enable all other clients
-				return true
-			end,
+        -- enable all other clients
+        return true
+      end,
     },
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
-      "lexical"
+      "lexical",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -80,16 +78,16 @@ return {
               command = { "nixpkgs-fmt" },
             },
           },
-        }
+        },
       },
       yamlls = {
         settings = {
           yaml = {
             schemas = {
-							["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-							["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-							["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.*.{yml,yaml}",
-							["https://json.schemastore.org/traefik-v2"] = "traefik.{yml,yaml}",
+              ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+              ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.*.{yml,yaml}",
+              ["https://json.schemastore.org/traefik-v2"] = "traefik.{yml,yaml}",
             },
           },
         },
@@ -143,39 +141,30 @@ return {
           end,
         },
         grr = {
-          function()
-            require("snacks.picker").lsp_references()
-          end,
+          function() require("snacks.picker").lsp_references() end,
           desc = "LSP References",
           cond = function(client, bufnr)
-            return client.erver_capabilities.referencesProvider ~= nil
-              and vim.api.nvim_buf_is_loaded(bufnr) -- ensure the buffer is loaded
-          end
+            return client.server_capabilities.referencesProvider ~= nil and vim.api.nvim_buf_is_loaded(bufnr) -- ensure the buffer is loaded
+          end,
         },
         gI = {
           function()
-            require("snacks").picker.lsp_implementations({
+            require("snacks").picker.lsp_implementations {
               filter = {
-                filter = function(item)
-                  return not item.text:match("defdelegate")
-                end,
+                filter = function(item) return not item.text:match "defdelegate" end,
               },
-            })
+            }
           end,
           desc = "LSP Implementations",
           cond = "textDocument/implementation",
         },
         gd = {
-          function()
-            require("snacks.picker").lsp_definitions()
-          end,
+          function() require("snacks.picker").lsp_definitions() end,
           desc = "LSP Definitions",
           cond = "textDocument/definition",
         },
         gy = {
-          function()
-            require("snacks.picker").lsp_type_definitions()
-          end,
+          function() require("snacks.picker").lsp_type_definitions() end,
           desc = "LSP Type Definitions",
           cond = "textDocument/typeDefinition",
         },
