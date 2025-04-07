@@ -142,6 +142,43 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
+        grr = {
+          function()
+            require("snacks.picker").lsp_references()
+          end,
+          desc = "LSP References",
+          cond = function(client, bufnr)
+            return client.erver_capabilities.referencesProvider ~= nil
+              and vim.api.nvim_buf_is_loaded(bufnr) -- ensure the buffer is loaded
+          end
+        },
+        gI = {
+          function()
+            require("snacks").picker.lsp_implementations({
+              filter = {
+                filter = function(item)
+                  return not item.text:match("defdelegate")
+                end,
+              },
+            })
+          end,
+          desc = "LSP Implementations",
+          cond = "textDocument/implementation",
+        },
+        gd = {
+          function()
+            require("snacks.picker").lsp_definitions()
+          end,
+          desc = "LSP Definitions",
+          cond = "textDocument/definition",
+        },
+        gy = {
+          function()
+            require("snacks.picker").lsp_type_definitions()
+          end,
+          desc = "LSP Type Definitions",
+          cond = "textDocument/typeDefinition",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

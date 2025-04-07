@@ -5,7 +5,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = {
-      "all"
+      -- "all"
       -- add more arguments for adding more treesitter parsers
     },
     highlight = {
