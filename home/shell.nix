@@ -190,6 +190,10 @@
       function ew() {
         ${fd}/bin/fd "\.exs?$" | ${entr}/bin/entr -c "$@"
       }
+
+      function disc() {
+        echo "<t:$(date -d$1 +%s):f>"
+      }
     '';
 
     initExtraBeforeCompInit = ''

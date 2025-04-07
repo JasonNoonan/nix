@@ -35,6 +35,7 @@ in {
     udisks
     usbutils
     unzip
+    xclip
     xdg-desktop-portal
     xdg-desktop-portal-hyprland
     wget
