@@ -27,7 +27,7 @@
       to = "!git checkout $(git branches)";
     };
 
-    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".direnv" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ];
+    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".direnv" ".nix-mix" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ];
 
     diff-so-fancy = {
       enable = true;
