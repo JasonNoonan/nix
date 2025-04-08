@@ -3,7 +3,7 @@
   home.packages = [];
 
   xdg.configFile = {
-    nvim = {
+    nix = {
       source = ./nix;
       force = true;
       recursive = true;
