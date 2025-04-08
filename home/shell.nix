@@ -6,12 +6,14 @@
     pkgs.browsh
     pkgs.diff-so-fancy
     pkgs.entr
+    pkgs.eslint_d
     pkgs.fd
     pkgs.gcc
     pkgs.hurl
     pkgs.jq
     pkgs.lazydocker
     pkgs.powershell
+    pkgs.rustfmt
   ];
 
   programs.bat = {
