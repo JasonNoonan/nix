@@ -68,11 +68,8 @@ in {
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    extraConfig = ''
-  Host *
-    IdentityAgent ${onePassPath}
-    '';
     matchBlocks = {
+      "github.com" = {};
       "pdq" =
         {
           hostname = "192.168.86.34";

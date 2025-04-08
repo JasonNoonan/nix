@@ -15,6 +15,9 @@
     userEmail = "jason.noonan@pdq.com";
     userName = "Jason Noonan";
 
+    signing.key = "~/.ssh/github_signing_key_ed25519.pub";
+    signing.signByDefault = true;
+
     aliases = {
       amend = "commit --amend --no-edit";
       branches = "!git --no-pager branch --format '%(refname:short)' --sort=-committerdate | ${pkgs.fzf}/bin/fzf --preview 'git log --color=always --decorate {}'";
