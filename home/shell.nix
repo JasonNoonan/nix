@@ -95,6 +95,9 @@
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
+    keys = [
+      "github_login_key_ed25519"
+    ];
   };
 
   programs.ripgrep.enable = true;
