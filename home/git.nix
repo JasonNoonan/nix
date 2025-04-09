@@ -51,14 +51,6 @@
         verbose = true;
         gpgsign = true;
       };
-
-      "gpg \"ssh\"" = {
-        program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
-      };
-
-      user = {
-        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDLucPLtqI2jSFkglo3ldfdPPnYWxoh5r9qum9UV078o";
-      };
     };
   };
 }
