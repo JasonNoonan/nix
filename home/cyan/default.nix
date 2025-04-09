@@ -46,13 +46,6 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    extraConfig = ''Host *
-    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    '';
-  };
-
-  programs.git.extraConfig = {
-    "gpg \"ssh\"".program = lib.mkOverride 10 "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
   };
 
   programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && darwin-rebuild switch --flake ~/.config/nix-darwin --impure";
