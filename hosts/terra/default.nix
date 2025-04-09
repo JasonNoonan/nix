@@ -51,7 +51,7 @@
 
   users.users.jasonnoonan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       neovim
       git
@@ -97,4 +97,6 @@
   programs.steam.remotePlay.openFirewall = true;
 
   programs.zsh.enable = true;
+
+  virtualisation.docker.enable = true;
 }

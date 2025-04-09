@@ -200,6 +200,10 @@
       function disc() {
         echo "<t:$(date -d$1 +%s):f>"
       }
+
+      function sidekick() {
+        sudo docker compose --project-directory ~/workspace/Sidekick up -d
+      }
     '';
 
     initExtraBeforeCompInit = ''
