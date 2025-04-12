@@ -200,7 +200,8 @@
       }
 
       function disc() {
-        echo "<t:$(date -d$1 +%s):f>"
+        echo "<t:$(date -d$1 +%s):f>" | xclip -selection clipboard
+        echo "copied discord timestamp string to clipboard"
       }
 
       function sidekick() {
