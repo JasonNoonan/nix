@@ -208,7 +208,7 @@
       }
 
       function clear_cache() {
-        sync && sudo sysctl -w vm.drop_caches=3 && sudo sysctl -w vm.drop_caches=0
+        sync && sudo sysctl -w vm.drop_caches=3
       }
     '';
 

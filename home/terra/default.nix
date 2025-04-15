@@ -252,6 +252,8 @@ in {
 		  "size 1000 750, title:kitty-float"
 		  "workspace special:notes,title:kitty-float"
 
+		  "float, title:btop"
+
 		  "float, class:Logseq"
 		  "center, class:Logseq"
 		  "size 1500 1400, class:Logseq"
@@ -349,7 +351,7 @@ in {
 		bind = , 1, togglespecialworkspace, 1password
 		bind = , 1, submap, reset
 
-		bind = , b, exec, env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
+		bind = , b, exec, kitty --title=btop btop
 		bind = , b, submap, reset
 
     bind = , d, exec, wofi --show drun -I
