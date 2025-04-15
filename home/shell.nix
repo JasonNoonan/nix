@@ -200,12 +200,15 @@
       }
 
       function disc() {
-        echo "<t:$(date -d$1 +%s):f>" | xclip -selection clipboard
-        echo "copied discord timestamp string to clipboard"
+        echo "<t:$(date -d$1 +%s):f>"
       }
 
       function sidekick() {
         sudo docker compose --project-directory ~/workspace/Sidekick up -d
+      }
+
+      function clear_cache() {
+        sync && sudo sysctl -w vm.drop_caches=3 && sudo sysctl -w vm.drop_caches=0
       }
     '';
 
