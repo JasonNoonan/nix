@@ -9,6 +9,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
+  };
+
   networking.hostName = "terra"; # Define your hostname.
   # Pick only one of the below networking options.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -32,6 +36,8 @@
 	    # package = config.boot.kernelPackages.nvidiaPackages.latest;
 	    nvidiaSettings = true;
 	  };
+
+	hardware.graphics.enable32Bit = true;
 
   programs.hyprland.enable = true;
 
@@ -97,6 +103,12 @@
   programs.steam.remotePlay.openFirewall = true;
 
   programs.zsh.enable = true;
+
+  xdg.portal = {
+    config.hyprland = {
+      "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+    };
+  };
 
   virtualisation.docker.enable = true;
 }

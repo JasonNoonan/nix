@@ -36,8 +36,6 @@ in {
     usbutils
     unzip
     xclip
-    xdg-desktop-portal
-    xdg-desktop-portal-hyprland
     wget
     wl-clipboard
     wofi
@@ -201,7 +199,7 @@ in {
 		};
 
 		workspace = [
-      "5, on-created-empty:steam & env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1"
+      "5, on-created-empty:steam"
       "special:1password, on-created-empty:1password"
       "special:idleon, on-created-empty:steam steam://rungameid/1476970"
       "special:logseq, on-created-empty:appimage-run ~/Downloads/Logseq-linux-x64-0.10.9.AppImage"
