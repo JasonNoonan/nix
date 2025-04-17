@@ -162,6 +162,7 @@ in {
 		misc = {
 		  disable_hyprland_logo = true;
 		  disable_splash_rendering = true;
+		  background_color = "0x1e1c31";
 		};
 
 		xwayland = {
