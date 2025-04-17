@@ -23,7 +23,6 @@ in {
     docker
     firefox
     grimblast
-    microsoft-edge
     nautilus
     obs-studio
     pavucontrol
@@ -213,15 +212,10 @@ in {
 		  "workspace 2,class:kitty"
 		  "workspace 1,title:^(Mozilla Firefox)(.*)$"
 		  "workspace 1,class:firefox"
-		  "workspace 1,class:Microsoft-edge"
 		  "workspace 1,class:Slack"
 
 		  "monitor HDMI-A-1, title:OBS.*"
 		  "workspace 4, title:OBS.*"
-
-      "tag +zoom, title:Zoom.*Microsoft Edge"
-		  "monitor DP-1, title:Zoom.*Microsoft Edge"
-		  "workspace special:zoom, title:Zoom.*Microsoft Edge"
 
 		  "monitor DP-1, class:wow\.exe"
 		  "fullscreen, class:wow\.exe"
