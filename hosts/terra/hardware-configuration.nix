@@ -38,6 +38,12 @@
       options = [ "subvol=@var/log" "compress=zstd" "noatime" "space_cache=v2" ];
     };
 
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-partlabel/SYSTEM";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" "compress=zstd" "noatime" "space_cache=v2"];
+    };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-partlabel/EFI";
     fsType = "vfat";
