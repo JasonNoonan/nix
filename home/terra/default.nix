@@ -28,7 +28,6 @@ in {
     protonup
     slack
     spotify
-    steam
     udiskie
     udisks
     usbutils

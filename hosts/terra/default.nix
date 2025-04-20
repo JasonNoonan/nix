@@ -98,9 +98,22 @@
 
   # gaming
   programs.gamemode.enable = true;
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.steam.remotePlay.openFirewall = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+    package = pkgs.steam.override {
+        extraEnv = {
+          MANGOHUD = true;
+          OBS_VKCAPTURE = true;
+          RADV_TEX_ANISO = 16;
+      };
+
+      extraLibraries = p: with p; [
+        atk
+      ];
+    };
+  };
 
   programs.zsh.enable = true;
 
