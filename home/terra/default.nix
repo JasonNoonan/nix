@@ -1,7 +1,6 @@
 { config, pkgs, ... }: let
   # check the nix wiki for 1password config:
   # https://nixos.wiki/wiki/1Password
-  onePassPath = "~/.1password/agent.sock";
 in {
   imports = [
     ../git.nix
