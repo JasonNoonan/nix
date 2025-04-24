@@ -31,13 +31,14 @@
   };
 
   hardware.nvidia = {
-	    modesetting.enable = true;
-	    open = false;
-	    # package = config.boot.kernelPackages.nvidiaPackages.latest;
+	    # modesetting.enable = true;
+	    open = true;
+	    package = config.boot.kernelPackages.nvidiaPackages.beta;
 	    nvidiaSettings = true;
 	  };
 
-	hardware.graphics.enable32Bit = true;
+	# hardware.graphics.enable32Bit = false;
+	hardware.graphics.enable = true;
 
   programs.hyprland.enable = true;
 
@@ -106,7 +107,7 @@
         extraEnv = {
           MANGOHUD = true;
           OBS_VKCAPTURE = true;
-          RADV_TEX_ANISO = 16;
+          # RADV_TEX_ANISO = 16;
       };
 
       extraLibraries = p: with p; [
@@ -116,6 +117,11 @@
   };
 
   programs.zsh.enable = true;
+
+  programs.coolercontrol = {
+    enable = true;
+    nvidiaSupport = true;
+  };
 
   xdg.portal = {
     config.hyprland = {
