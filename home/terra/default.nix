@@ -99,6 +99,7 @@ in {
   wayland.windowManager.hyprland = {
 	enable = true;
 	xwayland.enable = true;
+	systemd.enable = true;
 	settings = {
 		exec-once = ["hyprctl setcursor Bibata-Modern-Ice 22"];
 
