@@ -1,14 +1,38 @@
 { inputs, pkgs, ... }:
+let
+  dotnet-full =
+    with pkgs.dotnetCorePackages;
+    combinePackages [
+      sdk_8_0
+      runtime_8_0
+      aspnetcore_8_0
+    ];
 
+  deps = (
+    ps:
+    with ps;
+    [
+      rustup
+      zlib
+      openssl.dev
+      pkg-config
+      stdenv.cc
+      cmake
+      mono
+      msbuild
+    ]
+    ++ [ dotnet-full ]
+  );
+in
 {
   home.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_6}";
+    DOTNET_ROOT = "${dotnet-full}";
   };
 
   home.sessionPath = ["$HOME/.dotnet/tools"];
 
   home.packages = with pkgs; [
-    pkgs.dotnet-sdk_6
+    dotnet-full
     pkgs.netcoredbg
   ];
 }
