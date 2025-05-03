@@ -123,6 +123,15 @@
     nvidiaSupport = true;
   };
 
+  # bluetooth
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.blueman.enable = true;
+
   xdg.portal = {
     config.hyprland = {
       "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
