@@ -174,53 +174,56 @@
       ffproxy = "ssh -D 8080 -q -C -N pdq";
     };
 
-    initExtra = with pkgs; ''
-      autoload -Uz edit-command-line
-      zle -N edit-command-line
-      bindkey -M viins '^f' edit-command-line
-      bindkey -M vicmd '^i' edit-command-line
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
-      ssh-add --apple-load-keychain 2> /dev/null
-      if command -v keychain > /dev/null 2>&1; then eval $(keychain --eval --nogui ~/.ssh/github_login_key_ed25519 --quiet); fi
+    initContent = let
+      zshEarlyInit = lib.mkOrder 550 ''
+        setopt AUTO_PUSHD           # Push the old directory onto the stack on cd
+        setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack
+        setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd
+        setopt CORRECT              # Spelling Corrections
+        setopt CDABLE_VARS          # Change directory to a path stored in a variable
+        setopt EXTENDED_GLOB        # Use extended globbing syntax
+        KEYTIMEOUT=5
+      '';
 
-      function fgo() {
-        target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")
+      zshInit = with pkgs; ''
+        autoload -Uz edit-command-line
+        zle -N edit-command-line
+        bindkey -M viins '^f' edit-command-line
+        bindkey -M vicmd '^i' edit-command-line
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+        tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
+        ssh-add --apple-load-keychain 2> /dev/null
+        if command -v keychain > /dev/null 2>&1; then eval $(keychain --eval --nogui ~/.ssh/github_login_key_ed25519 --quiet); fi
 
-        cd $target
-        nvim
-      }
+        function fgo() {
+          target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")
 
-      function w() {
-        ${fd}/bin/fd $1 | ${entr}/bin/entr -c "''${@:2}"
-      }
+          cd $target
+          nvim
+        }
 
-      function ew() {
-        ${fd}/bin/fd "\.exs?$" | ${entr}/bin/entr -c "$@"
-      }
+        function w() {
+          ${fd}/bin/fd $1 | ${entr}/bin/entr -c "''${@:2}"
+        }
 
-      function disc() {
-        echo "<t:$(date -d$1 +%s):f>"
-      }
+        function ew() {
+          ${fd}/bin/fd "\.exs?$" | ${entr}/bin/entr -c "$@"
+        }
 
-      function sidekick() {
-        sudo docker compose --project-directory ~/workspace/Sidekick up -d
-      }
+        function disc() {
+          echo "<t:$(date -d$1 +%s):f>"
+        }
 
-      function clear_cache() {
-        sync && sudo sysctl -w vm.drop_caches=3
-      }
-    '';
+        function sidekick() {
+          sudo docker compose --project-directory ~/workspace/Sidekick up -d
+        }
 
-    initExtraBeforeCompInit = ''
-      setopt AUTO_PUSHD           # Push the old directory onto the stack on cd
-      setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack
-      setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd
-      setopt CORRECT              # Spelling Corrections
-      setopt CDABLE_VARS          # Change directory to a path stored in a variable
-      setopt EXTENDED_GLOB        # Use extended globbing syntax
-      KEYTIMEOUT=5
-    '';
+        function clear_cache() {
+          sync && sudo sysctl -w vm.drop_caches=3
+        }
+      '';
+    in
+      lib.mkMerge [ zshEarlyInit zshInit ];
 
     envExtra = ''
       export LANG="en_US.UTF-8"

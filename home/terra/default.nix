@@ -205,6 +205,7 @@ in {
       "special:notes, on-created-empty:kitty --title='kitty-float'"
       "special:pdqssh, on-created-empty:kitty --title='kitty-ssh' ssh pdq"
       "special:zoom, on-created-empty:microsoft-edge https://app.zoom.us/wc/home --new-window"
+      "special:bluetooth, on-created-empty:blueman-manager"
 		];
 
 		windowrulev2 = [
@@ -250,6 +251,10 @@ in {
 		  "center, class:Logseq"
 		  "size 1500 1400, class:Logseq"
 		  "workspace special:logseq,class:Logseq"
+
+		  "float, title:Bluetooth Devices"
+		  "center, title:Bluetooth Devices"
+		  "workspace special:bluetooth,title:Bluetooth Devices"
 		];
 
 		"$mainMod" = "SUPER";
@@ -268,6 +273,7 @@ in {
 		  "$mainMod ALT, g, movetoworkspace, special:gaming"
 		  "$mainMod ALT, i, movetoworkspace, special:idleon"
 		  "$mainMod ALT, z, movetoworkspace, special:zoom"
+		  "$mainMod ALT, b, movetoworkspace, special:bluetooth"
 
 		  "$mainMod, n, exec, nautilus"
 		  "$mainMod, P, pseudo, # dwindle"
@@ -369,6 +375,9 @@ in {
 
 		bind = , s, exec, steam
 		bind = , s, submap, reset
+
+		bind = , t, togglespecialworkspace, bluetooth
+		bind = , t, submap, reset
 
 		bind = , q, togglespecialworkspace, logseq
 		bind = , q, submap, reset
