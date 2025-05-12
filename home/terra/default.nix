@@ -67,7 +67,7 @@ in {
       "github.com" = {};
       "pdq" =
         {
-          hostname = "192.168.86.34";
+          hostname = "192.168.86.30";
           user = "jasonnoonan";
           dynamicForwards = [{ port = 8081; }];
 
