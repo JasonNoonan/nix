@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     argocd
     asdf-vm
+    claude-code
     docker-compose
     discord
     exercism
@@ -22,7 +23,6 @@
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     slack
-    zoom-us
   ];
 
   # This value determines the home Manager release that your

@@ -18,6 +18,7 @@ in {
   home.packages = with pkgs; [
     _1password-gui
     appimage-run
+    claude-code
     discord
     docker
     firefox
