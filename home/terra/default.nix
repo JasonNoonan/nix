@@ -22,11 +22,13 @@ in {
     discord
     docker
     firefox
+    gimp
     grimblast
     nautilus
     obs-studio
     pavucontrol
     protonup
+    python314
     slack
     spotify
     udiskie
