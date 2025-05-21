@@ -1,11 +1,11 @@
 session: TUNEZ
 root: ~/workspace/tunez
 
-before_start:
-  - docker-compose up -d
-
-stop:
-  - docker-compose stop
+# before_start:
+#   - docker-compose up -d
+#
+# stop:
+#   - docker-compose stop
 
 windows:
   - name: " "
@@ -25,4 +25,3 @@ windows:
   - name: ""
     commands:
       - lazygit
-
