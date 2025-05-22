@@ -31,6 +31,7 @@ in {
     python314
     slack
     spotify
+    tesseract
     udiskie
     udisks
     usbutils
