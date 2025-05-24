@@ -132,6 +132,12 @@
 
   services.blueman.enable = true;
 
+  services.transmission = {
+    enable = true;
+    package = pkgs.transmission_4;
+    openRPCPort = true;
+  };
+
   xdg.portal = {
     config.hyprland = {
       "org.freedesktop.impl.portal.ScreenCast" = "hyprland";

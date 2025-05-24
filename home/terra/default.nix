@@ -24,14 +24,19 @@ in {
     firefox
     gimp
     grimblast
+    lazydocker
     nautilus
+    ncspot
     obs-studio
     pavucontrol
     protonup
-    python314
+    python312Packages.pillow
+    python313
+    python313Packages.pytesseract
     slack
     spotify
     tesseract
+    transmission_4-qt
     udiskie
     udisks
     usbutils
@@ -43,7 +48,6 @@ in {
     wofi-emoji
     wowup-cf
     zenity
-    zoom-us
   ];
 
   # This value determines the home Manager release that your
