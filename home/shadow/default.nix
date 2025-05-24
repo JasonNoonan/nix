@@ -19,20 +19,24 @@ in
     username = "jasonnoonan";
     homeDirectory = "/home/jasonnoonan";
     stateVersion = "23.11";
-    packages = [
+    packages = with pkgs; [
+      asdf
+      browsh
+      claude-code
+      docker
+      docker-compose
+      exercism
+      firefox
       gdk
-      pkgs.asdf
-      pkgs.browsh
-      pkgs.docker
-      pkgs.docker-compose
-      pkgs.exercism
-      pkgs.firefox
-      pkgs.go
-      pkgs.kubernetes
-      pkgs.microsoft-edge
-      pkgs.python3
-      pkgs.taskwarrior3
-      pkgs.xdg-utils
+      go
+      kubernetes
+      lazydocker
+      python312Packages.pillow
+      python313
+      python313Packages.pytesseract
+      taskwarrior3
+      tesseract
+      xdg-utils
     ];
   };
 
@@ -42,15 +46,17 @@ in
   # k9s
   programs.k9s.enable = true;
 
+
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
     matchBlocks = {
+      "github.com" = { };
       "pdq" =
         {
-          hostname = "192.168.86.34";
+          hostname = "192.168.86.30";
           user = "jasonnoonan";
-          dynamicForwards = [{ port = 8080; }];
+          dynamicForwards = [{ port = 8081; }];
 
           localForwards = [
             # default elixir port
@@ -72,7 +78,6 @@ in
         };
     };
   };
-
   programs.vscode.enable = true;
 
   programs.zsh.shellAliases.handshake = "${pkgs.nh}/bin/nh os switch ~/nixos";
