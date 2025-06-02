@@ -10,6 +10,8 @@
     experimental-features = nix-command flakes
   '';
 
+  system.primaryUser = "jasonnoonan";
+
   programs.zsh.enable = true;
 
   nixpkgs = {
