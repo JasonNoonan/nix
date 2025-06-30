@@ -23,7 +23,11 @@
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
+    python312
+    python312Packages.pillow
+    python312Packages.pytesseract
     slack
+    tesseract
   ];
 
   # This value determines the home Manager release that your
@@ -49,5 +53,5 @@
     addKeysToAgent = "yes";
   };
 
-  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && darwin-rebuild switch --flake ~/.config/nix-darwin --impure";
+  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo darwin-rebuild switch --flake ~/.config/nix-darwin --impure";
 }
