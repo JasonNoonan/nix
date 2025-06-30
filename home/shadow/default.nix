@@ -20,6 +20,7 @@ in
     homeDirectory = "/home/jasonnoonan";
     stateVersion = "23.11";
     packages = with pkgs; [
+      asciidoctor-with-extensions
       asdf
       browsh
       claude-code
@@ -29,11 +30,16 @@ in
       firefox
       gdk
       go
+      graphviz
+      jre8
       kubernetes
       lazydocker
       python312Packages.pillow
       python313
       python313Packages.pytesseract
+      rsync
+      ruby
+      rubyPackages_3_4.rouge
       taskwarrior3
       tesseract
       xdg-utils
