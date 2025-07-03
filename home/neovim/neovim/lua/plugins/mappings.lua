@@ -3,6 +3,7 @@ vim.keymap.set({ "n", "v" }, "<C-c><C-c>", function()
 end)
 
 local Snacks = require "snacks"
+local Copilot = require "copilot.suggestion"
 return {
   {
     "AstroNvim/astrocore",
@@ -41,6 +42,12 @@ return {
           ["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Grep" },
           ["<leader>sq"] = { function() Snacks.picker.qflist() end, desc = "Quickfix list" },
           ["<leader>sw"] = { function() Snacks.picker.grep_word() end, desc = "Visual selection or word" },
+
+          -- Copilot
+          ["<leader>at"] = {
+            "<cmd>Copilot suggestion toggle_auto_trigger<cr>",
+            desc = "Toggle Copilot suggestion",
+          },
 
           ["<leader>lg"] = { "<cmd>Neogen<cr>", desc = "Generate annotation for the current node" },
           -- tmux bullshit

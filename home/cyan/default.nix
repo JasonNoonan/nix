@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     argocd
     asdf-vm
+    bun
     claude-code
     docker-compose
     discord
@@ -23,6 +24,8 @@
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
+    nodejs_22
+    opencode
     python312
     python312Packages.pillow
     python312Packages.pytesseract

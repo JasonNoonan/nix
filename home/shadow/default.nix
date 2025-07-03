@@ -23,6 +23,7 @@ in
       asciidoctor-with-extensions
       asdf
       browsh
+      bun
       claude-code
       docker
       docker-compose
@@ -34,6 +35,7 @@ in
       jre8
       kubernetes
       lazydocker
+      opencode
       python312Packages.pillow
       python313
       python313Packages.pytesseract
