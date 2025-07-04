@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nexus_wrapper_tidewave": {
+      "command": "/etc/profiles/per-user/jasonnoonan/bin/mcp_proxy/mcp-proxy",
+      "args": ["http://localhost:4004/tidewave/mcp"]
+    }
+  }
+}

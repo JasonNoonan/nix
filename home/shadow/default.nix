@@ -10,6 +10,7 @@ in
     ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
+    ../mcphub
     ../neovim
     ../shell.nix
     ../tmux

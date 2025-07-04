@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ../git.nix
@@ -7,6 +7,7 @@
     ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
+    ../mcphub
     ../neovim
     ../shell.nix
     ../tmux
@@ -24,7 +25,6 @@
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
-    inputs.mcp-hub.packages."${system}".default
     nodejs_22
     opencode
     python312
