@@ -28,6 +28,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
+    mcp-hub.url = "github:ravitemer/mcp-hub";
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, ... }:
