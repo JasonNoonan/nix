@@ -9,6 +9,7 @@
     ../lang/yaml.nix
     ../mcphub
     ../neovim
+    ../opencode
     ../shell.nix
     ../tmux
   ];
@@ -57,6 +58,12 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        identityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
+      };
+    };
   };
 
   programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo darwin-rebuild switch --flake ~/.config/nix-darwin --impure";

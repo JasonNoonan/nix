@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "tidewave": {
-      "command": "/etc/profiles/per-user/jasonnoonan/bin/mcp_proxy/mcp-proxy",
-      "args": ["http://localhost:4004/tidewave/mcp"]
+      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
+      "args": ["http://localhost:4002/tidewave/mcp"]
     }
   }
 }
