@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 let
   gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
@@ -12,6 +12,7 @@ in
     ../lang/yaml.nix
     ../mcphub
     ../neovim
+    ../opencode
     ../shell.nix
     ../tmux
   ];
@@ -33,10 +34,10 @@ in
       gdk
       go
       graphviz
+      inputs.mcp-hub.packages."${system}".default
       jre8
       kubernetes
       lazydocker
-      opencode
       python312Packages.pillow
       python313
       python313Packages.pytesseract
@@ -45,6 +46,7 @@ in
       rubyPackages_3_4.rouge
       taskwarrior3
       tesseract
+      unzip
       xdg-utils
     ];
   };
@@ -55,6 +57,7 @@ in
   # k9s
   programs.k9s.enable = true;
 
+  home.sessionPath = [ "$HOME/.bun/bin" ];
 
   programs.ssh = {
     enable = true;

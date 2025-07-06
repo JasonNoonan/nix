@@ -9,6 +9,7 @@
     ../lang/yaml.nix
     ../mcphub
     ../neovim
+    ../opencode
     ../shell.nix
     ../tmux
   ];
