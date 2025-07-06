@@ -8,6 +8,12 @@ windows:
   - name: " "
     commands:
       - clear
+  - name: " "
+    commands:
+      - nvim +DBUI
   - name: ""
     commands:
       - lazygit
+  - name: " "
+    commands:
+      - opencode
