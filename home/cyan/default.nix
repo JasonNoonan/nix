@@ -27,7 +27,6 @@
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     inputs.mcp-hub.packages."${system}".default
     nodejs_22
-    opencode
     python312
     python312Packages.pillow
     python312Packages.pytesseract
@@ -44,6 +43,8 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "24.11";
+
+  home.sessionPath = ["$HOME/.bun/bin"];
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
