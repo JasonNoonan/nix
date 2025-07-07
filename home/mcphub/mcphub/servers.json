@@ -1,21 +1,5 @@
 {
   "mcpServers": {
-    "balenciauthga_tidewave": {
-      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
-      "args": ["http://localhost:4002/tidewave/mcp"]
-    },
-    "portal_tidewave": {
-      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
-      "args": ["http://localhost:4001/tidewave/mcp"]
-    },
-    "houston_tidewave": {
-      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
-      "args": ["http://localhost:4000/tidewave/mcp"]
-    },
-    "nexus_tidewave": {
-      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
-      "args": ["http://localhost:4004/tidewave/mcp"]
-    },
     "linear": {
       "url": "https://mcp.linear.app/sse"
     },
@@ -36,6 +20,9 @@
     "time": {
       "command": "docker",
       "args": ["run", "-i", "--rm", "mcp/time"]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/sse"
     }
   }
 }
