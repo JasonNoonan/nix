@@ -25,7 +25,6 @@ in
       asciidoctor-with-extensions
       asdf
       browsh
-      bun
       claude-code
       docker
       docker-compose
@@ -56,8 +55,6 @@ in
 
   # k9s
   programs.k9s.enable = true;
-
-  home.sessionPath = [ "$HOME/.bun/bin" ];
 
   programs.ssh = {
     enable = true;

@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.opencode = {
@@ -22,7 +22,7 @@
             "--rm"
             "-i"
             "--mount"
-            "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan"
+            "type=bind,src=${config.home.homeDirectory},dst=${config.home.homeDirectory}"
             "mcp/git"
           ];
           enabled = true;

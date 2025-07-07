@@ -46,6 +46,9 @@ return {
 
           ["<leader>m"] = { "<cmd>MCPHub<cr>", desc = "Open MCPHub TUI" },
 
+          -- noice
+          ["<leader>nd"] = {"<cmd>NoiceDismiss<cr>", desc = "Dismiss all notifications"},
+
           -- tmux bullshit
           ["<leader><leader>t1"] = {
             function() vim.fn.system "tmux select-window -t :=1" end,

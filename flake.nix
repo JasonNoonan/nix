@@ -48,7 +48,14 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.jasonnoonan = import ./home/cyan;
+                home-manager.users.jasonnoonan = { ... }: {
+                  home.username = "jasonnoonan";
+                  home.homeDirectory = "/Users/jasonnoonan";
+
+                  imports = [
+                    ./home/cyan
+                  ];
+                };
                 home-manager.extraSpecialArgs = { inherit inputs; };
               }
             ];
@@ -87,7 +94,14 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.jasonnoonan = import ./home/shadow;
+              home-manager.users.jasonnoonan = { ... }: {
+                home.username = "jasonnoonan";
+                home.homeDirectory = "/home/jasonnoonan";
+
+                imports = [
+                  ./home/shadow
+                ];
+              };
             }
           ];
         };
