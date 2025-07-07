@@ -3,9 +3,6 @@
     "linear": {
       "url": "https://mcp.linear.app/sse"
     },
-    "github": {
-      "url": "https://api.githubcopilot.com/mcp/"
-    },
     "git": {
       "command": "docker",
       "args": [
