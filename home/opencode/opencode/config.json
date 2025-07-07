@@ -8,6 +8,29 @@
       "type": "remote",
       "url": "http://localhost:3000/mcp",
       "enabled": true
+    },
+    "git": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan",
+        "mcp/git"
+      ],
+      "enabled": true
+    },
+    "time": {
+      "type": "local",
+      "command": ["docker", "run", "-i", "--rm", "mcp/time"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/sse",
+      "enabled": true
     }
   }
 }

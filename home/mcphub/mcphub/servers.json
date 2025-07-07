@@ -2,24 +2,6 @@
   "mcpServers": {
     "linear": {
       "url": "https://mcp.linear.app/sse"
-    },
-    "git": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "--mount",
-        "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan",
-        "mcp/git"
-      ]
-    },
-    "time": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "mcp/time"]
-    },
-    "context7": {
-      "url": "https://mcp.context7.com/sse"
     }
   }
 }

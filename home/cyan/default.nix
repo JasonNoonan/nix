@@ -9,7 +9,7 @@
     ../lang/yaml.nix
     ../mcphub
     ../neovim
-    ../opencode
+    ../opencode.nix
     ../shell.nix
     ../tmux
   ];
@@ -17,7 +17,6 @@
   home.packages = with pkgs; [
     argocd
     asdf-vm
-    bun
     claude-code
     docker-compose
     discord
@@ -45,7 +44,6 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
-  home.sessionPath = ["$HOME/.bun/bin"];
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

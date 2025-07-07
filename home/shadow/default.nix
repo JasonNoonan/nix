@@ -12,7 +12,7 @@ in
     ../lang/yaml.nix
     ../mcphub
     ../neovim
-    ../opencode
+    ../opencode.nix
     ../shell.nix
     ../tmux
   ];
