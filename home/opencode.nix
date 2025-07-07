@@ -27,16 +27,6 @@
           ];
           enabled = true;
         };
-        time = {
-          type = "local";
-          command = ["docker" "run" "-i" "--rm" "mcp/time"];
-          enabled = true;
-        };
-        context7 = {
-          type = "remote";
-          url = "https://mcp.context7.com/sse";
-          enabled = true;
-        };
       };
     };
   };

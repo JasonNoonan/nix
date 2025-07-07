@@ -2,6 +2,43 @@
   "mcpServers": {
     "linear": {
       "url": "https://mcp.linear.app/sse"
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/puppeteer",
+        "--key",
+        "f3ffb009-4859-495a-bc7a-88040c454666"
+      ]
+    },
+    "time": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/time"
+      ]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/sse"
+    },
+    "@magicuidesign/mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@magicuidesign/mcp@latest"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     }
   }
 }
