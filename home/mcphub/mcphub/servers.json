@@ -1,8 +1,41 @@
 {
   "mcpServers": {
-    "tidewave": {
+    "balenciauthga_tidewave": {
       "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
       "args": ["http://localhost:4002/tidewave/mcp"]
+    },
+    "portal_tidewave": {
+      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
+      "args": ["http://localhost:4001/tidewave/mcp"]
+    },
+    "houston_tidewave": {
+      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
+      "args": ["http://localhost:4000/tidewave/mcp"]
+    },
+    "nexus_tidewave": {
+      "command": "/Users/jasonnoonan/.local/bin/mcp-proxy",
+      "args": ["http://localhost:4004/tidewave/mcp"]
+    },
+    "linear": {
+      "url": "https://mcp.linear.app/sse"
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "git": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan",
+        "mcp/git"
+      ]
+    },
+    "time": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "mcp/time"]
     }
   }
 }

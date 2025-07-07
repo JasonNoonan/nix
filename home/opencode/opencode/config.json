@@ -4,9 +4,9 @@
   "model": "github-copilot/claude-sonnet-4",
   "autoupdate": true,
   "mcp": {
-    "mcphub": {
+    "remotemcp": {
       "type": "remote",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3000/mcp",
       "enabled": true
     }
   }
