@@ -1,5 +1,5 @@
-session: SERVICES_API
-root: ~/workspace/services_api
+session: NEXUS_WRAPPER
+root: ~/workspace/nexus_wrapper
 
 windows:
   - name: " "
@@ -13,10 +13,7 @@ windows:
       - type: horizontal
         commands:
           - ips
-  - name: " "
-    commands:
-      - nvim +DBUI
-  - name: " "
+  - name: ""
     commands:
       - claude
   - name: ""
