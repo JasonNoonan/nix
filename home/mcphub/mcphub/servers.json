@@ -1,8 +1,5 @@
 {
   "mcpServers": {
-    "linear": {
-      "url": "https://mcp.linear.app/sse"
-    },
     "puppeteer": {
       "command": "npx",
       "args": [

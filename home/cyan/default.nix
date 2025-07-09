@@ -1,6 +1,7 @@
 { config, inputs, pkgs, lib, ... }:
 {
   imports = [
+    ../claude
     ../git.nix
     ../kitty.nix
     ../lang

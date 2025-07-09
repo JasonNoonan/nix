@@ -1,0 +1,8 @@
+[
+  {
+    "content": "Remove redirect URL validation since origin validation establishes trust boundary",
+    "status": "completed",
+    "priority": "medium",
+    "id": "refactor_redirect_validation"
+  }
+]
