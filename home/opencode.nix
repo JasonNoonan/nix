@@ -28,6 +28,7 @@
           enabled = true;
         };
       };
+      instructions = [ "~/.claude/commands/shared/*.md" "~/.claude/commands/build.md" "~/.claude/commands/design.md" "~/.claude/commands/improve.md" "~/.claude/commands/document" "~/.claude/shared/*.md" ];
     };
   };
 }

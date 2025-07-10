@@ -31,6 +31,7 @@
     python312
     python312Packages.pillow
     python312Packages.pytesseract
+    rustup
     slack
     tesseract
   ];
