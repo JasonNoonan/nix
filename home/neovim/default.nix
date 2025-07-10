@@ -22,6 +22,8 @@
         autoWrapWidth = 72;
       };
 
+      git.overrideGpg = true;
+
       gui.theme = {
         activeBorderColor = [
           "#63f2f1"

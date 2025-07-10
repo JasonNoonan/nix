@@ -23,6 +23,7 @@
     discord
     exercism
     firefox
+    gitleaks
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
@@ -31,6 +32,7 @@
     python312
     python312Packages.pillow
     python312Packages.pytesseract
+    rustup
     slack
     tesseract
   ];
