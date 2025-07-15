@@ -10,6 +10,7 @@
     ../lang/yaml.nix
     ../mcphub
     ../neovim
+    ../npm
     ../opencode.nix
     ../shell.nix
     ../tmux
@@ -29,7 +30,7 @@
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     inputs.mcp-hub.packages."${system}".default
-    nodejs_22
+    nodejs_20
     python312
     python312Packages.pillow
     python312Packages.pytesseract
@@ -57,7 +58,10 @@
 
   programs.vscode.enable = true;
 
-  home.sessionPath = ["$HOME/.bun/bin"];
+  home = {
+    sessionPath = ["$HOME/.bun/bin"];
+    file.".npmrc".source = ../npm/.npmrc;
+  };
 
   programs.ssh = {
     enable = true;
