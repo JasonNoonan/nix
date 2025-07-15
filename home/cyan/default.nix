@@ -18,6 +18,7 @@
   home.packages = with pkgs; [
     argocd
     asdf-vm
+    bun
     claude-code
     docker-compose
     discord
@@ -55,6 +56,8 @@
   programs.k9s.enable = true;
 
   programs.vscode.enable = true;
+
+  home.sessionPath = ["$HOME/.bun/bin"];
 
   programs.ssh = {
     enable = true;
