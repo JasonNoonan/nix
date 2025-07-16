@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }:
 {
   home.packages = [
-    pkgs.cargo
     pkgs.lexical
     pkgs.nixpkgs-fmt
     pkgs.nodePackages.nodejs
     pkgs.postgresql_14
+    pkgs.rustup
     pkgs.gnumake
   ];
 

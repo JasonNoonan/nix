@@ -5,8 +5,8 @@
     enable = true;
     settings = {
       "$schema" = "https://opencode.ai/config.json";
-      theme = "opencode";
-      model = "github-copilot/claude-sonnet-4";
+      theme = "catppuccin";
+      model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
       mcp = {
         mcphub = {
@@ -28,7 +28,7 @@
           enabled = true;
         };
       };
-      instructions = [ "~/.claude/commands/shared/*.md" "~/.claude/commands/build.md" "~/.claude/commands/design.md" "~/.claude/commands/improve.md" "~/.claude/commands/document" "~/.claude/shared/*.md" ];
+      instructions = [];
     };
   };
 }

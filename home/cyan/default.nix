@@ -10,8 +10,7 @@
     ../lang/yaml.nix
     ../mcphub
     ../neovim
-    ../npm
-    ../opencode.nix
+    ../opencode
     ../shell.nix
     ../tmux
   ];
@@ -30,11 +29,13 @@
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     inputs.mcp-hub.packages."${system}".default
-    nodejs_20
+    node-gyp
+    playwright
+    playwright-driver.browsers
     python312
     python312Packages.pillow
     python312Packages.pytesseract
-    rustup
+    python312Packages.setuptools
     slack
     tesseract
   ];
@@ -59,7 +60,11 @@
   programs.vscode.enable = true;
 
   home = {
-    sessionPath = ["$HOME/.bun/bin"];
+    sessionVariables = {
+      CC = "${pkgs.llvmPackages_20.libcxxClang}/clang";
+      CXX = "${pkgs.llvmPackages_20.libcxxClang}/clang++";
+    };
+    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin"];
     file.".npmrc".source = ../npm/.npmrc;
   };
 

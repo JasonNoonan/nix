@@ -13,7 +13,7 @@ windows:
       - nvim +DBUI
   - name: ""
     commands:
-      - claude
+      - opencode
   - name: ""
     commands:
       - lazygit

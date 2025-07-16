@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin",
+  "model": "anthropic/claude-sonnet-20250514",
+  "autoupdate": true,
+  "instructions": [],
+  "mcp": {
+    "mcphub": {
+      "type": "remote",
+      "url": "http://localhost:3000/mcp",
+      "enabled": true
+    },
+    "git": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=~,dst=~",
+        "mcp/git"
+      ],
+      "enabled": true
+    }
+  }
+}
