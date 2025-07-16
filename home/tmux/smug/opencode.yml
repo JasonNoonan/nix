@@ -1,0 +1,14 @@
+session: OPENCODE
+
+windows:
+  - name: ""
+    commands:
+      - opencode
+    layout: main-vertical
+    panes:
+      - type: vertical
+        commands:
+          - lazygit
+      - type: horizontal
+        commands:
+          - clear

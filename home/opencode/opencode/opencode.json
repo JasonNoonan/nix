@@ -1,9 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin",
-  "model": "anthropic/claude-sonnet-20250514",
+  "model": "anthropic/claude-sonnet-4-20250514",
   "autoupdate": true,
   "instructions": [],
+  "layout": "stretch",
   "mcp": {
     "mcphub": {
       "type": "remote",
@@ -18,7 +19,7 @@
         "--rm",
         "-i",
         "--mount",
-        "type=bind,src=~,dst=~",
+        "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan",
         "mcp/git"
       ],
       "enabled": true

@@ -15,7 +15,7 @@ windows:
           - ips
   - name: ""
     commands:
-      - claude
+      - opencode
   - name: ""
     commands:
       - lazygit
