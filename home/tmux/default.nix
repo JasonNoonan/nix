@@ -2,12 +2,14 @@
 
 let
   rally = import ./rally.nix { inherit pkgs; };
+  tally = import ./tally.nix { inherit pkgs; };
 in
 {
   home.packages = [
     rally
     pkgs.smug
     (pkgs.callPackage ./tmux-file-paths.nix { })
+    tally
   ];
 
   programs.tmux = {
@@ -62,7 +64,7 @@ in
       bind ? new-window btop
       bind ! kill-server
       bind g display-popup -E -w 80% -h 80% lazygit
-      bind s display-popup -E -w 80% -h 70% rally
+      bind s display-popup -E -w 80% -h 70% tally
       bind S display-popup -E 'tmux switch-client -t "fzf list-sessions -F "#{session_name}"| fzf)"'
       bind > display-popup -E -w 50% -h 50%
       bind H resize-pane -L 10
@@ -104,6 +106,12 @@ in
 
   xdg.configFile.smug = {
     source = ./smug;
+    recursive = true;
+    force = true;
+  };
+
+  xdg.configFile.tmux_sessions = {
+    source = ./sessions;
     recursive = true;
     force = true;
   };
