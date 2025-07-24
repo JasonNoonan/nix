@@ -3,6 +3,15 @@
 let
   rally = import ./rally.nix { inherit pkgs; };
   tally = import ./tally.nix { inherit pkgs; };
+  full_template = import ./sessions/templates/full.nix { inherit pkgs; };
+  opencode_template = import ./sessions/templates/only_opencode.nix { inherit pkgs; };
+  rally_template = import ./sessions/templates/rally_like.nix { inherit pkgs; };
+  janus = import ./sessions/janus.nix { inherit pkgs; };
+  nexus_wrapper = import ./sessions/nexus_wrapper.nix { inherit pkgs; };
+  point_quest = import ./sessions/point_quest.nix { inherit pkgs; };
+  portal = import ./sessions/portal.nix { inherit pkgs; };
+  services_api = import ./sessions/services_api.nix { inherit pkgs; };
+  tunez = import ./sessions/tunez.nix { inherit pkgs; };
 in
 {
   home.packages = [
@@ -10,6 +19,16 @@ in
     pkgs.smug
     (pkgs.callPackage ./tmux-file-paths.nix { })
     tally
+
+    full_template
+    opencode_template
+    rally_template
+    janus
+    nexus_wrapper
+    portal
+    point_quest
+    services_api
+    tunez
   ];
 
   programs.tmux = {

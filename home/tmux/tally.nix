@@ -5,9 +5,11 @@ pkgs.writeShellScriptBin "tally" ''
   NAME=$(basename $TARGET)
   SESSION_NAME=$(echo $NAME | tr [:lower:] [:upper:])
 
-  if [[ -f "$HOME/.config/tmux_sessions/$NAME.sh" ]]; then
-    $HOME/.config/tmux_sessions/${NAME}.sh $TARGET $SESSION_NAME
+  SCRIPT="tmux_$NAME"
+  if command -v $SCRIPT > /dev/null 2>&1; then
+    $SCRIPT $TARGET $SESSION_NAME
   else
-    $HOME/.config/tmux_sessions/templates/rally_like.sh $TARGET $SESSION_NAME
+    cd $TARGET
+    tmux_session_rally $SESSION_NAME
   fi
 ''
