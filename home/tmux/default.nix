@@ -3,9 +3,8 @@
 let
   rally = import ./rally.nix { inherit pkgs; };
   tally = import ./tally.nix { inherit pkgs; };
-  full_template = import ./sessions/templates/full.nix { inherit pkgs; };
-  opencode_template = import ./sessions/templates/only_opencode.nix { inherit pkgs; };
-  rally_template = import ./sessions/templates/rally_like.nix { inherit pkgs; };
+  tmux_shared = import ./tmux_shared.nix { inherit pkgs };
+
   janus = import ./sessions/janus.nix { inherit pkgs; };
   nexus_wrapper = import ./sessions/nexus_wrapper.nix { inherit pkgs; };
   point_quest = import ./sessions/point_quest.nix { inherit pkgs; };
@@ -19,10 +18,8 @@ in
     pkgs.smug
     (pkgs.callPackage ./tmux-file-paths.nix { })
     tally
+    tmux_shared
 
-    full_template
-    opencode_template
-    rally_template
     janus
     nexus_wrapper
     portal
