@@ -63,7 +63,7 @@
       CC = "${pkgs.llvmPackages_20.libcxxClang}/clang";
       CXX = "${pkgs.llvmPackages_20.libcxxClang}/clang++";
     };
-    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin"];
+    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin" "$HOME/.npm-packages/bin"];
     file.".npmrc".source = ../npm/.npmrc;
   };
 
