@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   home.packages = [
-    pkgs.lexical
     pkgs.nixpkgs-fmt
     pkgs.nodePackages.nodejs
     pkgs.postgresql_14
