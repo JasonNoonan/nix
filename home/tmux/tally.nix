@@ -104,7 +104,7 @@ pkgs.writeShellScriptBin "tally" ''
         docker compose stop
         ;;
 
-      NEXUS_WRAPPER|POINT_QUEST|SERVICES_API|TUNEZ)
+      NEXUS_WRAPPER|POINT_QUEST|SERVICES_API|TUNEZ|MUG_TRACKER)
         cd $TARGET
         tmux-session-full
         ;;
