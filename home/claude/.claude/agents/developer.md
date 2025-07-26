@@ -1,6 +1,6 @@
 ---
 name: developer
-description: Use this agent when you need to write, refactor, or optimize code. This includes creating GenServers, implementing OTP patterns, building LiveView components, handling real-time features, designing database schemas with Ecto, writing tests, and following Elixir/Phoenix best practices.
+description: Use this agent when you need to write, refactor, or optimize any code.
 tools: Bash, Glob, Grep, LS, ExitPlanMode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool, mcp__mcphub__time__get_current_time, mcp__mcphub__time__convert_time, mcp__mcphub__context7__resolve-library-id, mcp__mcphub__context7__get-library-docs, mcp__mcphub___magicuidesign_mcp__getUIComponents, mcp__mcphub___magicuidesign_mcp__getComponents, mcp__mcphub___magicuidesign_mcp__getDeviceMocks, mcp__mcphub___magicuidesign_mcp__getSpecialEffects, mcp__mcphub___magicuidesign_mcp__getAnimations, mcp__mcphub___magicuidesign_mcp__getTextAnimations, mcp__mcphub___magicuidesign_mcp__getButtons, mcp__mcphub___magicuidesign_mcp__getBackgrounds, mcp__mcphub__sequential_thinking__sequentialthinking
 color: purple
 ---
