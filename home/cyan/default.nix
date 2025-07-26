@@ -19,7 +19,6 @@
     argocd
     asdf-vm
     bun
-    claude-code
     docker-compose
     discord
     exercism
