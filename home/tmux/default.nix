@@ -3,14 +3,6 @@
 let
   rally = import ./rally.nix { inherit pkgs; };
   tally = import ./tally.nix { inherit pkgs; };
-  tmux_shared = import ./tmux_shared.nix { inherit pkgs };
-
-  janus = import ./sessions/janus.nix { inherit pkgs; };
-  nexus_wrapper = import ./sessions/nexus_wrapper.nix { inherit pkgs; };
-  point_quest = import ./sessions/point_quest.nix { inherit pkgs; };
-  portal = import ./sessions/portal.nix { inherit pkgs; };
-  services_api = import ./sessions/services_api.nix { inherit pkgs; };
-  tunez = import ./sessions/tunez.nix { inherit pkgs; };
 in
 {
   home.packages = [
@@ -18,14 +10,6 @@ in
     pkgs.smug
     (pkgs.callPackage ./tmux-file-paths.nix { })
     tally
-    tmux_shared
-
-    janus
-    nexus_wrapper
-    portal
-    point_quest
-    services_api
-    tunez
   ];
 
   programs.tmux = {
@@ -80,7 +64,7 @@ in
       bind ? new-window btop
       bind ! kill-server
       bind g display-popup -E -w 80% -h 80% lazygit
-      bind s display-popup -E -w 80% -h 70% tally
+      bind s display-popup -E -w 80% -h 70% tally -d
       bind S display-popup -E 'tmux switch-client -t "fzf list-sessions -F "#{session_name}"| fzf)"'
       bind > display-popup -E -w 50% -h 50%
       bind H resize-pane -L 10

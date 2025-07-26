@@ -13,8 +13,7 @@ pkgs.writeShellScriptBin "tmux_session_rally" ''
   ${pkgs.tmux}/bin/tmux new-session -ADXd -x $(tput cols) -y $(tput lines) -n $NVIM_ICON -s $SESSION_NAME
   ${pkgs.tmux}/bin/tmux send-keys "nvim" Enter
 
-  ${pkgs.tmux}/bin/tmux new-window -a -n $TERMINAL_ICON
-  ${pkgs.tmux}/bin/tmux send-keys "nvim scratchpad.ex" Enter
+  ${pkgs.tmux}/bin/tmux new-window -a -n $TERMINAL_ICON "nvim scratchpad.ex" 
   ${pkgs.tmux}/bin/tmux split-window -v -p 30
 
   ${pkgs.tmux}/bin/tmux new-window -a -n $ROBOT_ICON
