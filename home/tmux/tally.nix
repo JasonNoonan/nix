@@ -104,19 +104,22 @@ pkgs.writeShellScriptBin "tally" ''
         docker compose stop
         ;;
 
-      NEXUS_WRAPPER|POINT_QUEST|SERVICES_API|TUNEZ|MUG_TRACKER)
-        cd $TARGET
-        tmux-session-full
-        ;;
 
       SOME_FUTURE_PROJECT|DOESNT_EXIST_YET)
         cd $TARGET
         tmux-session-ai-agent
         ;;
 
+      NEXUS_WRAPPER|POINT_QUEST|SERVICES_API|TUNEZ|MUG_TRACKER|BALENCIAUTHGA)
+        # ease of use in case I need to swap the profile these call
+        # cd $TARGET
+        # tmux-session-full
+        ;&
+
       *)
         cd $TARGET
-        tmux-session-rally
+        # tmux-session-rally
+        tmux-session-full
         ;;
     esac
   }
