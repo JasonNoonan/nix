@@ -28,6 +28,7 @@
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     inputs.mcp-hub.packages."${system}".default
+    kubernetes-helm
     node-gyp
     playwright
     playwright-driver.browsers
