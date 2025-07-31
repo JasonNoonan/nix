@@ -1,7 +1,8 @@
 { ... }:
 {
-  home.file.".claude" = {
-      source = ./.claude;
+  home.file.".claude/agents" = {
+      source = ./agents;
+      force = true;
       recursive = true;
     };
 }

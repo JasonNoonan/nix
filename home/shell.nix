@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   home.packages = [
@@ -148,7 +148,7 @@
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     autocd = true;
     cdpath = [ "." "$HOME/.config" "$HOME/workspace" ];
