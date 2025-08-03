@@ -38,6 +38,7 @@
     python312Packages.setuptools
     slack
     tesseract
+    uv
   ];
 
   # This value determines the home Manager release that your
