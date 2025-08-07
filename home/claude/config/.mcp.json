@@ -15,16 +15,27 @@
       "command": "docker",
       "args": ["run", "-i", "--rm", "mcp/time"]
     },
-    "context7": {
-      "url": "https://mcp.context7.com/sse"
-    },
-    "@magicuidesign/mcp": {
+    "magicuidesign": {
       "command": "npx",
       "args": ["-y", "@magicuidesign/mcp@latest"]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "git": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=/Users/jasonnoonan,dst=/Users/jasonnoonan",
+        "mcp/git"
+      ]
     }
   }
 }

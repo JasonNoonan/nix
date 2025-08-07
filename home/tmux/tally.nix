@@ -38,7 +38,7 @@ pkgs.writeShellScriptBin "tally" ''
 
   function tmux-session-full() {
     ${pkgs.tmux}/bin/tmux new-session -ADd -x $(tput cols) -y $(tput lines) -n "$ROBOT_ICON" -s $SESSION_NAME
-    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.1" "claude" Enter
+    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.1" "claude --dangerously-skip-permissions" Enter
     ${pkgs.tmux}/bin/tmux split-window -h -p 25
     ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.2" "lazygit" Enter
     ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.2" "2++" Enter
@@ -65,7 +65,7 @@ pkgs.writeShellScriptBin "tally" ''
 
   function tmux-session-ai-agent() {
     ${pkgs.tmux}/bin/tmux new-session -ADd -x $(tput cols) -y $(tput lines) -n "$ROBOT_ICON" -s $SESSION_NAME
-    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON" "claude" Enter
+    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON" "claude --dangerously-skip-permissions" Enter
     ${pkgs.tmux}/bin/tmux split-window -h -p 25 
     ${pkgs.tmux}/bin/tmux send-keys "lazygit" Enter
     ${pkgs.tmux}/bin/tmux split-window -v -p 25
@@ -82,7 +82,7 @@ pkgs.writeShellScriptBin "tally" ''
     ${pkgs.tmux}/bin/tmux new-window -a -n $TERMINAL_ICON
 
     ${pkgs.tmux}/bin/tmux new-window -a -n $ROBOT_ICON
-    ${pkgs.tmux}/bin/tmux send-keys "claude" Enter
+    ${pkgs.tmux}/bin/tmux send-keys "claude --dangerously-skip-permissions" Enter
 
     ${pkgs.tmux}/bin/tmux new-window -a -n $DB_ICON
     ${pkgs.tmux}/bin/tmux send-keys "nvim +DBUI" Enter

@@ -44,10 +44,8 @@ return {
 
           ["<leader>lg"] = { "<cmd>Neogen<cr>", desc = "Generate annotation for the current node" },
 
-          ["<leader>m"] = { "<cmd>MCPHub<cr>", desc = "Open MCPHub TUI" },
-
           -- noice
-          ["<leader>nd"] = {"<cmd>NoiceDismiss<cr>", desc = "Dismiss all notifications"},
+          ["<leader>nd"] = { "<cmd>NoiceDismiss<cr>", desc = "Dismiss all notifications" },
 
           -- tmux bullshit
           ["<leader><leader>t1"] = {

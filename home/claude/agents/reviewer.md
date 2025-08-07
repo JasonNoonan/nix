@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Use this agent when you have made code changes and want a comprehensive technical review. Examples: After implementing a new feature, refactoring existing code, fixing bugs, or completing a logical chunk of development work. The agent should be called proactively after code modifications to catch issues early in the development cycle.
-tools: Glob, Grep, LS, ExitPlanMode, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool, mcp__mcphub__time__get_current_time, mcp__mcphub__time__convert_time, mcp__mcphub__context7__resolve-library-id, mcp__mcphub__context7__get-library-docs, mcp__mcphub__sequential_thinking__sequentialthinking, mcp__linear__list_comments, mcp__linear__list_cycles, mcp__linear__list_documents, mcp__linear__list_issues, mcp__linear__list_issue_statuses, mcp__linear__list_my_issues, mcp__linear__list_issue_labels, mcp__linear__list_projects, mcp__linear__get_project, mcp__linear__list_project_labels, mcp__linear__list_teams, mcp__linear__get_team, mcp__linear__get_user, mcp__linear__list_users, mcp__linear__search_documentation
+tools: Glob, Grep, LS, ExitPlanMode, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool, mcp__linear__list_comments, mcp__linear__list_cycles, mcp__linear__list_documents, mcp__linear__list_issues, mcp__linear__list_issue_statuses, mcp__linear__list_my_issues, mcp__linear__list_issue_labels, mcp__linear__list_projects, mcp__linear__get_project, mcp__linear__list_project_labels, mcp__linear__list_teams, mcp__linear__get_team, mcp__linear__get_user, mcp__linear__list_users, mcp__linear__search_documentation
 color: cyan
 ---
 

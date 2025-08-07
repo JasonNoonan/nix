@@ -5,4 +5,9 @@
       force = true;
       recursive = true;
     };
+
+  home.file.".config/claude/.mcp.json" = {
+      source = ./config/.mcp.json;
+      force = true;
+    };
 }

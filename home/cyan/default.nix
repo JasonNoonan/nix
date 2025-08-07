@@ -8,7 +8,6 @@
     ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
-    ../mcphub
     ../neovim
     ../opencode
     ../shell.nix
@@ -27,6 +26,7 @@
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
+    graphite-cli
     inputs.mcp-hub.packages."${system}".default
     kubernetes-helm
     node-gyp
