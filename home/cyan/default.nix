@@ -30,8 +30,6 @@
     inputs.mcp-hub.packages."${system}".default
     kubernetes-helm
     node-gyp
-    playwright
-    playwright-driver.browsers
     python312
     python312Packages.pillow
     python312Packages.pytesseract
@@ -65,17 +63,18 @@
       CC = "${pkgs.llvmPackages_20.libcxxClang}/clang";
       CXX = "${pkgs.llvmPackages_20.libcxxClang}/clang++";
     };
-    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin" "$HOME/.npm-packages/bin"];
+    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin" "$HOME/.npm-packages/bin" "$HOME/.opencode/bin"];
     file.".npmrc".source = ../npm/.npmrc;
   };
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
         identityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
+        addKeysToAgent = "yes";
       };
     };
   };
