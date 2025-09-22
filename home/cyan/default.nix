@@ -79,5 +79,5 @@
     };
   };
 
-  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo darwin-rebuild switch --flake ~/.config/nix-darwin --impure";
+  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
 }
