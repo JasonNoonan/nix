@@ -38,7 +38,8 @@ pkgs.writeShellScriptBin "tally" ''
 
   function tmux-session-full() {
     ${pkgs.tmux}/bin/tmux new-session -ADd -x $(tput cols) -y $(tput lines) -n "$ROBOT_ICON" -s $SESSION_NAME
-    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.1" "claude --dangerously-skip-permissions" Enter
+    # ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.1" "claude --dangerously-skip-permissions" Enter
+    ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.1" "opencode" Enter
     ${pkgs.tmux}/bin/tmux split-window -h -p 25
     ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.2" "lazygit" Enter
     ${pkgs.tmux}/bin/tmux send-keys -t "$SESSION_NAME:$ROBOT_ICON.2" "2++" Enter

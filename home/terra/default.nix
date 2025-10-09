@@ -4,7 +4,7 @@
 in {
   imports = [
     ../git.nix
-    ../gtk
+    # ../gtk
     ../kitty.nix
     # ../lang/dotnet.nix
     ../lang/elixir.nix

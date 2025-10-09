@@ -45,6 +45,8 @@
       "1password"
       "amethyst"
       "docker"
+      "dotnet-sdk@8"
+      "firefox"
       "geekbench"
       "inkscape"
       "keeper-password-manager"

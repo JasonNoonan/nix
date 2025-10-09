@@ -23,15 +23,34 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nix-darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # home-manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    #nix-homebrew
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    # miscellaneous
+
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
     mcp-hub.url = "github:ravitemer/mcp-hub";
+    firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, firefox-darwin, ... }:
     {
       nixpkgs.config.allowBroken = true;
       nixpkgs.config.allowUnfree = true;
@@ -57,6 +76,19 @@
                   ];
                 };
                 home-manager.extraSpecialArgs = { inherit inputs; };
+              }
+              nix-homebrew.darwinModules.nix-homebrew {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  user = "jasonnoonan";
+                  autoMigrate = true;
+
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                  };
+                };
               }
             ];
           specialArgs = { inherit inputs self; };

@@ -1,11 +1,11 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib, firefox-darwin, ... }:
 {
   imports = [
     ../claude
     ../git.nix
     ../kitty.nix
     ../lang
-    ../lang/dotnet.nix
+    # ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim
@@ -21,7 +21,6 @@
     docker-compose
     discord
     exercism
-    firefox
     gitleaks
     go
     go-task
@@ -29,6 +28,7 @@
     graphite-cli
     inputs.mcp-hub.packages."${system}".default
     kubernetes-helm
+    mise
     node-gyp
     python312
     python312Packages.pillow
@@ -37,6 +37,7 @@
     slack
     tesseract
     uv
+    yarn
   ];
 
   # This value determines the home Manager release that your
@@ -62,8 +63,17 @@
     sessionVariables = {
       CC = "${pkgs.llvmPackages_20.libcxxClang}/clang";
       CXX = "${pkgs.llvmPackages_20.libcxxClang}/clang++";
+      DOTNET_ROOT = "/usr/local/share/dotnet";
     };
-    sessionPath = ["$HOME/.bun/bin" "/opt/local/bin" "/opt/local/sbin" "$HOME/.npm-packages/bin" "$HOME/.opencode/bin"];
+    sessionPath = [
+      "$HOME/.bun/bin"
+      "/opt/local/bin" 
+      "/opt/local/sbin" 
+      "$HOME/.npm-packages/bin" 
+      "$HOME/.opencode/bin" 
+      "$HOME/.dotnet/tools"
+      "/usr/local/share/dotnet"
+    ];
     file.".npmrc".source = ../npm/.npmrc;
   };
 
