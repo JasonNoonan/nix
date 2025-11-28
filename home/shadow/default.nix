@@ -6,8 +6,8 @@ let
 in
 {
   imports = [
+    ../claude
     ../git.nix
-    ../lang/dotnet.nix
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim
@@ -32,13 +32,12 @@ in
       gdk
       go
       graphviz
-      inputs.mcp-hub.packages."${system}".default
       jre8
       kubernetes
       lazydocker
-      python312Packages.pillow
-      python313
-      python313Packages.pytesseract
+      python314Packages.pillow
+      python314
+      python314Packages.pytesseract
       rsync
       ruby
       rubyPackages_3_4.rouge
