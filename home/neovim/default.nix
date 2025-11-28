@@ -11,10 +11,12 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.paging = {
+      git.pagers = [
+        {
         colorArg = "always";
         pager = "diff-so-fancy";
-      };
+        }
+      ];
 
       git.commit = {
         autoWrapCommitMessage = true;

@@ -30,10 +30,10 @@
     kubernetes-helm
     mise
     node-gyp
-    python312
-    python312Packages.pillow
-    python312Packages.pytesseract
-    python312Packages.setuptools
+    python313
+    python313Packages.pillow
+    python313Packages.pytesseract
+    python313Packages.tkinter
     slack
     tesseract
     uv
@@ -73,6 +73,7 @@
       "$HOME/.opencode/bin" 
       "$HOME/.dotnet/tools"
       "/usr/local/share/dotnet"
+      "$HOME/.local/bin"
     ];
     file.".npmrc".source = ../npm/.npmrc;
   };
@@ -89,5 +90,8 @@
     };
   };
 
-  programs.zsh.shellAliases.handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
+  programs.zsh.shellAliases = {
+    handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
+    # python3 = "/opt/homebrew/bin/python3.12";
+  };
 }

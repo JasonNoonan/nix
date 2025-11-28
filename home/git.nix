@@ -12,33 +12,11 @@
 
   programs.git = {
     enable = true;
-    userEmail = "jason.noonan@pdq.com";
-    userName = "Jason Noonan";
 
     signing.key = "~/.ssh/github_signing_key_ed25519.pub";
     signing.signByDefault = true;
 
-    aliases = {
-      amend = "commit --amend --no-edit";
-      branches = "!git --no-pager branch --format '%(refname:short)' --sort=-committerdate | ${pkgs.fzf}/bin/fzf --preview 'git log --color=always --decorate {}'";
-      co = "checkout";
-      cob = "checkout -b";
-      drop = "!git branch -d $(git branches)";
-      force = "push --force-with-lease";
-      gap = "commit -a --amend --no-edit && git push --force-with-lease";
-      s = "status";
-      to = "!git checkout $(git branches)";
-    };
-
-    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".erlang-history" ".direnv" ".nix-mix" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ".opencode/"];
-
-    diff-so-fancy = {
-      enable = true;
-      stripLeadingSymbols = true;
-      changeHunkIndicators = true;
-    };
-
-    extraConfig = {
+    settings = {
       init = { defaultBranch = "main"; };
       core = { editor = "nvim"; };
       status = { showUntrackedFiles = "all"; };
@@ -51,6 +29,32 @@
         verbose = true;
         gpgsign = true;
       };
+
+      aliases = {
+        amend = "commit --amend --no-edit";
+        branches = "!git --no-pager branch --format '%(refname:short)' --sort=-committerdate | ${pkgs.fzf}/bin/fzf --preview 'git log --color=always --decorate {}'";
+        co = "checkout";
+        cob = "checkout -b";
+        drop = "!git branch -d $(git branches)";
+        force = "push --force-with-lease";
+        gap = "commit -a --amend --no-edit && git push --force-with-lease";
+        s = "status";
+        to = "!git checkout $(git branches)";
+      };
+
+      user.email =  "jason.noonan@pdq.com";
+      user.name = "Jason Noonan";
+    };
+
+    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".erlang-history" ".direnv" ".nix-mix" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ".opencode/"];
+  };
+
+  programs.diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
+    settings = {
+      stripLeadingSymbols = true;
+      changeHunkIndicators = true;
     };
   };
 }

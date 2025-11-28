@@ -5,6 +5,10 @@
     ERL_AFLAGS = "-kernel shell_history enabled";
   };
 
+  home.sessionPath = [
+    "$HOME/.mix/escripts"
+  ];
+
   home.file.".iex.exs".text = ''
     IEx.configure(
             default_prompt:

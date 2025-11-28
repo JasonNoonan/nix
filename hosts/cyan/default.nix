@@ -45,7 +45,7 @@
       "1password"
       "amethyst"
       "docker"
-      "dotnet-sdk@8"
+      # "dotnet-sdk@8"
       "firefox"
       "geekbench"
       "inkscape"
