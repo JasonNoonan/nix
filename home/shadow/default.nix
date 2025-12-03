@@ -11,7 +11,7 @@ in
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim
-    ../opencode.nix
+    ../opencode
     ../shell.nix
     ../tmux
   ];
