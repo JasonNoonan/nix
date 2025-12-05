@@ -30,10 +30,6 @@
     kubernetes-helm
     mise
     node-gyp
-    python313
-    python313Packages.pillow
-    python313Packages.pytesseract
-    python313Packages.tkinter
     slack
     tesseract
     uv
@@ -92,6 +88,5 @@
 
   programs.zsh.shellAliases = {
     handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
-    # python3 = "/opt/homebrew/bin/python3.12";
   };
 }

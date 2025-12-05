@@ -30,9 +30,6 @@ in {
     obs-studio
     pavucontrol
     protonup
-    python312Packages.pillow
-    python313
-    python313Packages.pytesseract
     slack
     spotify
     tesseract

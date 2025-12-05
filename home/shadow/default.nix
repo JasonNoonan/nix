@@ -35,9 +35,6 @@ in
       jre8
       kubernetes
       lazydocker
-      python314Packages.pillow
-      python314
-      python314Packages.pytesseract
       rsync
       ruby
       rubyPackages_3_4.rouge
@@ -61,7 +58,7 @@ in
       "github.com" = { };
       "pdq" =
         {
-          hostname = "192.168.86.30";
+          hostname = "10.0.0.84";
           user = "jasonnoonan";
           dynamicForwards = [{ port = 8081; }];
 
