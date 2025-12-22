@@ -2,6 +2,7 @@
 {
   imports = [
     ../claude
+    ../ghostty.nix
     ../git.nix
     ../kitty.nix
     ../lang
