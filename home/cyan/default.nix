@@ -71,6 +71,7 @@
       "$HOME/.dotnet/tools"
       "/usr/local/share/dotnet"
       "$HOME/.local/bin"
+      "/opt/homebrew/opt/python@3.14/libexec/bin"
     ];
     file.".npmrc".source = ../npm/.npmrc;
   };
