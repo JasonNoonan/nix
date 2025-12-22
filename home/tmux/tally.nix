@@ -2,7 +2,7 @@
 pkgs.writeShellScriptBin "tally" ''
   set -e
 
-  TARGET=$(ls -d ~/workspace/* ~/* ~/.config/* | ${pkgs.fzf}/bin/fzf --header-first --header="Launch Project" --prompt="🗡️  " --preview '${pkgs.eza}/bin/eza --tree --icons --color=always --level 3 --git-ignore {}')
+  TARGET=$(ls -d ~/workspace/* ~/* ~/.config/* /mnt/c/Users/durmi/workspace/* | ${pkgs.fzf}/bin/fzf --header-first --header="Launch Project" --prompt="🗡️  " --preview '${pkgs.eza}/bin/eza --tree --icons --color=always --level 3 --git-ignore {}')
   NAME=$(basename $TARGET)
   SESSION_NAME=$(echo $NAME | tr [:lower:] [:upper:] | sed 's/\./-/g')
   SESSION_EXISTS=$(tmux has-session -t "$SESSION_NAME" 2>/dev/null && echo "true" || echo "false")

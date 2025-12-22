@@ -1,8 +1,8 @@
 { config, inputs, pkgs, ... }:
 let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
-    gke-gcloud-auth-plugin
-  ]);
+  # gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
+  #   gke-gcloud-auth-plugin
+  # ]);
 in
 {
   imports = [
@@ -29,12 +29,14 @@ in
       docker-compose
       exercism
       firefox
-      gdk
+      # gdk
       go
       graphviz
       jre8
       kubernetes
       lazydocker
+      nh
+      opencode
       rsync
       ruby
       rubyPackages_3_4.rouge
@@ -53,7 +55,7 @@ in
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = { };
       "pdq" =
@@ -61,6 +63,7 @@ in
           hostname = "10.0.0.84";
           user = "jasonnoonan";
           dynamicForwards = [{ port = 8081; }];
+          addKeysToAgent = "yes";
 
           localForwards = [
             # default elixir port
