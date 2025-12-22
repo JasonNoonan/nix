@@ -50,6 +50,7 @@
       # "dotnet-sdk@8"
       "firefox"
       "geekbench"
+      "ghostty"
       "inkscape"
       "keeper-password-manager"
       "microsoft-edge"
