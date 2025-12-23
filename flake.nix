@@ -47,7 +47,10 @@
 
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
     mcp-hub.url = "github:ravitemer/mcp-hub";
-    firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+    yt-x = {
+        url = "github:Benexl/yt-x";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };   firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, firefox-darwin, ... }:
@@ -104,6 +107,41 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.jasonnoonan = import ./home/locke;
                 home-manager.extraSpecialArgs = { inherit inputs; };
+              }
+            ];
+          specialArgs = { inherit inputs self; };
+        };
+
+        "leo" = nix-darwin.lib.darwinSystem {
+          modules =
+            [
+              ./hosts/leo
+              home-manager.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.jasonnoonan = { ... }: {
+                  home.username = "jasonnoonan";
+                  home.homeDirectory = "/Users/jasonnoonan";
+
+                  imports = [
+                    ./home/leo
+                  ];
+                };
+                home-manager.extraSpecialArgs = { inherit inputs; };
+              }
+              nix-homebrew.darwinModules.nix-homebrew {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  user = "jasonnoonan";
+                  autoMigrate = true;
+
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                  };
+                };
               }
             ];
           specialArgs = { inherit inputs self; };
