@@ -57,6 +57,7 @@
       "notion"
       "obs"
       "postman"
+      "raycast"
       "spotify"
     ];
   };
@@ -80,6 +81,6 @@
 
     configurationRevision = self.rev or self.dirtyRev or null;
 
-    stateVersion = 4;
+    stateVersion = 5;
   };
 }

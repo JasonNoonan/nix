@@ -36,6 +36,7 @@
     node-gyp
     slack
     tesseract
+    utm
     uv
     yarn
     yt-dlp
@@ -89,6 +90,56 @@
         identityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
         addKeysToAgent = "yes";
       };
+      "sabin" =
+        {
+          hostname = "10.0.0.129";
+          user = "durmi";
+          dynamicForwards = [{ port = 8082; }];
+          addKeysToAgent = "yes";
+
+          # localForwards = [
+          #   # default elixir port
+          #   {
+          #     bind.port = 4000;
+          #     host.address = "localhost";
+          #     host.port = 4000;
+          #   }
+          #
+          #   # postgres for ash testing
+          #   {
+          #     bind.port = 5434;
+          #     host.address = "localhost";
+          #     host.port = 5434;
+          #   }
+          # ];
+
+          forwardAgent = true;
+        };
+      "pdq" =
+        {
+          hostname = "10.0.0.84";
+          user = "jasonnoonan";
+          dynamicForwards = [{ port = 8081; }];
+          addKeysToAgent = "yes";
+
+          localForwards = [
+            # default elixir port
+            {
+              bind.port = 4000;
+              host.address = "localhost";
+              host.port = 4000;
+            }
+
+            # postgres for ash testing
+            {
+              bind.port = 5434;
+              host.address = "localhost";
+              host.port = 5434;
+            }
+          ];
+
+          forwardAgent = true;
+        };
     };
   };
 

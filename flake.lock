@@ -268,6 +268,40 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1766314097,
+        "narHash": "sha256-laJftWbghBehazn/zxVJ8NdENVgjccsWAdAqKXhErrM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "306ea70f9eb0fb4e040f8540e2deab32ed7e2055",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1766469443,
+        "narHash": "sha256-2cKbixi2Z4Gv+piSjtt9TlUBeW/j5FKOM/9qRDK5IJM=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "83397ebde21c56fcc5d79308f95b4832e3ec9cc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "NixOS-WSL": "NixOS-WSL",
@@ -279,6 +313,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
+        "opencode": "opencode",
         "yt-x": "yt-x"
       }
     },

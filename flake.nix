@@ -47,13 +47,14 @@
 
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
     mcp-hub.url = "github:ravitemer/mcp-hub";
+    opencode.url = "github:sst/opencode";
     yt-x = {
         url = "github:Benexl/yt-x";
         inputs.nixpkgs.follows = "nixpkgs";
       };   firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, firefox-darwin, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, firefox-darwin, opencode, ... }:
     {
       nixpkgs.config.allowBroken = true;
       nixpkgs.config.allowUnfree = true;
