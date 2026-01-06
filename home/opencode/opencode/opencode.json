@@ -1,7 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-sonnet-4-5-20250929",
+  "model": "anthropic/claude-opus-4-5",
   "autoupdate": true,
   "instructions": [],
-  "layout": "stretch"
+  "layout": "stretch",
+  "theme": "catppuccin-macchiato",
+  "mcp": {
+    "Linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "Sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp"
+    }
+  }
 }
