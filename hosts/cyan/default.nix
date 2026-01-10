@@ -46,6 +46,7 @@
     casks = [
       "1password"
       "amethyst"
+      "claude-code"
       "docker"
       # "dotnet-sdk@8"
       "firefox"

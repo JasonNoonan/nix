@@ -70,6 +70,9 @@
     # No confirmation on close (matching kitty)
     quit-after-last-window-closed = true
     
+    # Terminal type - use widely supported xterm-256color for SSH compatibility
+    term = xterm-256color
+    
     # Shell integration
     shell-integration = zsh
     shell-integration-features = cursor,sudo,title
@@ -77,5 +80,10 @@
     # Keybindings
     keybind = ctrl+alt+p=text:rally\r
     keybind = ctrl+alt+r=text:handshake\r
+    
+    # Pass through keys directly to applications (e.g., tmux)
+    keybind = ctrl+b=unbind
+    keybind = ctrl+v=unbind
+    keybind = ctrl+j=unbind
   '';
 }
