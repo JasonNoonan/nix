@@ -11,7 +11,7 @@ in
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim
-    ../opencode
+    # ../opencode
     ../shell.nix
     ../tmux
   ];
@@ -36,7 +36,7 @@ in
       kubernetes
       lazydocker
       nh
-      opencode
+      # opencode
       rsync
       ruby
       rubyPackages_3_4.rouge

@@ -10,7 +10,7 @@
     ../lang/elixir.nix
     ../lang/yaml.nix
     ../neovim
-    ../opencode
+    # ../opencode
     ../shell.nix
     ../tmux
   ];
