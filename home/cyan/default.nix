@@ -32,7 +32,7 @@
     inputs.yt-x.packages."${system}".default
     kubernetes-helm
     mise
-    mpv
+    # mpv # temporarily disabled - swift 5.10.1 fails to build on nixpkgs-unstable
     node-gyp
     slack
     tesseract
