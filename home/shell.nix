@@ -193,6 +193,7 @@
         tput setaf ''${$(( ( RANDOM % 6 ) + 1 ))} && printf "%*s\n" $(((''${#title}+$COLUMNS)/2)) "EYES UP, GUARDIAN"
         ssh-add --apple-load-keychain 2> /dev/null
         if command -v keychain > /dev/null 2>&1; then eval $(keychain --eval --nogui ~/.ssh/github_login_key_ed25519 --quiet); fi
+        eval "$(mise activate zsh)"
 
         function fgo() {
           target=$(command ls -d ~/* ~/workspace/* ~/.config/* ~/dots | ${fzf}/bin/fzf --preview "${eza}/bin/eza --tree --icons --level=3 --git-ignore {}")
