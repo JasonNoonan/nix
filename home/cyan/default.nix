@@ -16,7 +16,6 @@
   ];
 
   home.packages = with pkgs; [
-    argocd
     asdf-vm
     bun
     chafa

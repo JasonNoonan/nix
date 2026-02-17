@@ -50,7 +50,9 @@ in
       set -g allow-passthrough on
       set -gw xterm-keys on
       set -g focus-events on
+      set -s extended-keys on
       set -as terminal-features ',xterm*:RGB'
+      set -as terminal-features ',tmux-256color:extkeys'
       set -g status-interval 5
       set set-clipboard on
       set -g automatic-rename off
