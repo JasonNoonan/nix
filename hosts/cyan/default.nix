@@ -47,6 +47,7 @@
       "1password"
       "amethyst"
       { name = "claude-code"; greedy = true; }
+      "discord"
       "docker"
       # "dotnet-sdk@8"
       "firefox"

@@ -20,7 +20,6 @@
     bun
     chafa
     docker-compose
-    discord
     exercism
     ffmpeg
     gitleaks
