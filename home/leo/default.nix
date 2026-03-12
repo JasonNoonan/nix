@@ -11,7 +11,9 @@
     ../lang/yaml.nix
     ../neovim
     # ../opencode
+    ../sally.nix
     ../shell.nix
+    ../sidecar
     ../tmux
   ];
 
