@@ -36,11 +36,13 @@
 
     taps = [
       # "homebrew/cask"
+      "marcus/tap"
     ];
 
     brews = [
       "python@3.14"
       "python-tk@3.14"
+      "sidecar"
     ];
 
     casks = [

@@ -42,6 +42,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-marcus-tap = {
+      url = "github:marcus/homebrew-tap";
+      flake = false;
+    };
 
     # miscellaneous
 
@@ -54,7 +58,7 @@
       };   firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, firefox-darwin, opencode, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, homebrew-marcus-tap, firefox-darwin, opencode, ... }:
     {
       nixpkgs.config.allowBroken = true;
       nixpkgs.config.allowUnfree = true;
@@ -91,6 +95,7 @@
                   taps = {
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
+                    "marcus/homebrew-tap" = homebrew-marcus-tap;
                   };
                 };
               }
@@ -141,6 +146,7 @@
                   taps = {
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
+                    "marcus/homebrew-tap" = homebrew-marcus-tap;
                   };
                 };
               }
