@@ -28,7 +28,7 @@
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     graphite-cli
-    inputs.yt-x.packages."${system}".default
+    inputs.yt-x.packages."${pkgs.stdenv.hostPlatform.system}".default
     kubernetes-helm
     mise
     # mpv # temporarily disabled - swift 5.10.1 fails to build on nixpkgs-unstable

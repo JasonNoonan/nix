@@ -15,6 +15,7 @@
 
     signing.key = "~/.ssh/github_signing_key_ed25519.pub";
     signing.signByDefault = true;
+    signing.format = "openpgp";
 
     settings = {
       init = { defaultBranch = "main"; };

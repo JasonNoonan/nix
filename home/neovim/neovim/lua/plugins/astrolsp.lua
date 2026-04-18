@@ -51,22 +51,28 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
-      "lexical",
+      "dexter",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      lexical = {
+      dexter = {
         cmd = {
-          "lexical",
+          "dexter",
+          "lsp",
         },
         filetypes = {
           "elixir",
           "eelixir",
+          "heex",
         },
-        name = "local_lexical",
-        root_dir = require("lspconfig.util").root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+        root_dir = function(bufnr)
+          return vim.fs.root(bufnr, { ".dexter.db", "mix.exs", ".git" }) or vim.loop.cwd()
+        end,
+        init_options = {
+          followDelegates = true,
+        },
       },
       html = {
         filetypes = { "html", "heex" },

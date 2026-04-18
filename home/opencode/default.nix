@@ -1,7 +1,7 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
-    inputs.opencode.packages.${pkgs.system}.default
+    pkgs.opencode
   ];
 
   xdg.configFile = {

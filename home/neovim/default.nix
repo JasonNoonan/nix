@@ -2,7 +2,8 @@
 {
   home.packages = [
     pkgs.nixpkgs-fmt
-    pkgs.nodePackages.nodejs
+    pkgs.nodejs
+    pkgs.dexter
     pkgs.postgresql_14
     pkgs.rustup
     pkgs.gnumake
@@ -41,6 +42,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withPython3 = true;
+    withRuby = true;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
     ];
