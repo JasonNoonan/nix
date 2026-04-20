@@ -73,6 +73,9 @@
     # Terminal type - use widely supported xterm-256color for SSH compatibility
     term = xterm-256color
     
+    # Bell
+    bell-features = audio
+
     # Shell integration
     shell-integration = zsh
     shell-integration-features = cursor,sudo,title

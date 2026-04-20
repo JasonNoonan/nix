@@ -163,6 +163,22 @@
         "type": "github"
       }
     },
+    "homebrew-marcus-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774327232,
+        "narHash": "sha256-oJXBpHh97vwRoTqawWxMRecgNCGGA2i7sn3qrDmpKvM=",
+        "owner": "marcus",
+        "repo": "homebrew-tap",
+        "rev": "fc70dd73edc366cd47bc05922f15eeca554b57d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marcus",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "mcp-hub": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -309,6 +325,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-marcus-tap": "homebrew-marcus-tap",
         "mcp-hub": "mcp-hub",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",

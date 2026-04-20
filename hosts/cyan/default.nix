@@ -36,17 +36,21 @@
 
     taps = [
       # "homebrew/cask"
+      "marcus/tap"
     ];
 
     brews = [
       "python@3.14"
       "python-tk@3.14"
+      "sidecar"
+      "td"
     ];
 
     casks = [
       "1password"
       "amethyst"
       { name = "claude-code"; greedy = true; }
+      "discord"
       "docker"
       # "dotnet-sdk@8"
       "firefox"

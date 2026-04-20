@@ -11,7 +11,9 @@
     ../lang/yaml.nix
     ../neovim
     # ../opencode
+    ../sally.nix
     ../shell.nix
+    ../sidecar
     ../tmux
   ];
 
@@ -20,7 +22,6 @@
     bun
     chafa
     docker-compose
-    discord
     exercism
     ffmpeg
     gitleaks

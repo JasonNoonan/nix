@@ -15,7 +15,7 @@
 
     signing.key = "~/.ssh/github_signing_key_ed25519.pub";
     signing.signByDefault = true;
-    signing.format = "openpgp";
+    signing.format = "ssh";
 
     settings = {
       init = { defaultBranch = "main"; };
@@ -25,7 +25,6 @@
       merge = { conflictStyle = "diff3"; };
       pull = { rebase = false; };
       diff = { tool = "${pkgs.diff-so-fancy}"; };
-      gpg = { format = "ssh"; };
       commit = {
         verbose = true;
         gpgsign = true;

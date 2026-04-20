@@ -230,6 +230,8 @@
       export LC_ALL="en_US.UTF-8"
       export MANPAGER="nvim +Man!"
       export PAGER=bat
+      export TODO_DB_PATH=$HOME/.config/td/.todos.json
+      export PATH="$HOME/.local/share/mise/shims:$PATH"
     '';
   };
 }
