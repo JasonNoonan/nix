@@ -64,8 +64,8 @@
 
   home = {
     sessionVariables = {
-      CC = "${pkgs.llvmPackages_20.libcxxClang}/clang";
-      CXX = "${pkgs.llvmPackages_20.libcxxClang}/clang++";
+      CC = "${pkgs.llvmPackages_20.libcxxClang}/bin/clang";
+      CXX = "${pkgs.llvmPackages_20.libcxxClang}/bin/clang++";
       DOTNET_ROOT = "/usr/local/share/dotnet";
     };
     sessionPath = [

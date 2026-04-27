@@ -7,6 +7,7 @@
     pkgs.postgresql_14
     pkgs.rustup
     pkgs.gnumake
+    pkgs.lua51Packages.luarocks
   ];
 
   programs.lazygit = {
@@ -28,12 +29,12 @@
 
       gui.theme = {
         activeBorderColor = [
-          "#63f2f1"
+          "#C75B7A"
           "bold"
         ];
         searchingActiveBorderColor = [ "yellow" "bold" ];
-        inactiveBorderColor = [ "#8A889D" ];
-        selectedLineBgColor = [ "#585273" ];
+        inactiveBorderColor = [ "#3A2E25" ];
+        selectedLineBgColor = [ "#2B1F22" ];
         optionsTextColor = [ "magenta" ];
       };
     };
@@ -44,9 +45,7 @@
     defaultEditor = true;
     withPython3 = true;
     withRuby = true;
-    plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-    ];
+    plugins = [];
   };
 
   xdg.configFile = {

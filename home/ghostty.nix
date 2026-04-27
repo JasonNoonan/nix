@@ -16,47 +16,47 @@
     font-family-italic = Cascadia Code Italic
     font-family-bold-italic = Cascadia Code Bold Italic
     
-    # Embark theme colors
-    background = 1e1c31
-    foreground = cbe3e7
-    
-    cursor-color = a1efd3
-    
-    selection-background = 3e3859
-    selection-foreground = cbe3e7
-    
-    # Embark theme palette
+    # Claret theme colors
+    background = 180810
+    foreground = DDD3C7
+
+    cursor-color = D4A76A
+
+    selection-background = 2B1F22
+    selection-foreground = DDD3C7
+
+    # Claret theme palette
     # Black
-    palette = 0=#1e1c31
-    palette = 8=#585273
-    
+    palette = 0=#211618
+    palette = 8=#3A2E25
+
     # Red
-    palette = 1=#f48fb1
-    palette = 9=#f02e6e
-    
+    palette = 1=#C44536
+    palette = 9=#B33A2E
+
     # Green
-    palette = 2=#a1efd3
-    palette = 10=#7fe9c3
-    
+    palette = 2=#8FA86E
+    palette = 10=#8FA86E
+
     # Yellow
-    palette = 3=#ffe6b3
-    palette = 11=#f2b482
-    
+    palette = 3=#D4A76A
+    palette = 11=#C5975B
+
     # Blue
-    palette = 4=#91ddff
-    palette = 12=#78a8ff
-    
+    palette = 4=#8995A8
+    palette = 12=#8995A8
+
     # Magenta
-    palette = 5=#d4bfff
-    palette = 13=#7676ff
-    
+    palette = 5=#C75B7A
+    palette = 13=#B04A68
+
     # Cyan
-    palette = 6=#abf8f7
-    palette = 14=#63f2f1
-    
+    palette = 6=#7A9460
+    palette = 14=#7A9460
+
     # White
-    palette = 7=#cbe3e7
-    palette = 15=#8a889d
+    palette = 7=#BDB3A7
+    palette = 15=#DDD3C7
     
     # Window settings (matching kitty)
     window-decoration = true

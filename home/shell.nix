@@ -17,7 +17,7 @@
 
   programs.bat = {
     enable = true;
-    config = { theme = "embark"; };
+    config = { theme = "claret"; };
     themes = {
       catppuccin-mocha = {
         src = pkgs.fetchFromGitHub {
@@ -29,14 +29,14 @@
         };
         file = "Catppuccin-mocha.tmTheme";
       };
-      embark = {
+      claret = {
         src = pkgs.fetchFromGitHub {
-          owner = "embark-theme";
-          repo = "bat";
-          rev = "fae7e23";
-          sha256 = "sha256-7xKdf5IRwRQo7nVc9hXb+ziULBtwhAn3pbOy4FiRbiQ=";
+          owner = "cfbender";
+          repo = "claret.nvim";
+          rev = "233e72d";
+          sha256 = "sha256-tON0+meS37gKW2Hqp/93So1z04LKr/bllrwPe7X6XN0=";
         };
-        file = "Embark.tmTheme";
+        file = "ports/bat/ClaretDark.tmTheme";
       };
     };
   };
@@ -44,18 +44,10 @@
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "embark";
+      # No claret port available for btop; using default theme
       vim_keys = true;
     };
   };
-
-  xdg.configFile."btop/themes/embark.theme".source = pkgs.fetchFromGitHub
-    {
-      owner = "embark-theme";
-      repo = "bashtop";
-      rev = "e8dc8e6";
-      sha256 = "sha256-HHoCVdCH4jCIK0JzoYagURcU722sBARtFkNeGPXuCNM=";
-    } + "/embark.theme";
 
   programs.direnv = {
     enable = true;
@@ -109,13 +101,13 @@
 
       character = {
         format = "$symbol";
-        error_symbol = "[ I ](bold fg:red bg:#19172C)";
-        success_symbol = "[ I ](bold fg:green bg:#19172C)";
-        vimcmd_symbol = "[ N ](bold fg:yellow bg:#19172C)";
+        error_symbol = "[ I ](bold fg:red bg:#180810)";
+        success_symbol = "[ I ](bold fg:green bg:#180810)";
+        vimcmd_symbol = "[ N ](bold fg:yellow bg:#180810)";
       };
 
       directory = {
-        format = "[   $path ](bg:#2D2B40 fg:bright-white)[](fg:#2D2B40)";
+        format = "[   $path ](bg:#2B1F22 fg:bright-white)[](fg:#2B1F22)";
       };
 
       git_branch = {
@@ -132,14 +124,14 @@
       };
 
       status = {
-        format = "[ $symbol$status ](fg:bright-white bg:#2D2B40)";
+        format = "[ $symbol$status ](fg:bright-white bg:#2B1F22)";
         disabled = false;
         symbol = " ";
       };
 
       hostname = {
         ssh_only = false;
-        format = "[ $hostname ](italic fg:bright-white bg:#19172C)";
+        format = "[ $hostname ](italic fg:bright-white bg:#180810)";
       };
     };
   };

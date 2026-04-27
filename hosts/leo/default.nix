@@ -49,7 +49,7 @@
     casks = [
       "1password"
       "amethyst"
-      { name = "claude-code"; greedy = true; }
+      { name = "claude-code@latest"; greedy = true; }
       "docker"
       # "dotnet-sdk@8"
       "firefox"

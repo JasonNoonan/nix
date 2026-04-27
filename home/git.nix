@@ -46,7 +46,7 @@
       user.name = "Jason Noonan";
     };
 
-    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".erlang-history" ".direnv" ".nix-mix" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ".opencode/"];
+    ignores = [ ".elixir-ls" ".lexical" "json_queries" ".envrc" ".erlang-history" ".direnv" ".nix-mix" ".vim" "scratchpad.ex" "json_notes.md" ".DS_Store" "~/.config/nvim/.luarc.json" ".opencode/" ".dexter.db*"];
   };
 
   programs.diff-so-fancy = {

@@ -1,10 +1,13 @@
 return {
 	{
-		"embark-theme/vim",
-		name = "embark",
-		-- branch = "vim-notify",
+		"cfbender/claret.nvim",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			vim.g.embark_terminal_italics = true
+			require("claret").setup({
+				variant = "dark",
+				transparent = false,
+			})
 		end,
 	},
 }

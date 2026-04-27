@@ -5,13 +5,13 @@
     pkgs.nerd-fonts.roboto-mono
   ];
 
-  xdg.configFile."kitty/themes/embark-theme.conf".source = pkgs.fetchFromGitHub
+  xdg.configFile."kitty/themes/claret.conf".source = pkgs.fetchFromGitHub
     {
-      repo = "kitty";
-      owner = "embark-theme";
-      rev = "50017a4";
-      sha256 = "sha256-rlaRgsAHGy+7lV7UXC8ZGmShcZbhhmlK08W5z1MrnX8=";
-    } + "/embark-theme.conf";
+      repo = "claret.nvim";
+      owner = "cfbender";
+      rev = "233e72d";
+      sha256 = "sha256-tON0+meS37gKW2Hqp/93So1z04LKr/bllrwPe7X6XN0=";
+    } + "/ports/kitty/claret.conf";
 
   programs.kitty = {
     enable = true;
@@ -63,7 +63,7 @@
       # Codeicons
       symbol_map U+EA60-U+EBEB RobotoMono Nerd Font
 
-      include themes/embark-theme.conf
+      include themes/claret.conf
     '';
   };
 }
