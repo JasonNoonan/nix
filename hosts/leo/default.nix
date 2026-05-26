@@ -68,6 +68,14 @@
 
   networking.hostName = "leo";
 
+  launchd.user.agents.docker = {
+    serviceConfig = {
+      ProgramArguments = [ "/usr/bin/open" "-ga" "/Applications/Docker.app" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
+
   system = {
     defaults = {
       dock.appswitcher-all-displays = true;

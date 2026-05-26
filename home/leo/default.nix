@@ -28,6 +28,7 @@
     gitleaks
     go
     go-task
+    (lib.hiPrio taskwarrior3)
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     graphite-cli
     inputs.yt-x.packages."${pkgs.stdenv.hostPlatform.system}".default
@@ -147,4 +148,6 @@
   programs.zsh.shellAliases = {
     handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
   };
+
+  programs.git.settings.user.email = lib.mkForce "jason.t.noonan@gmail.com";
 }
