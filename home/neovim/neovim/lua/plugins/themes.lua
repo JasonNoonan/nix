@@ -8,6 +8,7 @@ return {
 				variant = "dark",
 				transparent = false,
 			})
+			vim.cmd.colorscheme "claret"
 		end,
 	},
 }
