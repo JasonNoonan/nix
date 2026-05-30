@@ -150,4 +150,7 @@
   };
 
   programs.git.settings.user.email = lib.mkForce "jason.t.noonan@gmail.com";
+
+  # leo-only global gitignore entries (merged with the shared list in home/git.nix)
+  programs.git.ignores = [ "opencode.json" ];
 }
