@@ -20,6 +20,7 @@
     settings = {
       init = { defaultBranch = "main"; };
       core = { editor = "nvim"; };
+      rerere = { enabled = true; };
       status = { showUntrackedFiles = "all"; };
       blame = { date = "relative"; };
       merge = { conflictStyle = "diff3"; };

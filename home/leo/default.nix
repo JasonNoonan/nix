@@ -86,20 +86,20 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        hostname = "github.com";
-        identityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
-        addKeysToAgent = "yes";
+        HostName = "github.com";
+        IdentityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
+        AddKeysToAgent = "yes";
       };
       "sabin" =
         {
-          hostname = "10.0.0.129";
-          user = "durmi";
-          dynamicForwards = [{ port = 8082; }];
-          addKeysToAgent = "yes";
+          HostName = "10.0.0.129";
+          User = "durmi";
+          DynamicForward = [{ port = 8082; }];
+          AddKeysToAgent = "yes";
 
-          # localForwards = [
+          # LocalForward = [
           #   # default elixir port
           #   {
           #     bind.port = 4000;
@@ -115,16 +115,16 @@
           #   }
           # ];
 
-          forwardAgent = true;
+          ForwardAgent = true;
         };
       "pdq" =
         {
-          hostname = "10.0.0.84";
-          user = "jasonnoonan";
-          dynamicForwards = [{ port = 8081; }];
-          addKeysToAgent = "yes";
+          HostName = "10.0.0.84";
+          User = "jasonnoonan";
+          DynamicForward = [{ port = 8081; }];
+          AddKeysToAgent = "yes";
 
-          localForwards = [
+          LocalForward = [
             # default elixir port
             {
               bind.port = 4000;
@@ -140,7 +140,7 @@
             }
           ];
 
-          forwardAgent = true;
+          ForwardAgent = true;
         };
     };
   };
@@ -152,5 +152,5 @@
   programs.git.settings.user.email = lib.mkForce "jason.t.noonan@gmail.com";
 
   # leo-only global gitignore entries (merged with the shared list in home/git.nix)
-  programs.git.ignores = [ "opencode.json" ];
+  programs.git.ignores = [ "opencode.json" ".agents/" ".codex/" "AGENTS.md" ];
 }
