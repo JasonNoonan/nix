@@ -14,6 +14,7 @@
     ../sally.nix
     ../shell.nix
     ../sidecar
+    ../supacode
     ../tmux
   ];
 
