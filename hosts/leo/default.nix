@@ -61,6 +61,7 @@
       "obs"
       "postman"
       "raycast"
+      "supacode"
       "spotify"
     ];
   };
