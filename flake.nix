@@ -19,6 +19,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Pinned to an older nixpkgs for mise: 2026.6.11 has a test that fails in the
+    # Nix build sandbox (asserts setuid bits the sandbox strips). This rev has
+    # mise 2026.6.5, which is already built in the store.
+    nixpkgs-mise.url = "github:NixOS/nixpkgs/3e41b24abd260e8f71dbe2f5737d24122f972158";
     NixOS-WSL = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -31,7 +31,9 @@
     graphite-cli
     inputs.yt-x.packages."${pkgs.stdenv.hostPlatform.system}".default
     kubernetes-helm
-    mise
+    # Pinned below to an older nixpkgs; 2026.6.11 has a test that fails in the
+    # Nix sandbox (asserts setuid bits the sandbox strips).
+    inputs.nixpkgs-mise.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mise
     # mpv # temporarily disabled - swift 5.10.1 fails to build on nixpkgs-unstable
     node-gyp
     slack
