@@ -60,7 +60,7 @@ in
       "github.com" = { };
       "pdq" =
         {
-          hostname = "10.0.0.84";
+          hostname = "cyan.local";
           user = "jasonnoonan";
           dynamicForwards = [{ port = 8081; }];
           addKeysToAgent = "yes";

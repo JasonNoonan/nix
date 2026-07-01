@@ -121,7 +121,7 @@
         };
       "pdq" =
         {
-          HostName = "10.0.0.84";
+          HostName = "cyan.local";
           User = "jasonnoonan";
           DynamicForward = [{ port = 8081; }];
           AddKeysToAgent = "yes";
