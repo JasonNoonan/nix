@@ -55,7 +55,7 @@
 
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
     mcp-hub.url = "github:ravitemer/mcp-hub";
-    opencode.url = "github:sst/opencode";
+    opencode.url = "github:sst/opencode/451876b0bddae9c48ea2c14651d9741e364870d7";
     yt-x = {
         url = "github:Benexl/yt-x";
         inputs.nixpkgs.follows = "nixpkgs";
