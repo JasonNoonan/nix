@@ -62,6 +62,7 @@
       "obs"
       "postman"
       "spotify"
+      "supacode"
     ];
   };
 
