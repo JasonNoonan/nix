@@ -3,6 +3,7 @@
 let
   rally = import ./rally.nix { inherit pkgs; };
   tally = import ./tally.nix { inherit pkgs; };
+  supatally = import ./supatally.nix { inherit pkgs; };
 in
 {
   home.packages = [
@@ -10,6 +11,7 @@ in
     pkgs.smug
     (pkgs.callPackage ./tmux-file-paths.nix { })
     tally
+    supatally
   ];
 
   programs.tmux = {

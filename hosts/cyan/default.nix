@@ -14,6 +14,18 @@
 
   programs.zsh.enable = true;
 
+  # TODO(nix-darwin#1819): drop both lines once that PR merges, then
+  # `nix flake update nix-darwin`. Tracking issue: nix-darwin#1817.
+  # nix-darwin's HTML manual builder calls `nixos-render-docs ... --toc-depth`,
+  # a flag removed in current nixpkgs-unstable, so darwin-manual-html fails to
+  # build. Two independent things pull it into the closure:
+  #  1) this system's own docs — skip the HTML manual + darwin-help (man/info
+  #     pages stay enabled),
+  #  2) darwin-uninstaller, which bundles a *default-config* reference system
+  #     (docs on) we can't reach from here — so drop the uninstaller tool too.
+  documentation.doc.enable = false;
+  system.tools.darwin-uninstaller.enable = false;
+
   nixpkgs = {
     config = {
       allowUnfree = true;
