@@ -49,6 +49,16 @@
     firewall.enable = false;
   };
 
+  # Resolve .local hostnames (e.g. cyan.local) dynamically via mDNS.
+  # Equivalent to `apt install avahi-daemon libnss-mdns` plus adding
+  # `mdns4_minimal` to /etc/nsswitch.conf on a Debian/WSL system:
+  # `nssmdns4 = true` wires mdns_minimal into nsswitch for name resolution.
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   programs.zsh.enable = true;
 
   virtualisation.docker.enable = true;

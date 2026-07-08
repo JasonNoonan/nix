@@ -28,7 +28,14 @@
     go
     go-task
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
-    graphite-cli
+    # TODO: drop this override once nixpkgs fixes the graphite-cli darwin build.
+    # graphite-cli 1.8.6 is broken on darwin in nixpkgs-unstable: the fixup
+    # `strip` corrupts the vercel/pkg binary (embedded FS at fixed offsets), and
+    # `gt completion` emits nothing so installShellCompletion fails the build.
+    (graphite-cli.overrideAttrs (old: {
+      dontFixup = true;
+      postInstall = "";
+    }))
     inputs.yt-x.packages."${pkgs.stdenv.hostPlatform.system}".default
     kubernetes-helm
     # Pinned below to an older nixpkgs; 2026.6.11 has a test that fails in the
