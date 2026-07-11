@@ -56,10 +56,7 @@
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
     mcp-hub.url = "github:ravitemer/mcp-hub";
     opencode.url = "github:sst/opencode/451876b0bddae9c48ea2c14651d9741e364870d7";
-    yt-x = {
-        url = "github:Benexl/yt-x";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };   firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+    firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, homebrew-marcus-tap, firefox-darwin, opencode, ... }:

@@ -39,7 +39,6 @@
       dontFixup = true;
       postInstall = "";
     }))
-    inputs.yt-x.packages."${pkgs.stdenv.hostPlatform.system}".default
     kubernetes-helm
     # Pinned below to an older nixpkgs; 2026.6.11 has a test that fails in the
     # Nix sandbox (asserts setuid bits the sandbox strips).
