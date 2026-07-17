@@ -38,6 +38,14 @@
 
     #nix-homebrew
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # nix-homebrew hardcodes the brew binary to tag 6.0.1, which is too old to
+    # read the current homebrew-core formulae (Resource::Patch#type). Override
+    # brew-src to a newer tag that matches the pinned taps.
+    nix-homebrew.inputs.brew-src.follows = "brew-src";
+    brew-src = {
+      url = "github:Homebrew/brew/6.0.9";
+      flake = false;
+    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
