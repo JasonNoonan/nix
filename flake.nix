@@ -43,7 +43,7 @@
     # brew-src to a newer tag that matches the pinned taps.
     nix-homebrew.inputs.brew-src.follows = "brew-src";
     brew-src = {
-      url = "github:Homebrew/brew/6.0.9";
+      url = "github:Homebrew/brew/6.0.11";
       flake = false;
     };
     homebrew-core = {

@@ -32,6 +32,7 @@ pkgs.writeShellScriptBin "supatally" ''
   "$SUPACODE" tab new                 >/dev/null   #  plain terminal
   "$SUPACODE" tab new -i "nvim +DBUI" >/dev/null   #  database UI
   "$SUPACODE" tab new -i "lazygit"    >/dev/null   #  git
+  "$SUPACODE" tab new -i "gh dash"    >/dev/null   #  GitHub dashboard
 
   # Leave focus on the agent tab (a new tab's surface id equals its tab id).
   "$SUPACODE" tab focus -t "$AGENT_TAB"
