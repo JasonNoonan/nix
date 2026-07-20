@@ -19,8 +19,8 @@
   '';
 
   home.packages = with pkgs; [
-    elixir
-    erlang
+    beamPackages.elixir
+    beamPackages.erlang
     # LSP is provided by dexter (see home/neovim); elixir-ls no longer needed.
     # (inputs.lexical-lsp.lib.mkLexical { erlang = beam.packages.erlangR26; })
   ];

@@ -53,7 +53,7 @@
       };
 
     taps = [
-      # "homebrew/cask"
+      "homebrew/cask"
     ];
 
     brews = [

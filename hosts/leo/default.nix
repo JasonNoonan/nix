@@ -47,7 +47,7 @@
       };
 
     taps = [
-      # "homebrew/cask"
+      "homebrew/cask"
       "marcus/tap"
     ];
 
@@ -61,7 +61,7 @@
       "1password"
       "amethyst"
       { name = "claude-code@latest"; greedy = true; }
-      "docker"
+      "docker-desktop"
       # "dotnet-sdk@8"
       "firefox"
       "geekbench"

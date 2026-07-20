@@ -14,6 +14,15 @@
 
   programs.zsh.enable = true;
 
+  # Authenticate sudo with Touch ID instead of typing a password. Homebrew
+  # cask installs/upgrades shell out to `/usr/bin/sudo`, so this covers the
+  # repeated prompts during `handshake` too. `reattach` lets the Touch ID
+  # sheet appear when sudo is run inside tmux/screen.
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
+  };
+
   # TODO(nix-darwin#1819): drop both lines once that PR merges, then
   # `nix flake update nix-darwin`. Tracking issue: nix-darwin#1817.
   # nix-darwin's HTML manual builder calls `nixos-render-docs ... --toc-depth`,
@@ -47,7 +56,7 @@
       };
 
     taps = [
-      # "homebrew/cask"
+      "homebrew/cask"
       "marcus/tap"
     ];
 
@@ -62,7 +71,7 @@
       "amethyst"
       { name = "claude-code@latest"; greedy = true; }
       "discord"
-      "docker"
+      "docker-desktop"
       # "dotnet-sdk@8"
       "firefox"
       "geekbench"

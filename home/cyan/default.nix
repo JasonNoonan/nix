@@ -91,11 +91,11 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        hostname = "github.com";
-        identityFile = [ "/Users/jasonnoonan/.ssh/id_ed25519" ];
-        addKeysToAgent = "yes";
+        HostName = "github.com";
+        IdentityFile = "/Users/jasonnoonan/.ssh/id_ed25519";
+        AddKeysToAgent = "yes";
       };
     };
   };

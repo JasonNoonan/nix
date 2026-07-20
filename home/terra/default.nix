@@ -67,16 +67,16 @@ in {
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
-    matchBlocks = {
+    settings = {
+      "*".AddKeysToAgent = "yes";
       "github.com" = {};
       "pdq" =
         {
-          hostname = "cyan.local";
-          user = "jasonnoonan";
-          dynamicForwards = [{ port = 8081; }];
+          HostName = "cyan.local";
+          User = "jasonnoonan";
+          DynamicForward = [{ port = 8081; }];
 
-          localForwards = [
+          LocalForward = [
             # default elixir port
             {
               bind.port = 4000;
@@ -92,7 +92,7 @@ in {
             }
           ];
 
-          forwardAgent = true;
+          ForwardAgent = true;
         };
     };
   };
