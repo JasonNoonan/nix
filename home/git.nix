@@ -1,6 +1,8 @@
 { self, pkgs, lib, ... }:
 
 {
+  home.packages = [ pkgs.delta ];
+
   programs.gh = {
     enable = true;
     settings = {
@@ -9,6 +11,70 @@
     };
     extensions = with pkgs; [ gh-dash ];
   };
+
+  # gh-dash renders PR diffs by running `gh pr diff` with GH_PAGER set to
+  # `pager.diff`. It does NOT use git's difftool, so `delta` here is what
+  # makes those diffs look nice (gh-dash special-cases it, adding --paging).
+  xdg.configFile."gh-dash/config.yml".text = ''
+    prSections:
+    - title: My Pull Requests
+      filters: is:open author:@me
+    - title: Needs My Review
+      filters: is:open review-requested:@me
+    - title: Involved
+      filters: is:open involves:@me -author:@me
+    issuesSections:
+    - title: My Issues
+      filters: is:open author:@me
+    - title: Assigned
+      filters: is:open assignee:@me
+    - title: Involved
+      filters: is:open involves:@me -author:@me
+    defaults:
+      preview:
+        open: true
+        width: 50
+      prsLimit: 20
+      issuesLimit: 20
+      view: prs
+      layout:
+        prs:
+          updatedAt:
+            width: 7
+          repo:
+            width: 15
+          author:
+            width: 15
+          assignees:
+            width: 20
+            hidden: true
+          base:
+            width: 15
+            hidden: true
+          lines:
+            width: 16
+        issues:
+          updatedAt:
+            width: 7
+          repo:
+            width: 15
+          creator:
+            width: 10
+          assignees:
+            width: 20
+            hidden: true
+      refetchIntervalMinutes: 30
+    keybindings:
+      issues: []
+      prs: []
+    repoPaths: {}
+    theme:
+      ui:
+        table:
+          showSeparator: true
+    pager:
+      diff: delta
+  '';
 
   programs.git = {
     enable = true;
@@ -25,7 +91,8 @@
       blame = { date = "relative"; };
       merge = { conflictStyle = "diff3"; };
       pull = { rebase = false; };
-      diff = { tool = "${pkgs.diff-so-fancy}"; };
+      diff = { tool = "nvimdiff"; };
+      difftool = { prompt = false; };
       commit = {
         verbose = true;
         gpgsign = true;
