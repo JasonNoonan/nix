@@ -43,6 +43,7 @@
     # mpv # temporarily disabled - swift 5.10.1 fails to build on nixpkgs-unstable
     node-gyp
     slack
+    slidev-cli
     tesseract
     uv
     yarn

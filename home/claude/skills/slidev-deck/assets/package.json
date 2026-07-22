@@ -1,0 +1,14 @@
+{
+  "name": "slidev-deck",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "format": "slidev format"
+  },
+  "dependencies": {
+    "@slidev/theme-seriph": "^0.25.0"
+  }
+}

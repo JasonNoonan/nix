@@ -14,14 +14,16 @@
 
   programs.zsh.enable = true;
 
-  # Authenticate sudo with Touch ID instead of typing a password. Homebrew
-  # cask installs/upgrades shell out to `/usr/bin/sudo`, so this covers the
-  # repeated prompts during `handshake` too. `reattach` lets the Touch ID
-  # sheet appear when sudo is run inside tmux/screen.
-  security.pam.services.sudo_local = {
-    touchIdAuth = true;
-    reattach = true;
-  };
+  # NOTE: Touch ID for sudo (security.pam.services.sudo_local) is disabled on
+  # this host. CyberArk EPM rewrites /etc/pam.d/sudo and inserts its own
+  # `auth sufficient` module *above* the `include sudo_local` line, so it
+  # intercepts sudo and pops its own password dialog before pam_tid is ever
+  # reached — Touch ID never gets offered. Re-add the block below if PDQ IT
+  # approves / reconfigures CyberArk to fall through to Touch ID:
+  #   security.pam.services.sudo_local = {
+  #     touchIdAuth = true;
+  #     reattach = true;
+  #   };
 
   # TODO(nix-darwin#1819): drop both lines once that PR merges, then
   # `nix flake update nix-darwin`. Tracking issue: nix-darwin#1817.
