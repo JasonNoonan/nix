@@ -97,7 +97,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      format = "$character$jobs$directory$git_branch$git_status ";
+      format = "$jobs$directory$git_branch\n$time$git_status$character ";
 
       character = {
         format = "$symbol";
@@ -116,6 +116,12 @@
 
       git_status = {
         style = "bold purple";
+      };
+
+      time = {
+        disabled = false;
+        time_format = "%T";
+        format = "[   $time ](bg:#2B1F22 fg:bright-white)[](fg:#2B1F22) ";
       };
 
       jobs = {

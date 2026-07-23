@@ -27,10 +27,11 @@
     ips = "iex -S mix phx.server";
     mco = "mix coveralls";
     mcoh = "mix coveralls.html";
-    mdl = "mix dialyzer";
     mcr = "mix credo --strict";
     mdc = "mix deps.compile";
     mdg = "mix deps.get";
+    mdl = "mix dialyzer";
+    meips = "mise exec -- iex -S mix phx.server";
     mes = "mix ecto.setup";
   };
 }
