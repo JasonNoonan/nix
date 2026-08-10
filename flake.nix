@@ -38,12 +38,14 @@
 
     #nix-homebrew
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    # nix-homebrew hardcodes the brew binary to tag 6.0.1, which is too old to
-    # read the current homebrew-core formulae (Resource::Patch#type). Override
-    # brew-src to a newer tag that matches the pinned taps.
+    # nix-homebrew hardcodes an old brew binary that can't read the current
+    # homebrew-core/cask formulae (the InstallSteps DSL keeps gaining methods:
+    # Resource::Patch#type, then run/on_macos/unless_path_exists). Override
+    # brew-src to a tag that matches the pinned taps — bump this whenever
+    # `nix flake update` moves homebrew-core/homebrew-cask.
     nix-homebrew.inputs.brew-src.follows = "brew-src";
     brew-src = {
-      url = "github:Homebrew/brew/6.0.11";
+      url = "github:Homebrew/brew/6.0.15";
       flake = false;
     };
     homebrew-core = {
