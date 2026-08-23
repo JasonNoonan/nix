@@ -32,6 +32,8 @@
       allowUnsupportedSystems = true;
     };
 
+    overlays = [ (import ../../overlays/curl-cffi-rpath.nix) ];
+
     hostPlatform = "aarch64-darwin";
   };
 
