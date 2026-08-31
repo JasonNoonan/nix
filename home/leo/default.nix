@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, firefox-darwin, ... }:
+{ config, inputs, pkgs, lib, ... }:
 {
   imports = [
     ../claude
@@ -31,19 +31,10 @@
     go-task
     (lib.hiPrio taskwarrior3)
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
-    # TODO: drop this override once nixpkgs fixes the graphite-cli darwin build.
-    # graphite-cli 1.8.6 is broken on darwin in nixpkgs-unstable: the fixup
-    # `strip` corrupts the vercel/pkg binary (embedded FS at fixed offsets), and
-    # `gt completion` emits nothing so installShellCompletion fails the build.
-    (graphite-cli.overrideAttrs (old: {
-      dontFixup = true;
-      postInstall = "";
-    }))
+    graphite-cli
     kubernetes-helm
-    # Pinned below to an older nixpkgs; 2026.6.11 has a test that fails in the
-    # Nix sandbox (asserts setuid bits the sandbox strips).
-    inputs.nixpkgs-mise.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mise
-    # mpv # temporarily disabled - swift 5.10.1 fails to build on nixpkgs-unstable
+    mise
+    mpv
     node-gyp
     slack
     slidev-cli
@@ -156,7 +147,7 @@
   };
 
   programs.zsh.shellAliases = {
-    handshake = "export NIXPKGS_ALLOW_BROKEN=1 && export NIXPKGS_ALLOW_INSECURE=1 && sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin --impure";
+    handshake = "sudo /run/current-system/sw/bin/darwin-rebuild switch --flake /Users/jasonnoonan/.config/nix-darwin";
   };
 
   programs.git.settings.user.email = lib.mkForce "jason.t.noonan@gmail.com";

@@ -13,10 +13,11 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.pagers = [
+      # Renamed in lazygit 0.64: git.pagers -> git.diffRenderers, pager -> command.
+      git.diffRenderers = [
         {
         colorArg = "always";
-        pager = "diff-so-fancy";
+        command = "diff-so-fancy";
         }
       ];
 
