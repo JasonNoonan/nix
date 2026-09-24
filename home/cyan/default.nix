@@ -30,7 +30,7 @@
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.kubectl google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.bq ])
     graphite-cli
     kubernetes-helm
-    mise
+    lefthook
     node-gyp
     slack
     slidev-cli

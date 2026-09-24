@@ -65,6 +65,8 @@
     ];
 
     brews = [
+      # mise from homebrew: nixpkgs lags releases; upgraded on each rebuild
+      "mise"
       "python@3.14"
       "python-tk@3.14"
       "qemu"
