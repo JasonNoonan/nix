@@ -15,6 +15,8 @@
   programs.zsh.enable = true;
 
   nixpkgs = {
+    overlays = [ (import ../../overlays/asdf-vm.nix) ];
+
     config = {
       allowUnfree = true;
     };

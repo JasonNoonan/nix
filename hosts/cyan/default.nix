@@ -38,6 +38,8 @@
   system.tools.darwin-uninstaller.enable = false;
 
   nixpkgs = {
+    overlays = [ (import ../../overlays/asdf-vm.nix) ];
+
     config = {
       allowUnfree = true;
       allowUnsupportedSystems = true;
