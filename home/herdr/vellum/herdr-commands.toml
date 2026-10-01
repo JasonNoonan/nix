@@ -1,0 +1,32 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+# Herdr command palette (prefix+space). Items live in herdr-commands-items.toml.
+# Commands run non-interactively from the focused pane's cwd with the
+# HERDR_ACTIVE_* variables Herdr exports to popups.
+
+cwd = "$HERDR_ACTIVE_PANE_CWD"
+
+[search]
+title = "Herdr"
+placeholder = "Run a command..."
+
+[source]
+file = "../data/herdr-commands.toml"
+
+[actions]
+default = "run"
+menu = false
+
+[[actions.items]]
+name = "run"
+label = "Run command"
+command = ["sh", "-c", "$cmd"]
+on_success = "exit"
+
+[item]
+value = "$id"
+template = [
+  [
+    { token = "$label", bold = true },
+    { token = "$group", align = "right", fg = "dark_gray" },
+  ],
+]

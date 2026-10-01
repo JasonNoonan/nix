@@ -1,0 +1,79 @@
+# Items for the herdr-commands vellum palette. `cmd` runs through sh -c.
+
+[[items]]
+id = "worktree-new"
+label = "New configured worktree"
+group = "hwt"
+cmd = "herdr plugin action invoke hwt.worktrees.new"
+
+[[items]]
+id = "worktree-remove"
+label = "Remove current worktree"
+group = "hwt"
+cmd = "herdr plugin action invoke hwt.worktrees.remove"
+
+[[items]]
+id = "tally-layout"
+label = "Add tally layout tabs to this workspace"
+group = "layout"
+cmd = "herdr-tally-layout --workspace \"$HERDR_ACTIVE_WORKSPACE_ID\" --force"
+
+[[items]]
+id = "tab-claude"
+label = "New Claude tab"
+group = "tab"
+cmd = "herdr-open-tab claude 'claude --dangerously-skip-permissions'"
+
+[[items]]
+id = "tab-nvim"
+label = "New nvim tab"
+group = "tab"
+cmd = "herdr-open-tab nvim nvim"
+
+[[items]]
+id = "tab-db"
+label = "New DBUI tab"
+group = "tab"
+cmd = "herdr-open-tab db 'nvim +DBUI'"
+
+[[items]]
+id = "tab-git"
+label = "New lazygit tab"
+group = "tab"
+cmd = "herdr-open-tab git lazygit"
+
+[[items]]
+id = "tab-dash"
+label = "New gh dash tab"
+group = "tab"
+cmd = "herdr-open-tab dash 'gh dash'"
+
+[[items]]
+id = "tab-term"
+label = "New terminal tab"
+group = "tab"
+cmd = "herdr-open-tab term"
+
+[[items]]
+id = "pr-open"
+label = "Open pull request in browser"
+group = "github"
+cmd = "gh pr view --web"
+
+[[items]]
+id = "pr-checks"
+label = "Open pull request checks"
+group = "github"
+cmd = "gh pr checks --web"
+
+[[items]]
+id = "repo-open"
+label = "Open repository in browser"
+group = "github"
+cmd = "gh repo view --web"
+
+[[items]]
+id = "reload-config"
+label = "Reload herdr config"
+group = "herdr"
+cmd = "herdr server reload-config"

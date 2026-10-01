@@ -4,6 +4,7 @@
     ../claude
     ../ghostty.nix
     ../git.nix
+    ../herdr
     ../kitty.nix
     ../lang
     # ../lang/dotnet.nix

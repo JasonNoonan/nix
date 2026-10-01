@@ -1,0 +1,104 @@
+# herdr configuration — symlinked to ~/.config/herdr/config.toml by
+# home/herdr/default.nix. Herdr's settings UI writes here too; commit changes.
+# Reference: https://herdr.dev/docs/config-reference/
+# Apply edits to a running server with `herdr server reload-config` (prefix+R).
+
+onboarding = false
+
+[theme]
+# Follow Ghostty's palette, like Supacode's terminal theme sync.
+name = "terminal"
+
+[terminal]
+# Login shells on macOS so Homebrew/mise PATH setup runs in new panes.
+shell_mode = "auto"
+
+[worktrees]
+# Herdr/hwt create checkouts under <directory>/<repo>/<branch-slug>
+# (Supacode used ~/.supacode/repos/<repo>/<branch>).
+directory = "~/.herdr/worktrees"
+
+[ui]
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "hostname" },
+]
+window_title = "{hostname}: {workspace}"
+
+[ui.toast]
+# Supacode: in-app notifications on, system notifications off,
+# muted for the active surface (Herdr always suppresses the active tab).
+delivery = "herdr"
+
+[keys]
+# Same prefix as tmux. `prefix+?` lists every active binding.
+prefix = "ctrl+b"
+# Worktrees go through hwt (see below) so they get the Supacode-style setup.
+new_worktree = ""
+# Direct (prefix-free) tab and space navigation, vim-style.
+previous_tab = ["prefix+p", "ctrl+shift+h"]
+next_tab = ["prefix+n", "ctrl+shift+l"]
+previous_workspace = "ctrl+shift+k"
+next_workspace = "ctrl+shift+j"
+
+# Project picker + tally layout, same key as tmux's `bind s ... tally -d`.
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "herdr-tally"
+description = "open project (tally layout)"
+width = "80%"
+height = "70%"
+
+# Vellum command palette (palette: home/herdr/vellum/herdr-commands.toml).
+[[keys.command]]
+key = "prefix+space"
+type = "popup"
+command = "vlm herdr-commands"
+description = "command palette"
+width = "70%"
+height = "60%"
+
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "vlm herdr-workspaces"
+description = "find workspace"
+width = "70%"
+height = "60%"
+
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "pane=\"$(vlm herdr-agents)\" && herdr agent focus \"$pane\""
+description = "find agent"
+width = "70%"
+height = "60%"
+
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "hwt.worktrees.new"
+description = "new configured worktree (hwt)"
+
+[[keys.command]]
+key = "prefix+alt+d"
+type = "plugin_action"
+command = "hwt.worktrees.remove"
+description = "remove current worktree (hwt)"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+description = "lazygit"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "scratch terminal"
+width = "80%"
+height = "80%"

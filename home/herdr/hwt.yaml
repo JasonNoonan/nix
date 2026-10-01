@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dkarter/hwt/main/schema/herdr-worktree.schema.json
+# Global hwt defaults (~/.config/hwt/config.yaml), managed by home/herdr.
+# Mirrors the Supacode worktree setup. Repos can override with a committed
+# .herdr-worktree.yaml or a machine-local <git-common-dir>/hwt/config.yaml;
+# list `<global>` in their files.copy / post_create to keep these entries.
+# Worktree location comes from [worktrees] in home/herdr/config.toml.
+
+# Supacode copied ignored + untracked files into new worktrees. hwt needs an
+# explicit list; missing paths are skipped. Build dirs are APFS clones so
+# `mix setup` starts warm without paying for a full copy.
+files:
+  parallel: true
+  copy:
+    - .env
+    - .env.local
+    - .envrc
+    - .claude/settings.local.json
+    - path: deps
+      copy_on_write: true
+    - path: _build
+      copy_on_write: true
+    - path: node_modules
+      copy_on_write: true
+    - path: assets/node_modules
+      copy_on_write: true
+
+# Supacode setup script: mise trust / mise install / mix setup / supatally.
+# Each entry runs through sh from the new worktree root. A failing command
+# rolls the worktree back, so mix setup only warns.
+post_create:
+  - 'if [ -f mise.toml ] || [ -f .mise.toml ] || [ -f .tool-versions ]; then mise trust && mise install; fi'
+  - 'if [ -f mix.exs ]; then mise exec -- mix setup || echo "mix setup failed; rerun it in the worktree" >&2; fi'
+  - herdr-tally-layout
+
+# Supacode deleted the branch with the worktree. Use -d (merged branches only)
+# so unmerged work is never lost; hwt reports the failure otherwise.
+post_remove:
+  - 'git branch -d "$HWT_WORKTREE_BRANCH"'
