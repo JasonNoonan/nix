@@ -57,7 +57,6 @@
       "ghostty"
       "inkscape"
       "keeper-password-manager"
-      "microsoft-edge"
       "notion"
       "obs"
       "postman"

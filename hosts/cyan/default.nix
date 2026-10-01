@@ -85,7 +85,6 @@
       "ghostty"
       "google-chrome"
       "keeper-password-manager"
-      "microsoft-edge"
       "notion"
       "obs"
       "postman"

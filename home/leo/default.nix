@@ -59,6 +59,9 @@
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # mise owns elixir/erlang here; see home/lang/elixir.nix
+  lang.elixir.useNixToolchain = false;
+
   # k9s
   programs.k9s.enable = true;
 
