@@ -31,6 +31,12 @@ group = "tab"
 cmd = "herdr-open-tab nvim nvim"
 
 [[items]]
+id = "tab-web"
+label = "New terminal-browser tab"
+group = "tab"
+cmd = "herdr-open-tab web terminal-browser"
+
+[[items]]
 id = "tab-db"
 label = "New DBUI tab"
 group = "tab"
