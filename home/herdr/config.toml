@@ -127,3 +127,6 @@ command = "exec \"${SHELL:-sh}\""
 description = "scratch terminal"
 width = "80%"
 height = "80%"
+
+[experimental]
+kitty_graphics = true

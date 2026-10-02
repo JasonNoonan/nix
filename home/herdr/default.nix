@@ -291,7 +291,13 @@ in
 
   xdg.configFile."hwt/config.yaml".source = ./hwt.yaml;
 
-  xdg.configFile."vellum/palettes/herdr-commands.toml".source = ./vellum/herdr-commands.toml;
+  # vlm resolves a relative source.file against the palette's real path, which
+  # is in the nix store, so point it at the data file's absolute path instead.
+  xdg.configFile."vellum/palettes/herdr-commands.toml".text =
+    builtins.replaceStrings
+      [ ''file = "../data/herdr-commands.toml"'' ]
+      [ ''file = "${config.xdg.configHome}/vellum/data/herdr-commands.toml"'' ]
+      (builtins.readFile ./vellum/herdr-commands.toml);
   xdg.configFile."vellum/data/herdr-commands.toml".source = ./vellum/herdr-commands-items.toml;
 
   programs.zsh.initContent = ''
