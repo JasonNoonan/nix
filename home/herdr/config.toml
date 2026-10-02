@@ -31,21 +31,46 @@ window_title = "{hostname}: {workspace}"
 delivery = "herdr"
 
 [keys]
-# Same prefix as tmux. `prefix+?` lists every active binding.
-prefix = "ctrl+b"
+# Vim-oriented. `prefix+?` lists every active binding.
+#
+# ctrl+space instead of ctrl+b, which is page-up in vim and copy mode.
+prefix = "ctrl+space"
 # Worktrees go through hwt (see below) so they get the Supacode-style setup.
 new_worktree = ""
-# Direct (prefix-free) tab and space navigation, vim-style.
-previous_tab = ["prefix+p", "ctrl+shift+h"]
-next_tab = ["prefix+n", "ctrl+shift+l"]
-previous_workspace = "ctrl+shift+k"
-next_workspace = "ctrl+shift+j"
 
-# Project picker + tally layout, same key as tmux's `bind s ... tally -d`.
+# Direct (prefix-free) layer on ctrl+alt: free in Ghostty/macOS, doesn't touch
+# nvim's ctrl+h/j/k/l split navigation. Avoid ctrl+alt+p/r (Ghostty keybinds).
+focus_pane_left = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+resize_pane_left = "ctrl+alt+shift+h"
+resize_pane_down = "ctrl+alt+shift+j"
+resize_pane_up = "ctrl+alt+shift+k"
+resize_pane_right = "ctrl+alt+shift+l"
+# Jump back to the previous pane, like vim's ctrl+o / tmux's `;`.
+last_pane = ["prefix+semicolon", "ctrl+alt+o"]
+zoom = ["prefix+z", "ctrl+alt+z"]
+# Tabs: [ / ] like vim's unimpaired-style motions.
+previous_tab = ["prefix+p", "ctrl+alt+["]
+next_tab = ["prefix+n", "ctrl+alt+]"]
+switch_tab = ["prefix+1..9", "ctrl+alt+1..9"]
+# Workspaces stack vertically in the sidebar: ctrl+u / ctrl+d like scrolling.
+previous_workspace = "ctrl+alt+u"
+next_workspace = "ctrl+alt+d"
+
+# Prefix layer, mirroring vim's ctrl+w window commands.
+split_vertical = "prefix+v"                     # :vsplit / ctrl+w v
+split_horizontal = ["prefix+s", "prefix+minus"] # :split  / ctrl+w s
+close_pane = ["prefix+q", "prefix+x"]           # :q      / ctrl+w q
+detach = "prefix+d"                             # tmux-style, frees q
+settings = "prefix+comma"                       # was prefix+s
+
+# Project picker + tally layout ("open project").
 [[keys.command]]
-key = "prefix+s"
+key = "prefix+shift+o"
 type = "popup"
-command = "herdr-tally"
+command = "hally"
 description = "open project (tally layout)"
 width = "80%"
 height = "70%"

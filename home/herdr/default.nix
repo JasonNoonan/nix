@@ -4,7 +4,7 @@
 #
 #   - hwt (https://hwt.doriankarter.com) creates configured worktrees and runs
 #     the old Supacode setup script (mise trust/install, mix setup, tally layout)
-#   - herdr-tally / herdr-tally-layout are the herdr analogs of
+#   - hally / herdr-tally-layout are the herdr analogs of
 #     supacode-tally / supatally
 #   - vellum (https://vellum.doriankarter.com) provides the command palette
 #
@@ -139,31 +139,68 @@ let
     '';
   };
 
+  herdrTallyInputs = [
+    pkgs.coreutils
+    pkgs.eza
+    pkgs.findutils
+    pkgs.fzf
+    pkgs.git
+    pkgs.jq
+    herdrTallyLayout
+  ];
+
   herdrTally = pkgs.writeShellApplication {
-    name = "herdr-tally";
-    runtimeInputs = [
-      pkgs.coreutils
-      pkgs.eza
-      pkgs.findutils
-      pkgs.fzf
-      pkgs.git
-      pkgs.jq
-      herdrTallyLayout
-    ];
+    name = "hally";
+    runtimeInputs = herdrTallyInputs;
     text = ''
+      # PATH as the caller had it, without the runtimeInputs prefix, so a server
+      # started from here doesn't leak these store paths into every pane.
+      CALLER_PATH="''${PATH#${pkgs.lib.makeBinPath herdrTallyInputs}:}"
       TARGET="''${1:-}"
 
       if [[ "$TARGET" == "-h" || "$TARGET" == "--help" ]]; then
         cat <<'USAGE'
-      Usage: herdr-tally [PROJECT_DIR]
+      Usage: hally [PROJECT_DIR]
 
       Pick a project like tally, open (or focus) it as a Herdr workspace, and seed
-      the tally layout. Bound to prefix+s, matching tmux.
+      the tally layout. Bound to prefix+shift+o.
+
+      Outside Herdr (e.g. a fresh Ghostty shell) it starts the server if needed
+      and attaches to it afterwards.
       USAGE
         exit 0
       fi
 
       ${herdrFn}
+
+      # Not running inside a Herdr pane/popup: we'll need to attach at the end.
+      ATTACH=0
+      [[ -z "''${HERDR_BIN_PATH:-}" ]] && ATTACH=1
+
+      server_running() {
+        [[ "$(herdr status server 2>/dev/null)" == *"status: running"* ]]
+      }
+
+      # Start the server detached from this shell (e.g. after a reboot), so it
+      # outlives the terminal that launched it.
+      if ! server_running; then
+        (cd "$HOME" && PATH="$CALLER_PATH" exec nohup herdr server) </dev/null >/dev/null 2>&1 &
+        for _ in $(seq 50); do
+          server_running && break
+          sleep 0.1
+        done
+        if ! server_running; then
+          echo "hally: herdr server failed to start" >&2
+          exit 1
+        fi
+      fi
+
+      attach() {
+        if [[ "$ATTACH" == "1" ]]; then
+          exec herdr
+        fi
+        exit 0
+      }
 
       if [[ -z "$TARGET" ]]; then
         TARGET="$(
@@ -193,7 +230,7 @@ let
       )"
       if [[ -n "$existing" ]]; then
         herdr workspace focus "$existing" >/dev/null
-        exit 0
+        attach
       fi
 
       workspace_id="$(
@@ -201,6 +238,7 @@ let
           | jq -r .result.workspace.workspace_id
       )"
       herdr-tally-layout --workspace "$workspace_id"
+      attach
     '';
   };
 
