@@ -14,9 +14,9 @@ cmd = "herdr plugin action invoke hwt.worktrees.remove"
 
 [[items]]
 id = "tally-layout"
-label = "Add tally layout tabs to this workspace"
+label = "Add missing tally layout tabs to this workspace"
 group = "layout"
-cmd = "herdr-tally-layout --workspace \"$HERDR_ACTIVE_WORKSPACE_ID\" --force"
+cmd = "herdr-tally-layout --workspace \"$HERDR_ACTIVE_WORKSPACE_ID\""
 
 [[items]]
 id = "tab-claude"

@@ -64,7 +64,11 @@ let
 
       The workspace defaults to $HERDR_WORKSPACE_ID (inside a Herdr pane), else
       the workspace whose pane cwd matches --cwd / $PWD (e.g. hwt post_create).
-      Workspaces that already have more than one tab are left alone unless --force.
+      Only tabs whose label is missing are created, so re-running it on an
+      existing (or session-restored) workspace adds new layout tabs without
+      duplicating the rest. Existing layout tabs sitting at an idle shell
+      (session restore respawns bare shells) get their command started again.
+      --force creates every tab regardless.
       USAGE
             exit 0
             ;;
@@ -99,21 +103,52 @@ let
 
       tabs="$(herdr tab list --workspace "$WORKSPACE_ID")"
       tab_count="$(jq '.result.tabs | length' <<<"$tabs")"
-      if [[ "$tab_count" -gt 1 && "$FORCE" != "1" ]]; then
-        echo "Workspace $WORKSPACE_ID already has $tab_count tabs; leaving the layout intact (use --force to append)." >&2
-        exit 0
-      fi
+      created_count=0
+      resumed_count=0
 
+      has_tab() {
+        [[ "$FORCE" != "1" ]] \
+          && jq -e --arg l "$1" 'any(.result.tabs[]; .label == $l)' <<<"$tabs" >/dev/null
+      }
+
+      panes="$(herdr pane list --workspace "$WORKSPACE_ID")"
       root_tab="$(jq -r '.result.tabs | min_by(.number) | .tab_id' <<<"$tabs")"
-      root_pane="$(
-        herdr pane list --workspace "$WORKSPACE_ID" \
-          | jq -r --arg t "$root_tab" '[.result.panes[] | select(.tab_id == $t)][0]'
-      )"
+      root_pane="$(jq -r --arg t "$root_tab" '[.result.panes[] | select(.tab_id == $t)][0]' <<<"$panes")"
       root_pane_id="$(jq -r .pane_id <<<"$root_pane")"
       root_cwd="$(jq -r .cwd <<<"$root_pane")"
 
+      # Pane of the existing tab labelled $1 (empty if none).
+      tab_pane() {
+        local tab
+        tab="$(jq -r --arg l "$1" '[.result.tabs[] | select(.label == $l)][0].tab_id // empty' <<<"$tabs")"
+        [[ -n "$tab" ]] || return 0
+        jq -r --arg t "$tab" '[.result.panes[] | select(.tab_id == $t)][0].pane_id // empty' <<<"$panes"
+      }
+
+      # True when nothing but the shell is in the pane's foreground.
+      pane_idle() {
+        herdr pane process-info --pane "$1" \
+          | jq -e '.result.process_info | .foreground_process_group_id == .shell_pid' >/dev/null
+      }
+
+      # Session restore brings tabs back as bare shells; start their command again.
+      resume_tab() {
+        local label="$1" command="$2" pane
+        [[ -n "$command" ]] || return 0
+        pane="$(tab_pane "$label")"
+        if [[ -n "$pane" ]] && pane_idle "$pane"; then
+          resumed_count=$((resumed_count + 1))
+          herdr pane run "$pane" "$command" >/dev/null
+        fi
+      }
+
       new_tab() {
         local label="$1" command="$2" created pane
+        if has_tab "$label"; then
+          resume_tab "$label" "$command"
+          return 0
+        fi
+        created_count=$((created_count + 1))
         created="$(herdr tab create --workspace "$WORKSPACE_ID" --cwd "$root_cwd" --label "$label" --no-focus)"
         pane="$(jq -r .result.root_pane.pane_id <<<"$created")"
         if [[ -n "$command" ]]; then
@@ -130,12 +165,21 @@ let
 
       # The root tab keeps focus; start the agent there last so it is typed into
       # the shell even when this script was launched from that same pane.
-      if [[ "$tab_count" -le 1 ]]; then
+      if [[ "$tab_count" -le 1 ]] && ! has_tab agent; then
+        created_count=$((created_count + 1))
         herdr tab rename "$root_tab" agent >/dev/null
         herdr pane run "$root_pane_id" "$AGENT_COMMAND" >/dev/null
+      elif has_tab agent; then
+        resume_tab agent "$AGENT_COMMAND"
       fi
 
-      echo "Seeded tally layout in Herdr workspace $WORKSPACE_ID"
+      if [[ "$created_count" -gt 0 ]]; then
+        echo "Seeded tally layout in Herdr workspace $WORKSPACE_ID"
+      elif [[ "$resumed_count" -gt 0 ]]; then
+        echo "Restarted $resumed_count idle tally tab(s) in Herdr workspace $WORKSPACE_ID"
+      else
+        echo "Workspace $WORKSPACE_ID already has the tally layout"
+      fi
     '';
   };
 
@@ -229,6 +273,8 @@ let
           | jq -r --arg cwd "$ROOT" '[.result.panes[] | select(.cwd == $cwd)][0].workspace_id // empty'
       )"
       if [[ -n "$existing" ]]; then
+        # Restored or older workspaces may predate tabs added to the layout.
+        herdr-tally-layout --workspace "$existing" >/dev/null
         herdr workspace focus "$existing" >/dev/null
         attach
       fi
