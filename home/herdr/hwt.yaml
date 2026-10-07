@@ -15,6 +15,7 @@ files:
     - .env.local
     - .envrc
     - .dev-secrets
+    - ai
     - .claude/settings.local.json
     - path: deps
       copy_on_write: true
