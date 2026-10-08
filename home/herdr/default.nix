@@ -314,10 +314,123 @@ let
       fi
     '';
   };
+
+  # Source for the herdr-worktrees vellum palette: one NDJSON item per Git
+  # worktree across every repo Herdr has open plus hally's project roots, so
+  # unopened worktrees and branches are searchable too.
+  herdrWorktrees = pkgs.writeShellApplication {
+    name = "herdr-worktrees";
+    runtimeInputs = [ pkgs.coreutils pkgs.findutils pkgs.jq ];
+    text = ''
+      ${herdrFn}
+
+      tmp="$(mktemp -d)"
+      trap 'rm -rf "$tmp"' EXIT
+
+      # Any path inside a repo works; herdr worktree list resolves the repo.
+      {
+        herdr pane list | jq -r '.result.panes[].cwd // empty'
+        {
+          find "$HOME/workspace" -mindepth 1 -maxdepth 2 -type d 2>/dev/null
+          find "$HOME" "$HOME/.config" -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+        } | while IFS= read -r dir; do
+          if [[ -e "$dir/.git" ]]; then printf '%s\n' "$dir"; fi
+        done
+      } \
+        | sort -u >"$tmp/dirs"
+
+      # Batches of 6: ~40 concurrent requests make the Herdr server drop some.
+      i=0
+      while IFS= read -r dir; do
+        herdr worktree list --cwd "$dir" >"$tmp/$i.json" 2>/dev/null &
+        i=$((i + 1))
+        if (( i % 6 == 0 )); then wait; fi
+      done <"$tmp/dirs"
+      wait
+
+      # Workspace labels (may be renamed in Herdr) for open worktrees.
+      herdr workspace list \
+        | jq -c '[.result.workspaces[] | {key: .workspace_id, value: .label}] | from_entries' \
+          >"$tmp/labels"
+
+      cat "$tmp"/*.json \
+        | jq -c --arg home "$HOME" --slurpfile labels "$tmp/labels" '
+            select(.result.type? == "worktree_list")
+            | .result.source.repo_name as $repo
+            | .result.worktrees[]
+            | select((.is_bare or .is_prunable) | not)
+            # Claude Code subagent worktrees are noise here.
+            | select(.path | contains("/.claude/worktrees/") | not)
+            | {
+                path,
+                repo: $repo,
+                branch: (.branch // "(detached)"),
+                label: ($labels[0][.open_workspace_id // ""] // (.path | split("/") | last)),
+                workspace_id: .open_workspace_id,
+                open: (if .open_workspace_id then "open" else "" end),
+                kind: (if .is_linked_worktree then "worktree" else "main" end),
+                path_display: (if (.path | startswith($home)) then "~" + (.path | ltrimstr($home)) else .path end)
+              }
+          ' \
+        | jq -sc 'unique_by(.path) | sort_by(.open == "", .repo, .branch) | .[]'
+    '';
+  };
+
+  # Focus the workspace for a worktree, opening it (with the tally layout) if
+  # Herdr doesn't have one yet. Default action of the herdr-worktrees palette.
+  herdrWorktreeJump = pkgs.writeShellApplication {
+    name = "herdr-worktree-jump";
+    runtimeInputs = [ pkgs.coreutils pkgs.jq herdrTallyLayout ];
+    text = ''
+      if [[ $# -ne 1 ]]; then
+        echo "Usage: herdr-worktree-jump WORKTREE_PATH" >&2
+        exit 2
+      fi
+
+      ${herdrFn}
+
+      path="$1"
+
+      worktree() {
+        herdr worktree list --cwd "$path" \
+          | jq -c --arg p "$path" '.result.worktrees[] | select(.path == $p)'
+      }
+
+      info="$(worktree)"
+      if [[ -z "$info" ]]; then
+        echo "herdr-worktree-jump: $path is not a known worktree" >&2
+        exit 1
+      fi
+
+      workspace_id="$(jq -r '.open_workspace_id // empty' <<<"$info")"
+      if [[ -n "$workspace_id" ]]; then
+        herdr workspace focus "$workspace_id" >/dev/null
+        exit 0
+      fi
+
+      if [[ "$(jq -r .is_linked_worktree <<<"$info")" == "true" ]]; then
+        herdr worktree open --cwd "$path" --path "$path" --focus >/dev/null
+        workspace_id="$(worktree | jq -r '.open_workspace_id // empty')"
+      else
+        workspace_id="$(
+          herdr workspace create --cwd "$path" --label "$(basename "$path")" --focus \
+            | jq -r .result.workspace.workspace_id
+        )"
+      fi
+
+      if [[ -z "$workspace_id" ]]; then
+        echo "herdr-worktree-jump: opened $path but couldn't find its workspace" >&2
+        exit 1
+      fi
+      herdr-tally-layout --workspace "$workspace_id" >/dev/null
+    '';
+  };
 in
 {
   home.packages = [
     herdrOpenTab
+    herdrWorktreeJump
+    herdrWorktrees
     herdrTally
     herdrTallyLayout
   ];
@@ -345,6 +458,7 @@ in
       [ ''file = "${config.xdg.configHome}/vellum/data/herdr-commands.toml"'' ]
       (builtins.readFile ./vellum/herdr-commands.toml);
   xdg.configFile."vellum/data/herdr-commands.toml".source = ./vellum/herdr-commands-items.toml;
+  xdg.configFile."vellum/palettes/herdr-worktrees.toml".source = ./vellum/herdr-worktrees.toml;
 
   programs.zsh.initContent = ''
     if command -v herdr > /dev/null 2>&1; then source <(herdr completion zsh); fi

@@ -41,6 +41,7 @@ Prefix, vim `ctrl+w`-style (Herdr defaults otherwise, e.g. `c` new tab, `n/p` ta
 | `prefix+space`       | vellum command palette                         |
 | `prefix+shift+o`     | pick project → workspace + tally layout        |
 | `prefix+f`           | vellum workspace finder (`ctrl+a` for actions) |
+| `prefix+shift+f`     | jump to any worktree by branch/name/repo (opens it if closed) |
 | `prefix+a`           | vellum agent finder                            |
 | `prefix+shift+g`     | new configured worktree (hwt)                  |
 | `prefix+alt+d`       | remove current worktree (hwt)                  |

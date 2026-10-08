@@ -93,6 +93,14 @@ width = "70%"
 height = "60%"
 
 [[keys.command]]
+key = "prefix+shift+f"
+type = "popup"
+command = "vlm herdr-worktrees"
+description = "jump to worktree (branch/name/repo)"
+width = "70%"
+height = "60%"
+
+[[keys.command]]
 key = "prefix+a"
 type = "popup"
 command = "pane=\"$(vlm herdr-agents)\" && herdr agent focus \"$pane\""

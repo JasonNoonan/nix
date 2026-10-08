@@ -1,0 +1,66 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+# Worktree jumper (prefix+shift+f). Lists every worktree of the repos Herdr has
+# open plus hally's project roots (source: herdr-worktrees) and matches on
+# branch, worktree directory, repo, and path. Enter focuses the worktree's
+# workspace, opening it with the tally layout when it isn't open yet.
+
+[input]
+start_mode = "filter"
+
+[search]
+title = "Worktrees"
+placeholder = "Jump to worktree (branch, name, repo)..."
+
+[source]
+cmd = "herdr-worktrees"
+
+[filters]
+label = "state"
+mode = "ctrl-g"
+clear = "a"
+
+[[filters.choices]]
+key = "o"
+label = "open"
+source = "open"
+value = "open"
+icon = "●"
+fg = "#9ece6a"
+
+[actions]
+default = "jump"
+menu = "ctrl-a"
+
+[[actions.items]]
+name = "jump"
+label = "Jump to worktree"
+icon = "󰍉"
+description = "Focus the worktree's workspace, opening it if needed"
+command = ["herdr-worktree-jump", "$path"]
+on_success = "exit"
+
+[[actions.items]]
+name = "open-pull-request"
+label = "Open pull request"
+icon = ""
+description = "Open the pull request for this worktree's branch"
+command = ["gh", "pr", "view", "--web"]
+cwd = "$path"
+on_success = "exit"
+
+[item]
+value = "$path"
+template = [
+  [
+    { token = "$branch", bold = true },
+    { token = "$open", fg = "#9ece6a", align = "right" },
+  ],
+  [
+    { token = "󰉋 ", fg = "#7dcfff", searchable = false },
+    { token = "$repo", fg = "#7dcfff", bold = true },
+    "  ",
+    { token = "$label", fg = "#a9b1d6" },
+    "  ",
+    { token = "$path_display", fg = "#565f89" },
+  ],
+]
