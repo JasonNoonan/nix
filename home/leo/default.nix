@@ -20,6 +20,7 @@
   ];
 
   home.packages = with pkgs; [
+    agent-browser
     asdf-vm
     bun
     chafa

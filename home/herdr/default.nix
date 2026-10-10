@@ -59,7 +59,7 @@ let
       Usage: herdr-tally-layout [--workspace ID | --cwd PATH] [--force] [--agent CMD]
 
       Seeds a Herdr workspace with the tally layout (herdr analog of supatally):
-      agent, nvim, term, web (terminal-browser), db (nvim +DBUI), git (lazygit),
+      agent, nvim, term, db (nvim +DBUI), git (lazygit),
       and dash (gh dash) tabs.
 
       The workspace defaults to $HERDR_WORKSPACE_ID (inside a Herdr pane), else
@@ -158,7 +158,6 @@ let
 
       new_tab nvim "nvim"
       new_tab term ""
-      new_tab web "terminal-browser"
       new_tab db "nvim +DBUI"
       new_tab git "lazygit"
       new_tab dash "gh dash"
