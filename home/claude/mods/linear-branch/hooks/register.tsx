@@ -118,10 +118,11 @@ async function fetchPanel($: EngineInterface, git: Git | null): Promise<Panel> {
     const [project, candidates, live] = await Promise.all([
       found.project ? linear<McpProject>($, 'get_project', { query: found.project, includeMilestones: true }) : null,
       isMapTicket
-        ? Promise.all([
-            listAll($, { parentId: found.id, fields: ROW_FIELDS }),
-            Promise.all(relatedIds(found).map(id => getIssue($, id, ROW_FIELDS))),
-          ]).then(([children, related]) => [...children, ...related.filter((r): r is McpIssue => r !== null)])
+        ? listAll($, { parentId: found.id, fields: ['labels'] })
+            // list_issues carries no attachments: fetch the children that could be implementation work.
+            .then(children => children.filter(c => !(c.labels ?? []).some(l => l.toLowerCase().startsWith('wayfinder:'))).map(c => c.id))
+            .then(childIds => Promise.all([...new Set([...childIds, ...relatedIds(found)])].map(id => getIssue($, id, ROW_FIELDS))))
+            .then(rows => rows.filter((r): r is McpIssue => r !== null))
         : [],
       livePr($, cwd),
     ])
@@ -181,8 +182,20 @@ async function setPin($: EngineInterface, id: string | null): Promise<string> {
   return id ? `Pinned ${id.toUpperCase()} to ${git.branch}.` : `Unpinned ${git.branch}.`
 }
 
+/** The read-only Linear MCP tools this plugin calls itself. */
+const READ_TOOLS = ['get_issue', 'get_project', 'list_issues']
+
 export const register: Register = (on, options) => {
   config = options
+
+  // $.mcp.call still passes the permission check: allow this plugin's own
+  // read-only Linear calls. The model's calls of the same tools are untouched.
+  on('tool.check', ($, e, next) => {
+    const server = (typeof config.linearMcpServer === 'string' && config.linearMcpServer ? config.linearMcpServer : 'linear')
+      .replace(/[^A-Za-z0-9_-]/g, '_')
+    const isOwnRead = next.origin.plugin === 'linear-branch' && READ_TOOLS.some(t => e.tool === `mcp__${server}__${t}`)
+    return isOwnRead ? { decision: 'allow', reason: 'linear-branch reads its ticket' } : next(e)
+  })
 
   on('session.start', async ($, e, next) => {
     await $.command.register({
