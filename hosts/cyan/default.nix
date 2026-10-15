@@ -90,7 +90,6 @@
       "postman"
       "spotify"
       "supacode"
-      "terminal-browser"
     ];
   };
 

@@ -63,7 +63,6 @@
       "raycast"
       "supacode"
       "spotify"
-      "terminal-browser"
     ];
   };
 
