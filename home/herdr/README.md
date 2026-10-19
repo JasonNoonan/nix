@@ -43,6 +43,7 @@ Prefix, vim `ctrl+w`-style (Herdr defaults otherwise, e.g. `c` new tab, `n/p` ta
 | `prefix+f`           | vellum workspace finder (`ctrl+a` for actions) |
 | `prefix+shift+f`     | jump to worktree by branch/name/repo (opens it if closed; `esc` → j/k list, `i` types, `ctrl+g a` shows all) |
 | `prefix+a`           | vellum agent finder                            |
+| `prefix+m`           | star / unstar agent session (optional note); the Agents panel only lists starred sessions |
 | `prefix+shift+g`     | new configured worktree (hwt)                  |
 | `prefix+alt+d`       | remove current worktree (hwt)                  |
 | `prefix+alt+g`       | lazygit popup                                  |
@@ -57,6 +58,8 @@ mise install                       # herdr, hwt, vlm from mise/conf.d/herdr.toml
 herdr integration install claude   # Claude hooks for session restore (edits ~/.claude/settings.json)
 hwt plugin install                 # "New configured worktree" / "Remove current worktree" actions
 vlm palettes sync                  # official herdr-workspaces / herdr-agents / files palettes
+herdr plugin link ~/.config/herdr/local-plugins/favorites   # favorites panel (prefix+m)
+herdr-favorites sync               # apply it now; the plugin re-applies on server start
 ```
 
 Upgrade later with `mise upgrade herdr github:dkarter/hwt github:dkarter/vellum`,

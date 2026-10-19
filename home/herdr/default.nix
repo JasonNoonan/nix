@@ -424,9 +424,23 @@ let
       herdr-tally-layout --workspace "$workspace_id" >/dev/null
     '';
   };
+  # Star agent sessions; the Agents sidebar panel shows only starred ones.
+  # Driven by the local.favorites plugin below (toggle action, startup hook,
+  # and agent event hooks that restore stars after a server restart).
+  herdrFavorites = pkgs.writeShellApplication {
+    name = "herdr-favorites";
+    runtimeInputs = [ pkgs.coreutils pkgs.jq pkgs.socat ];
+    # jq programs use their own $vars in single quotes.
+    excludeShellChecks = [ "SC2016" ];
+    text = builtins.readFile ./favorites.sh;
+  };
+
+  # Stable path, so the plugin manifest survives rebuilds without relinking.
+  herdrFavoritesBin = "${config.home.profileDirectory}/bin/herdr-favorites";
 in
 {
   home.packages = [
+    herdrFavorites
     herdrOpenTab
     herdrWorktreeJump
     herdrWorktrees
@@ -448,6 +462,49 @@ in
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nix-darwin/home/herdr/config.toml";
 
   xdg.configFile."hwt/config.yaml".source = ./hwt.yaml;
+
+  # Local Herdr plugin; register once per machine with
+  # `herdr plugin link ~/.config/herdr/local-plugins/favorites`.
+  xdg.configFile."herdr/local-plugins/favorites/herdr-plugin.toml".text = ''
+    id = "local.favorites"
+    name = "Favorites"
+    version = "0.1.0"
+    min_herdr_version = "0.9.3"
+    description = "Star agent sessions; the Agents panel shows only starred ones"
+    platforms = ["macos"]
+
+    [[startup]]
+    command = ["${herdrFavoritesBin}", "sync"]
+
+    # Restored agents report their session id after startup; re-star them then.
+    [[events]]
+    on = "pane.agent_detected"
+    command = ["${herdrFavoritesBin}", "sync"]
+
+    [[events]]
+    on = "pane.agent_status_changed"
+    command = ["${herdrFavoritesBin}", "sync"]
+
+    [[actions]]
+    id = "toggle"
+    title = "Star / unstar agent session"
+    contexts = ["pane"]
+    command = ["${herdrFavoritesBin}", "toggle"]
+
+    [[actions]]
+    id = "sync"
+    title = "Re-apply favorites"
+    contexts = ["global"]
+    command = ["${herdrFavoritesBin}", "sync"]
+
+    [[panes]]
+    id = "note"
+    title = "Star agent session"
+    placement = "popup"
+    width = "60%"
+    height = "30%"
+    command = ["${herdrFavoritesBin}", "note"]
+  '';
 
   # vlm resolves a relative source.file against the palette's real path, which
   # is in the nix store, so point it at the data file's absolute path instead.

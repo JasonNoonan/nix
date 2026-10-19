@@ -25,6 +25,15 @@ tab_bar_right = [
 ]
 window_title = "{hostname}: {workspace}"
 
+# The Agents panel is a Favorites panel: the local.favorites plugin
+# (herdr-favorites, home/herdr/favorites.sh) filters it to starred sessions.
+# Second row is the star plus its note, from the plugin's $favorite token.
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", "workspace", "tab"],
+  [{ token = "$favorite", fg = "#f9e2af", bold = true }],
+]
+
 [ui.toast]
 # Supacode: in-app notifications on, system notifications off,
 # muted for the active surface (Herdr always suppresses the active tab).
@@ -107,6 +116,12 @@ command = "pane=\"$(vlm herdr-agents)\" && herdr agent focus \"$pane\""
 description = "find agent"
 width = "70%"
 height = "60%"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "local.favorites.toggle"
+description = "star / unstar agent session (favorites panel)"
 
 [[keys.command]]
 key = "prefix+shift+g"
