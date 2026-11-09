@@ -219,6 +219,15 @@
         function clear_cache() {
           sync && sudo sysctl -w vm.drop_caches=3
         }
+
+        function fixkey() {
+          local out
+          out=$(pbpaste | perl -ne 'chomp;
+            if (/^(---.+?---) (.+) (---.+---)\s*$/) { ($h,$b,$f)=($1,$2,$3); $b =~ tr/ /\n/; print "$h\n$b\n$f\n" }
+            else { print STDERR "clipboard does not look like a license key; left unchanged\n"; exit 1 }') || return 1
+          print -r -- "$out" | pbcopy
+          echo "license key reformatted ($(print -r -- "$out" | wc -l | tr -d ' ') lines) and copied"
+        }
       '';
     in
       lib.mkMerge [ zshEarlyInit zshInit ];

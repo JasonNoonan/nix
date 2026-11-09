@@ -62,6 +62,7 @@
     taps = [
       "homebrew/cask"
       "marcus/tap"
+      "anomalyco/tap"
     ];
 
     brews = [
@@ -84,6 +85,7 @@
       "geekbench"
       "ghostty"
       "google-chrome"
+      "hex"
       "keeper-password-manager"
       "notion"
       "obs"

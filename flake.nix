@@ -46,13 +46,17 @@
       url = "github:marcus/homebrew-tap";
       flake = false;
     };
+    homebrew-anomalyco-tap = {
+      url = "github:anomalyco/homebrew-tap";
+      flake = false;
+    };
 
     # miscellaneous
 
     # lexical-lsp.url = "github:lexical-lsp/lexical/aa11bd6";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, homebrew-marcus-tap, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, NixOS-WSL, nix-homebrew, homebrew-core, homebrew-cask, homebrew-marcus-tap, homebrew-anomalyco-tap, ... }:
     {
       darwinConfigurations = {
         "cyan" = nix-darwin.lib.darwinSystem {
@@ -84,6 +88,7 @@
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
                     "marcus/homebrew-tap" = homebrew-marcus-tap;
+                    "anomalyco/homebrew-tap" = homebrew-anomalyco-tap;
                   };
                 };
               }
@@ -135,6 +140,7 @@
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
                     "marcus/homebrew-tap" = homebrew-marcus-tap;
+                    "anomalyco/homebrew-tap" = homebrew-anomalyco-tap;
                   };
                 };
               }
