@@ -64,6 +64,7 @@
       "geekbench"
       "insomnia"
       "keeper-password-manager"
+      "libreoffice"
       "microsoft-edge"
       "notion"
       "obs"

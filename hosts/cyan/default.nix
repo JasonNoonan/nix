@@ -62,7 +62,7 @@
     taps = [
       "homebrew/cask"
       "marcus/tap"
-      "anomalyco/tap"
+      { name = "anomalyco/tap"; trusted = true; }
     ];
 
     brews = [
@@ -87,6 +87,7 @@
       "google-chrome"
       "hex"
       "keeper-password-manager"
+      "libreoffice"
       "notion"
       "obs"
       "postman"
