@@ -4,7 +4,7 @@
     pkgs.nixpkgs-fmt
     pkgs.nodejs
     pkgs.dexter
-    pkgs.postgresql_14
+    pkgs.postgresql
     pkgs.rustup
     pkgs.gnumake
     pkgs.lua51Packages.luarocks
