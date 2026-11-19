@@ -63,6 +63,7 @@
       "homebrew/cask"
       "marcus/tap"
       { name = "anomalyco/tap"; trusted = true; }
+      { name = "ampcode/tap"; trusted = true; }
     ];
 
     brews = [
@@ -77,6 +78,7 @@
     casks = [
       "1password"
       "amethyst"
+      { name = "ampcode/tap/amp@beta"; greedy = true; }
       { name = "claude-code@latest"; greedy = true; }
       "discord"
       "docker-desktop"
